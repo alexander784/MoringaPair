@@ -53,3 +53,9 @@ def seed_database():
 if __name__ =="__main__":
     with app.app_context():
         seed_database()
+        
+        
+# client    server
+# /login {username, password}
+# server gen JWT
+# sub request, must attach JWT

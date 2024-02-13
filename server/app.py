@@ -1,12 +1,16 @@
 from config import app
-from flask_restful import Api, Resource
+from controllers.auth_controllers import auth_bp
 
 
-api=Api(app)
+# register blueprints
+app.register_blueprint(auth_bp, url_prefix="/auth")
 
-class Index(Resource):
-    def get(self):
-        return "Hello World", 200
+
+if __name__ == "__main__":
+    app.run(port=5555, debug=True)
+
+
+
+
     
-api.add_resource(Index, "/")
 
