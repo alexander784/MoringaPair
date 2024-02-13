@@ -3,6 +3,7 @@ from controllers.auth_controllers import auth_bp
 from controllers.user_controllers import user_bp
 from config import jwt
 from flask import make_response, jsonify
+from models import User
 
 
 # register blueprints
@@ -22,6 +23,13 @@ def invalid_token_callback(error):
 @jwt.unauthorized_loader
 def missing_token_callback(error):
     return make_response(jsonify({"message":"Token is required", "error":"token_missing"}), 400)
+
+# !automatically load user
+@jwt.user_lookup_loader
+def user_lookup_callback(jwt_header, jwt_data):
+    identity=jwt_data["sub"]
+    
+    return User.query.filter_by(username=identity).one_or_none()
 
 
 
