@@ -1,61 +1,62 @@
 from models import User
 from config import app, db, bcrypt
 
+
+# function to seed the database
 def seed_database():
-    # empty records
+    # empty records to prevent duplicate values
+    print("Deleting records 🚮🚮🚮...")
     User.query.delete()
-    full_names=[
+
+    # static data
+    full_names = [
         "John Doe",
         "Jane  Smith",
         "Alex Jones",
         "Emily Brown",
         "Chris Wilson"
     ]
-    usernames=[
+
+    usernames = [
         "johndoe",
         "janesmith",
         "alexjones",
         "emilybrown",
         "chriswilson"
     ]
-    emails=["john.doe@moringaschool.com",
-"jane.smith@moringaschool.com",
-"alex.jones@moringaschool.com",
-"emily.brown@moringaschool.com",
-"chris.wilson@moringaschool.com"]
-    
-    passwords=[
+
+    emails = ["john.doe@moringaschool.com",
+              "jane.smith@moringaschool.com",
+              "alex.jones@moringaschool.com",
+              "emily.brown@moringaschool.com",
+              "chris.wilson@moringaschool.com"]
+
+    passwords = [
         "passjohndoe",
         "passjanesmith",
         "passalexjones",
         "passemilybrown",
         "passchriswilson"
     ]
-    
+
+    print("Inserting users 🤵🤵🤵...")
     # 0, 1, 2, 3, 4
     for i in range(5):
         # generate 5 user instances
-        user=User(
+        user = User(
             full_name=full_names[i],
             username=usernames[i],
             email=emails[i],
             _password_hash=bcrypt.generate_password_hash(
-            passwords[i].encode('utf-8'))
+                passwords[i].encode('utf-8'))
         )
+
         db.session.add(user)
         db.session.commit()
-        
-        
-    
-    
+
+    print("Complete 🤝🤝🤝...")
 
 
-if __name__ =="__main__":
+if __name__ == "__main__":
     with app.app_context():
         seed_database()
-        
-        
-# client    server
-# /login {username, password}
-# server gen JWT
-# sub request, must attach JWT
