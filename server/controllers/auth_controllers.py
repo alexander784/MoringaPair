@@ -2,7 +2,7 @@ from flask import Blueprint, make_response, jsonify, request
 from flask_restful import Api, Resource, reqparse
 from models import User
 from config import bcrypt, db
-from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt, jwt_required, current_user
+from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt, jwt_required, current_user, get_jwt_identity
 
 auth_bp=Blueprint("auth_bp", __name__)
 api=Api(auth_bp)
@@ -68,8 +68,13 @@ class Whoami(Resource):
         }}))
     
 class RefreshAccess(Resource):
+    @jwt_required(refresh=True)
     def get(self):
-        pass
+        # identity=get_jwt()["sub"]
+        identity=get_jwt_identity()
+        new_access_token=create_access_token(identity=identity)
+        
+        return make_response(jsonify({"access":new_access_token}), 200)
 
 class Logout(Resource):
     def get(self):
