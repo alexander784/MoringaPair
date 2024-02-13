@@ -2,7 +2,7 @@ from flask import Blueprint, make_response, jsonify, request
 from flask_restful import Api, Resource, reqparse
 from models import User
 from config import bcrypt, db
-from flask_jwt_extended import create_access_token, create_refresh_token
+from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt, jwt_required
 
 auth_bp=Blueprint("auth_bp", __name__)
 api=Api(auth_bp)
@@ -56,6 +56,12 @@ class Login(Resource):
         
         return make_response(jsonify({"error":"Invalid username or password"}), 409)
     
+class Whoami(Resource):
+    @jwt_required()
+    def get(self):
+        claims=get_jwt()
+        return make_response(jsonify({"claims":claims}))
+    
 class RefreshAccess(Resource):
     def get(self):
         pass
@@ -69,3 +75,4 @@ api.add_resource(Register, "/register")
 api.add_resource(Login, "/login")
 api.add_resource(RefreshAccess, "/refresh_access")
 api.add_resource(Logout, "/logout")
+api.add_resource(Whoami, "/whoami")
