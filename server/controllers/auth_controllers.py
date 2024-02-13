@@ -1,4 +1,4 @@
-from flask import Blueprint, make_response, jsonify
+from flask import Blueprint, make_response, jsonify, request
 from flask_restful import Api, Resource, reqparse
 from models import User
 from config import bcrypt, db
@@ -36,7 +36,17 @@ class Register(Resource):
     
 class Login(Resource):
     def post(self):
-        pass
+        # user login data
+        data=request.get_json()
+        
+        # check if user exist in db
+        user=User.query.filter_by(username=data.get("username")).first()
+        
+        # access/refresh token if user and password matches
+        if user and user.authenticate(data.get("password")):
+            pass
+        
+        return make_response(jsonify({"error":"Invalid username or password"}))
     
 class RefreshAccess(Resource):
     def get(self):
