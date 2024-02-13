@@ -2,6 +2,7 @@ from flask import Blueprint, make_response, jsonify, request
 from flask_restful import Api, Resource, reqparse
 from models import User
 from config import bcrypt, db
+from flask_jwt_extended import create_access_token, create_refresh_token
 
 auth_bp=Blueprint("auth_bp", __name__)
 api=Api(auth_bp)
@@ -44,9 +45,16 @@ class Login(Resource):
         
         # access/refresh token if user and password matches
         if user and user.authenticate(data.get("password")):
-            pass
+            access_token=create_access_token(identity=data["username"])
+            refresh_token=create_refresh_token(identity=data["username"])
+            
+            return make_response(jsonify({"message":"Login successful", "tokens":{
+                "access":access_token,
+                "refresh":refresh_token
+                
+            }}), 201)
         
-        return make_response(jsonify({"error":"Invalid username or password"}))
+        return make_response(jsonify({"error":"Invalid username or password"}), 409)
     
 class RefreshAccess(Resource):
     def get(self):
