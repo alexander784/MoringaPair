@@ -65,6 +65,12 @@ class User(db.Model):
                 if not regex.fullmatch(email):
                     raise ValueError("Invalid email format")
                 return email
+    
+    @validates("_password_hash")
+    def validate_password_hash(self, key, _password_hash):
+        if not _password_hash:
+            raise ValueError("Password required")
+        return _password_hash
                 
     
         
