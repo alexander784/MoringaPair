@@ -5,7 +5,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 class User(db.Model):
     __tablename__="users"
     
-    id=db.Column(db.String, primary_key=True)
+    id=db.Column(db.Integer, primary_key=True)
     full_name=db.Column(db.String, nullable=False)
     username=db.Column(db.String, nullable=False, unique=True)
     email=db.Column(db.String, nullable=False, unique=True)
@@ -58,7 +58,7 @@ class User(db.Model):
                 raise ValueError("Email already exists")
             else:
                 import re
-                pattern=r"[a-z]*.[a-z]*@moringaschool"
+                pattern=r"[a-z]*.[a-z]*@moringaschool.com"
                 regex=re.compile(pattern)
                 
                 # search, match, findall
