@@ -1,5 +1,6 @@
-from config import db
+from config import db, bcrypt
 from sqlalchemy.orm import validates
+from sqlalchemy.ext.hybrid import hybrid_property
 
 class User(db.Model):
     __tablename__="users"
@@ -10,6 +11,28 @@ class User(db.Model):
     email=db.Column(db.String, nullable=False, unique=True)
     _password_hash=db.Column(db.String, nullable=False)
     
+    # !PASSWORD HASHING
+    # getter
+    @hybrid_property
+    def password_hash(self):
+        return self._password_hash
+    
+    # setter
+    @password_hash.setter
+    def password_hash(self, password):
+        # utf-8 encoding and decoding is required in python 3
+        password_hash = bcrypt.generate_password_hash(
+            password.encode('utf-8'))
+        self._password_hash = password_hash.decode('utf-8')
+        
+    # authenticate
+    def authenticate(self, password):
+        return bcrypt.check_password_hash(
+            self._password_hash, password.encode('utf-8'))
+    
+    
+    
+    # !VALIDATIONS
     @validates("full_name")
     def validate_full_name(self, key, full_name):
         if not full_name:

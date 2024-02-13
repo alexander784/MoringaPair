@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from dotenv import load_dotenv
 from os import environ
+from flask_bcrypt import Bcrypt
 
 load_dotenv()
 
@@ -21,6 +22,7 @@ app.json.compact=False
 
 migrate=Migrate(app, db)
 db.init_app(app)
+bcrypt=Bcrypt(app)
 
 
 
