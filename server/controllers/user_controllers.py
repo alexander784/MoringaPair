@@ -2,11 +2,13 @@ from flask import Blueprint, make_response, jsonify, request
 from flask_restful import Api, Resource
 from models import User
 from config import db
+from flask_jwt_extended import jwt_required
 
 user_bp=Blueprint("user_bp", __name__)
 api=Api(user_bp)
 
 class Users(Resource):
+    @jwt_required()
     def get(self):
         # users list comprehension
         users_lc=[user.to_dict() for user in User.query.all()]
@@ -14,6 +16,7 @@ class Users(Resource):
         return make_response(jsonify({"users":users_lc}), 200)
 
 class UserById(Resource):
+    @jwt_required()
     def get(self, user_id):
         user=User.query.filter_by(id=user_id).first()
         
@@ -22,6 +25,7 @@ class UserById(Resource):
         
         return make_response(jsonify({"user":user.to_dict()}), 200)
     
+    @jwt_required()
     def patch(self, user_id):
         data=request.get_json()
         user=User.query.filter_by(id=user_id).first()
@@ -37,6 +41,7 @@ class UserById(Resource):
         
         return make_response(jsonify({"user":user.to_dict()}), 200)
     
+    @jwt_required()
     def delete(self, user_id):
         user=User.query.filter_by(id=user_id).first()
         
