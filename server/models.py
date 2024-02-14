@@ -127,3 +127,13 @@ class Group(db.Model):
 
     def __repr__(self):
         return f"Group {self.name} {self.week_number}"
+
+
+# will contain revoked access/refresh tokens
+class TokenBlocklist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    jti = db.Column(db.String, nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+
+    def __repr__(self):
+        return f"TokenBlocklist {self.jti}"
