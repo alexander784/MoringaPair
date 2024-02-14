@@ -11,6 +11,7 @@ app.register_blueprint(user_bp, url_prefix="/api")
 
 # !JWT STUFF
 
+
 # jwt error handling == expired, invalid, missing tokens
 
 
@@ -18,16 +19,13 @@ app.register_blueprint(user_bp, url_prefix="/api")
 def expired_token_callback(jwt_header, jwt_data):
     return make_response(jsonify({"message": "Token has expired", "error": "token_expired"}), 401)
 
-
 @jwt.invalid_token_loader
 def invalid_token_callback(error):
     return make_response(jsonify({"message": "Signature verification failed", "error": "token_invalid"}), 401)
 
-
 @jwt.unauthorized_loader
 def missing_token_callback(error):
     return make_response(jsonify({"message": "Request does not contain valid token", "error": "authorization_header"}), 401)
-
 
 # automatic user loading
 @jwt.user_lookup_loader
