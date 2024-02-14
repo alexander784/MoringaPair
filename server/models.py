@@ -86,16 +86,26 @@ class Student(db.Model):
     name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
 
+    # 1:M
+    grouping = db.relationship("Grouping", backref="student")
+
+    # M:M
+    groups = db.relationship("Grouping", back_populates="students")
+
     def __repr__(self):
         return f"Student {self.name} {self.email}"
 
 
+# Association table => links Student and Group
 class Grouping(db.Model):
     __tablename__ = "groupings"
 
     id = db.Column(db.Integer, primary_key=True)
     student_id = db.Column(db.Integer, db.ForeignKey("students.id"))
     group_id = db.Column(db.Integer, db.ForeignKey("groups.id"))
+
+    students = db.relationship("Student", back_populates="groups")
+    groups = db.relationship("Group", back_populates="students")
 
     def __repr__(self):
         return f"Grouping {self.student_id} {self.group_id}"
@@ -108,6 +118,12 @@ class Group(db.Model):
     name = db.Column(db.String, nullable=False)
     week_number = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
+
+    # 1:M
+    grouping = db.relationship("Grouping", backref="group")
+
+    # M:M
+    students = db.relationship("Grouping", back_populates="groups")
 
     def __repr__(self):
         return f"Group {self.name} {self.week_number}"
