@@ -2,7 +2,7 @@ from config import app, jwt
 from controllers.auth_controllers import auth_bp
 from controllers.user_controllers import user_bp
 from flask import make_response, jsonify
-from models import User
+from models import User, TokenBlocklist
 
 
 # !register blueprints
@@ -19,15 +19,19 @@ app.register_blueprint(user_bp, url_prefix="/api")
 def expired_token_callback(jwt_header, jwt_data):
     return make_response(jsonify({"message": "Token has expired", "error": "token_expired"}), 401)
 
+
 @jwt.invalid_token_loader
 def invalid_token_callback(error):
     return make_response(jsonify({"message": "Signature verification failed", "error": "token_invalid"}), 401)
+
 
 @jwt.unauthorized_loader
 def missing_token_callback(error):
     return make_response(jsonify({"message": "Request does not contain valid token", "error": "authorization_header"}), 401)
 
 # automatic user loading
+
+
 @jwt.user_lookup_loader
 def user_lookup_callback(jwt_header, jwt_data):
     # access subject => similar to get_jwt()["sub"]
@@ -35,6 +39,19 @@ def user_lookup_callback(jwt_header, jwt_data):
 
     # access user of identity jwt_data["sub"]
     return User.query.filter_by(username=identity).one_or_none()
+
+# handling revoking access/refresh tokens
+
+
+@jwt.token_in_blocklist_loader
+def token_in_blocklist_callback(jwt_header, jwt_data):
+    jti = jwt_data["jti"]
+
+    token = TokenBlocklist.query.filter_by(jti=jti).first()
+
+    return True if token else False
+
+    pass
 
 
 if __name__ == "__main__":
