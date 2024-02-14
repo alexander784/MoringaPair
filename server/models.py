@@ -66,7 +66,7 @@ class User(db.Model, SerializerMixin):
                 # check for fullmatch
                 if not regex.fullmatch(email):
                     raise ValueError("Invalid email format")
-                
+
                 return email
 
     @validates("_password_hash")
@@ -77,3 +77,37 @@ class User(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f"User {self.full_name} {self.username} {self.email}"
+
+
+class Student(db.Model):
+    __tablename__ = "students"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
+
+    def __repr__(self):
+        return f"Student {self.name} {self.email}"
+
+
+class Grouping(db.Model):
+    __tablename__ = "groupings"
+
+    id = db.Column(db.Integer, primary_key=True)
+    student_id = db.Column(db.Integer, db.ForeignKey("students.id"))
+    group_id = db.Column(db.Integer, db.ForeignKey("groups.id"))
+
+    def __repr__(self):
+        return f"Grouping {self.student_id} {self.group_id}"
+
+
+class Group(db.Model):
+    __tablename__ = "groups"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String, nullable=False)
+    week_number = db.Column(db.Integer, nullable=False)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+
+    def __repr__(self):
+        return f"Group {self.name} {self.week_number}"

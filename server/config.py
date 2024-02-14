@@ -26,3 +26,5 @@ migrate = Migrate(app, db)
 db.init_app(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
+
+# !db.create_all() => comes in handy if tables don't appear
