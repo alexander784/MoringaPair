@@ -1,6 +1,6 @@
 from flask import Blueprint, make_response, jsonify, request
 from flask_restful import Api, Resource, reqparse
-from models import User
+from models import User, TokenBlocklist
 from config import bcrypt, db
 from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt, jwt_required, current_user, get_jwt_identity
 
@@ -19,6 +19,8 @@ parser.add_argument("password", type=str, required=True,
                     help="Password required")
 
 # resources
+
+
 class Index(Resource):
     def get(self):
         return "Hello World", 200
@@ -90,15 +92,31 @@ class RefreshAccess(Resource):
 
 
 class Logout(Resource):
-    @jwt_required(verify_type=False)
-    def delete(self):
-        token = get_jwt()
-        jti = token["jti"]
-        ttype = token[type]
-        jet_redis_blocklist.set(jti, "", ex=ACCESS_EXPIRES)
+    # @jwt_required(verify_type=False)
+    # def delete(self):
+    #     token = get_jwt()
+    #     jti = token["jti"]
+    #     ttype = token[type]
+    #     jet_redis_blocklist.set(jti, "", ex=ACCESS_EXPIRES)
 
-        return jsonify(msg=f"{ttype.capitalize()} token succussfully revoked")
-    
+    #     return jsonify(msg=f"{ttype.capitalize()} token succussfully revoked")
+
+    # 1. TokenBlocklist
+    # 2. token_in_blocklist_loader
+    # 3. /logout
+    @jwt_required()
+    def get(self):
+        jti = get_jwt()["jti"]
+
+        new_token_blocklist = TokenBlocklist(
+            jti=jti
+        )
+
+        db.session.add(new_token_blocklist)
+        db.session.commit()
+
+        return make_response(jsonify({"message": "User logged out successfully"}), 200)
+
 
 # URLs
 api.add_resource(Index, "/")

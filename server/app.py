@@ -51,7 +51,7 @@ def token_in_blocklist_callback(jwt_header, jwt_data):
 
     return True if token else False
 
-    pass
+    
 
 
 if __name__ == "__main__":
