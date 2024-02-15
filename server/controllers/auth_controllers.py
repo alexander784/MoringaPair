@@ -92,13 +92,6 @@ class RefreshAccess(Resource):
 
 
 class Logout(Resource):
-    # @jwt_required(verify_type=False)
-    # def delete(self):
-    #     token = get_jwt()
-    #     jti = token["jti"]
-    #     ttype = token[type]
-
-    #     return jsonify(msg=f"{ttype.capitalize()} token succussfully revoked")
 
     # 1. TokenBlocklist
     # 2. token_in_blocklist_loader
