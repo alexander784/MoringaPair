@@ -89,7 +89,7 @@ class Student(db.Model):
     # 1:M
     grouping = db.relationship("Grouping", backref="student")
 
-    # M:M
+    # M:M with Groups via Grouping
     groups = db.relationship("Grouping", back_populates="students")
 
     def __repr__(self):
@@ -122,7 +122,7 @@ class Group(db.Model):
     # 1:M
     grouping = db.relationship("Grouping", backref="group")
 
-    # M:M
+    # M:M with Students via Grouping
     students = db.relationship("Grouping", back_populates="groups")
 
     def __repr__(self):
