@@ -16,6 +16,8 @@ class User(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime,onupdate=db.func.now())
     _password_hash = db.Column(db.String, nullable=False)
 
+    users = db.relationship("Student", backref= "user")
+
     # password hashing
     @hybrid_property
     def password_hash(self):
@@ -85,23 +87,64 @@ class pair(db.Model):
 
      __table_name__ = "pairs"
      id = db.Column()
-     week_number = db.Column()
-     User_id = db.Column()
-     created_at = db.Column
-     updated_at = db.Column()
+     week_number = db.Column(db.Integer, nullable=False)
+     user_id = db.Column(db.Integer)
+     created_at = db.Column(db.DateTime, server_default=db.func.now())
+     updated_at = db.Column(db.DateTime,onupdate=db.func.now())
+
+     def __repr__(self):
+         return f"<Pair: {self.week_number} {self.User_id} {self.created_at} {self.updated_at}>"
    
 
+
+class Student(db.Model):
+     __tablename__ = 'students'
+
+     id = db.Column(db.Integer, primary_key=True)
+     name= db.Column(db.String, nullable=False)
+     email= db.Column(db.String, nullable=False)
+     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+     created_at = db.Column(db.DateTime, server_default=db.func.now())
+     updated_at = db.Column(db.DateTime,onupdate=db.func.now())
+
+     
+
+     def __repr__(self):
+         return f"<Student: {self.name}, {self.email} >"
+     
+class PairHistory(db.Model):
+    __tablename__= 'pair_histories'
+    id = db.Column(db.Integer, primary_key=True)
+    week_number= db.Column(db.Integer, nullable=False)
+    user_id =db.Column(db.Integer, nullable=False)
+    pair_id= db.Column(db.Integer, nullable=False)
+    created_at= db.Column(db.DateTime, server_default=db.func.now())
+    updated_at= db.Column(db.DateTime,onupdate=db.func.now())
+
+    def __repr__(self):
+        return f"<PairHistory: {self.week_number}, {self.user_id}, {self.pair_id}, {self.created_at}, {self.updated_at}>"
     
-    
-    
 
-   
-    
+class PairHistoryStudentAssociation(db.Model):
+    __tablename__= "pair_history_student_associations"
 
+    id= db.Column(db.Integer, primary_key=True)
+    pair_history_id= db.Column(db.Integer)
+    student_id= db.Column(db.Integer)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
 
+    def __repr__(self):
+        return f"<pair_history_student_association: {self.pair_history_id} {self.student_id} {self.created_at}"
 
+class PairStudentAssociation(db.Model):
+     __tablename__= "pair_student_associations"
+     
+     id= db.Column(db.Integer, primary_key=True)
+     student_id=db.Column(db.Integer)
+     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-
+     def __repr__(self):
+         return f"<pair_student_association: {self.student_id}, {self.created_at}>"
 
 
 
