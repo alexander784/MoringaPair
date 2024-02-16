@@ -21,9 +21,12 @@ python-dotenv = "*"
 flask-restplus = "*"
 flask-bcrypt = "*"
 flask-jwt-extended = "*"
+marshmallow = "3.18.0"
+marshmallow-sqlalchemy = "0.28.1"
+flask-marshmallow = "0.14.0"
 
 [dev-packages]
 
 [requires]
-python_version = "3.10.12"
-python_full_version = "3.10.12
+python_version = "3.10"
+python_full_version = "3.10"

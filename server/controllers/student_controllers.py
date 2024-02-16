@@ -3,6 +3,7 @@ from flask_restful import Api, Resource, reqparse
 from flask_jwt_extended import jwt_required
 from models import Student
 from config import db
+from marshmallow_schemas import student_schema, students_schema
 
 # student_bp
 student_bp = Blueprint("student_bp", __name__)
@@ -22,8 +23,11 @@ class Students(Resource):
     @jwt_required()
     def get(self):
         # list comprehension
-        students_lc = [student.to_dict() for student in Student.query.all()]
-        return make_response(jsonify({"students": students_lc}), 200)
+        # students_lc = [student.to_dict() for student in Student.query.all()]
+        # return make_response(jsonify({"students": students_lc}), 200)
+
+        students = Student.query.all()
+        return make_response(students_schema.dump(students), 200)
 
     @jwt_required()
     def post(self):
@@ -38,7 +42,9 @@ class Students(Resource):
         db.session.add(new_student)
         db.session.commit()
 
-        return make_response(jsonify({"new_student": new_student.to_dict()}), 201)
+        # return make_response(jsonify({"new_student": new_student.to_dict()}), 201)
+
+        return make_response(student_schema.dump(new_student), 201)
 
 
 class StudentById(Resource):
@@ -49,7 +55,9 @@ class StudentById(Resource):
         if not student:
             return make_response(jsonify({"error": "Student not found"}), 400)
 
-        return make_response(jsonify({"student": student.to_dict()}), 200)
+        # return make_response(jsonify({"student": student.to_dict()}), 200)
+
+        return make_response(student_schema.dump(student), 200)
 
     @jwt_required()
     def patch(self, student_id):
@@ -64,7 +72,9 @@ class StudentById(Resource):
 
         db.session.commit()
 
-        return make_response(jsonify({"updated_student": student.to_dict()}), 200)
+        # return make_response(jsonify({"updated_student": student.to_dict()}), 200)
+
+        return make_response(student_schema.dump(student), 200)
 
     @jwt_required()
     def delete(self, student_id):
