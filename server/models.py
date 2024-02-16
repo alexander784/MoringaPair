@@ -12,6 +12,8 @@ class User(db.Model, SerializerMixin):
     full_name = db.Column(db.String, nullable=False)
     username = db.Column(db.String, nullable=False, unique=True)
     email = db.Column(db.String, nullable=False, unique=True)
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime,onupdate=db.func.now())
     _password_hash = db.Column(db.String, nullable=False)
 
     # password hashing
