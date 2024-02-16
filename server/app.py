@@ -1,6 +1,7 @@
 from config import app, jwt
 from controllers.auth_controllers import auth_bp
 from controllers.user_controllers import user_bp
+from controllers.student_controllers import student_bp
 from flask import make_response, jsonify
 from models import User, TokenBlocklist
 
@@ -8,6 +9,7 @@ from models import User, TokenBlocklist
 # !register blueprints
 app.register_blueprint(auth_bp, url_prefix="/auth")
 app.register_blueprint(user_bp, url_prefix="/api")
+app.register_blueprint(student_bp, url_prefix="/api")
 
 # !JWT STUFF
 
