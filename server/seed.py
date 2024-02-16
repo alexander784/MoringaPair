@@ -59,7 +59,7 @@ def seed_database():
         db.session.add(user)
         db.session.commit()
 
-    
+
 
 if __name__ == "__main__":
     with app.app_context():

@@ -93,12 +93,15 @@ class RefreshAccess(Resource):
 
 class Logout(Resource):
 
+    # !REVOKING ACCESS/REFRESH TOKEN STEPS
     # 1. TokenBlocklist
     # 2. token_in_blocklist_loader
     # 3. /logout
-    @jwt_required()
+    @jwt_required(verify_type=False)
     def get(self):
         jti = get_jwt()["jti"]
+
+        type = get_jwt()["type"]
 
         new_token_blocklist = TokenBlocklist(
             jti=jti
@@ -107,7 +110,7 @@ class Logout(Resource):
         db.session.add(new_token_blocklist)
         db.session.commit()
 
-        return make_response(jsonify({"message": "User logged out successfully"}), 200)
+        return make_response(jsonify({"message": f"{type} token has been revoked successfully"}), 200)
 
 
 # URLs

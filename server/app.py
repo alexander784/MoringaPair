@@ -29,9 +29,8 @@ def invalid_token_callback(error):
 def missing_token_callback(error):
     return make_response(jsonify({"message": "Request does not contain valid token", "error": "authorization_header"}), 401)
 
+
 # automatic user loading
-
-
 @jwt.user_lookup_loader
 def user_lookup_callback(jwt_header, jwt_data):
     # access subject => similar to get_jwt()["sub"]
@@ -40,18 +39,19 @@ def user_lookup_callback(jwt_header, jwt_data):
     # access user of identity jwt_data["sub"]
     return User.query.filter_by(username=identity).one_or_none()
 
+
 # handling revoking access/refresh tokens
-
-
 @jwt.token_in_blocklist_loader
 def token_in_blocklist_callback(jwt_header, jwt_data):
+    # similar to get_jwt()["jti"]
     jti = jwt_data["jti"]
 
+    # check if jti already in TokenBlocklist
     token = TokenBlocklist.query.filter_by(jti=jti).first()
 
+    # True => has been revoked
+    # False => can still be used for access
     return True if token else False
-
-    
 
 
 if __name__ == "__main__":
