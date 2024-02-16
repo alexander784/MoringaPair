@@ -79,56 +79,32 @@ class User(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f"User {self.full_name} {self.username} {self.email}"
+    
+
+class pair(db.Model):
+
+     __table_name__ = "pairs"
+     id = db.Column()
+     week_number = db.Column()
+     User_id = db.Column()
+     created_at = db.Column
+     updated_at = db.Column()
+   
+
+    
+    
+    
+
+   
+    
 
 
-class Student(db.Model):
-    __tablename__ = "students"
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    email = db.Column(db.String, nullable=False)
-
-    # 1:M
-    grouping = db.relationship("Grouping", backref="student")
-
-    # M:M with Groups via Grouping
-    groups = db.relationship("Grouping", back_populates="students")
-
-    def __repr__(self):
-        return f"Student {self.name} {self.email}"
 
 
-# Association table => links Student and Group
-class Grouping(db.Model):
-    __tablename__ = "groupings"
-
-    id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.Integer, db.ForeignKey("students.id"))
-    group_id = db.Column(db.Integer, db.ForeignKey("groups.id"))
-
-    students = db.relationship("Student", back_populates="groups")
-    groups = db.relationship("Group", back_populates="students")
-
-    def __repr__(self):
-        return f"Grouping {self.student_id} {self.group_id}"
 
 
-class Group(db.Model):
-    __tablename__ = "groups"
 
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    week_number = db.Column(db.Integer, nullable=False)
-    created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-    # 1:M
-    grouping = db.relationship("Grouping", backref="group")
-
-    # M:M with Students via Grouping
-    students = db.relationship("Grouping", back_populates="groups")
-
-    def __repr__(self):
-        return f"Group {self.name} {self.week_number}"
 
 
 # will contain revoked access/refresh tokens
