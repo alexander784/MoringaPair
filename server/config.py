@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 from os import environ
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
+from flask_marshmallow import Marshmallow
 
 # load environment variables => in .env
 load_dotenv()
@@ -26,5 +27,6 @@ migrate = Migrate(app, db)
 db.init_app(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
+ma = Marshmallow(app)
 
 # !db.create_all() => comes in handy if tables don't appear
