@@ -13,10 +13,14 @@ class User(db.Model, SerializerMixin):
     username = db.Column(db.String, nullable=False, unique=True)
     email = db.Column(db.String, nullable=False, unique=True)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
-    updated_at = db.Column(db.DateTime,onupdate=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
     _password_hash = db.Column(db.String, nullable=False)
 
-    users = db.relationship("Student", backref= "user")
+    # relationships
+    # 1:M
+    students = db.relationship("Student", backref="user")
+    pairs = db.relationship("Pair", backref="user")
+    pair_histories = db.relationship("PairHistory", backref="user")
 
     # password hashing
     @hybrid_property
@@ -81,73 +85,101 @@ class User(db.Model, SerializerMixin):
 
     def __repr__(self):
         return f"User {self.full_name} {self.username} {self.email}"
-    
 
-class pair(db.Model):
 
-     __table_name__ = "pairs"
-     id = db.Column()
-     week_number = db.Column(db.Integer, nullable=False)
-     user_id = db.Column(db.Integer)
-     created_at = db.Column(db.DateTime, server_default=db.func.now())
-     updated_at = db.Column(db.DateTime,onupdate=db.func.now())
+class Pair(db.Model):
 
-     def __repr__(self):
-         return f"<Pair: {self.week_number} {self.User_id} {self.created_at} {self.updated_at}>"
-   
+    __tablename__ = "pairs"
+    id = db.Column(db.Integer, primary_key=True)
+    week_number = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
+
+    # relationship
+    pair_histories = db.relationship("PairHistory", backref="pair")
+
+    # M:M via PairStudentAssociation
+    students = db.relationship(
+        "PairStudentAssociation", back_populates="pairs")
+
+    def __repr__(self):
+        return f"<Pair: {self.week_number} {self.User_id} {self.created_at} {self.updated_at}>"
+
+
+class PairStudentAssociation(db.Model):
+    __tablename__ = "pair_student_association"
+
+    id = db.Column(db.Integer, primary_key=True)
+    pair_id = db.Column(db.Integer, db.ForeignKey("pairs.id"))
+    student_id = db.Column(db.Integer, db.ForeignKey("students.id"))
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+
+    # relationship
+    pairs = db.relationship("Pair", back_populates="students")
+    students = db.relationship("Student", back_populates="pairs")
+
+    def __repr__(self):
+        return f"<pair_student_association: {self.student_id}, {self.created_at}>"
 
 
 class Student(db.Model):
-     __tablename__ = 'students'
+    __tablename__ = 'students'
 
-     id = db.Column(db.Integer, primary_key=True)
-     name= db.Column(db.String, nullable=False)
-     email= db.Column(db.String, nullable=False)
-     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-     created_at = db.Column(db.DateTime, server_default=db.func.now())
-     updated_at = db.Column(db.DateTime,onupdate=db.func.now())
-
-     
-
-     def __repr__(self):
-         return f"<Student: {self.name}, {self.email} >"
-     
-class PairHistory(db.Model):
-    __tablename__= 'pair_histories'
     id = db.Column(db.Integer, primary_key=True)
-    week_number= db.Column(db.Integer, nullable=False)
-    user_id =db.Column(db.Integer, nullable=False)
-    pair_id= db.Column(db.Integer, nullable=False)
-    created_at= db.Column(db.DateTime, server_default=db.func.now())
-    updated_at= db.Column(db.DateTime,onupdate=db.func.now())
+    name = db.Column(db.String, nullable=False)
+    email = db.Column(db.String, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
+
+    # relationships
+    # M:M via PairStudentAssociation
+    pairs = db.relationship("PairStudentAssociation",
+                            back_populates="students")
+
+    # M:M via PairHistoryStudentAssociation
+    pair_histories = db.relationship(
+        "PairHistoryStudentAssociation", back_populates="students")
 
     def __repr__(self):
-        return f"<PairHistory: {self.week_number}, {self.user_id}, {self.pair_id}, {self.created_at}, {self.updated_at}>"
-    
+        return f"<Student: {self.name}, {self.email} >"
+
 
 class PairHistoryStudentAssociation(db.Model):
-    __tablename__= "pair_history_student_associations"
+    __tablename__ = "pair_history_student_association"
 
-    id= db.Column(db.Integer, primary_key=True)
-    pair_history_id= db.Column(db.Integer)
-    student_id= db.Column(db.Integer)
+    id = db.Column(db.Integer, primary_key=True)
+    pair_history_id = db.Column(db.Integer, db.ForeignKey("pair_histories.id"))
+    student_id = db.Column(db.Integer, db.ForeignKey("students.id"))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
+
+    # relationships
+    students = db.relationship("Student", back_populates="pair_histories")
+    pair_histories = db.relationship(
+        "PairHistory", back_populates="students")
 
     def __repr__(self):
         return f"<pair_history_student_association: {self.pair_history_id} {self.student_id} {self.created_at}"
 
-class PairStudentAssociation(db.Model):
-     __tablename__= "pair_student_associations"
-     
-     id= db.Column(db.Integer, primary_key=True)
-     student_id=db.Column(db.Integer)
-     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
-     def __repr__(self):
-         return f"<pair_student_association: {self.student_id}, {self.created_at}>"
+class PairHistory(db.Model):
+    __tablename__ = 'pair_histories'
 
+    id = db.Column(db.Integer, primary_key=True)
+    week_number = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    pair_id = db.Column(db.Integer, db.ForeignKey("pairs.id"))
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
+    # relationships
+    # M:M via PairHistoryStudentAssociation
+    students = db.relationship(
+        "PairHistoryStudentAssociation", back_populates="pair_histories")
 
+    def __repr__(self):
+        return f"<PairHistory: {self.week_number}, {self.user_id}, {self.pair_id}, {self.created_at}, {self.updated_at}>"
 
 
 # will contain revoked access/refresh tokens
