@@ -5,7 +5,7 @@ from sqlalchemy_serializer import SerializerMixin
 
 
 # models
-class User(db.Model, SerializerMixin):
+class User(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -87,7 +87,7 @@ class User(db.Model, SerializerMixin):
         return f"User {self.full_name} {self.username} {self.email}"
 
 
-class Pair(db.Model, SerializerMixin):
+class Pair(db.Model):
     __tablename__ = "pairs"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -107,8 +107,9 @@ class Pair(db.Model, SerializerMixin):
     def __repr__(self):
         return f"<Pair: {self.week_number} {self.User_id} {self.created_at} {self.updated_at}>"
 
+
 # PairStudentAssociation
-class PairStudentAssociation(db.Model, SerializerMixin):
+class PairStudentAssociation(db.Model):
     __tablename__ = "pair_student_association"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -124,7 +125,7 @@ class PairStudentAssociation(db.Model, SerializerMixin):
         return f"<PairStudentAssociation: {self.student_id}, {self.created_at}>"
 
 
-class Student(db.Model, SerializerMixin):
+class Student(db.Model):
     __tablename__ = 'students'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -146,8 +147,9 @@ class Student(db.Model, SerializerMixin):
     def __repr__(self):
         return f"<Student: {self.name}, {self.email} >"
 
+
 # PairHistoryStudentAssociation
-class PairHistoryStudentAssociation(db.Model, SerializerMixin):
+class PairHistoryStudentAssociation(db.Model):
     __tablename__ = "pair_history_student_association"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -164,7 +166,7 @@ class PairHistoryStudentAssociation(db.Model, SerializerMixin):
         return f"<pair_history_student_association: {self.pair_history_id} {self.student_id} {self.created_at}"
 
 
-class PairHistory(db.Model, SerializerMixin):
+class PairHistory(db.Model):
     __tablename__ = 'pair_histories'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -184,7 +186,7 @@ class PairHistory(db.Model, SerializerMixin):
 
 
 # will contain revoked access/refresh tokens
-class TokenBlocklist(db.Model, SerializerMixin):
+class TokenBlocklist(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     jti = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
