@@ -81,7 +81,21 @@ class User(db.Model, SerializerMixin):
         return f"User {self.full_name} {self.username} {self.email}"
     
 
+class pair(db.Model):
+
+     __table_name__ = "pairs"
+     id = db.Column()
+     week_number = db.Column()
+     User_id = db.Column()
+     created_at = db.Column
+     updated_at = db.Column()
+   
+
     
+    
+    
+
+
     
 
 
