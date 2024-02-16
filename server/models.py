@@ -88,8 +88,8 @@ class User(db.Model, SerializerMixin):
 
 
 class Pair(db.Model):
-
     __tablename__ = "pairs"
+
     id = db.Column(db.Integer, primary_key=True)
     week_number = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
@@ -97,6 +97,7 @@ class Pair(db.Model):
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
     # relationship
+    # 1:M
     pair_histories = db.relationship("PairHistory", backref="pair")
 
     # M:M via PairStudentAssociation
@@ -106,7 +107,7 @@ class Pair(db.Model):
     def __repr__(self):
         return f"<Pair: {self.week_number} {self.User_id} {self.created_at} {self.updated_at}>"
 
-
+# PairStudentAssociation
 class PairStudentAssociation(db.Model):
     __tablename__ = "pair_student_association"
 
@@ -120,7 +121,7 @@ class PairStudentAssociation(db.Model):
     students = db.relationship("Student", back_populates="pairs")
 
     def __repr__(self):
-        return f"<pair_student_association: {self.student_id}, {self.created_at}>"
+        return f"<PairStudentAssociation: {self.student_id}, {self.created_at}>"
 
 
 class Student(db.Model):
@@ -145,7 +146,7 @@ class Student(db.Model):
     def __repr__(self):
         return f"<Student: {self.name}, {self.email} >"
 
-
+# PairHistoryStudentAssociation
 class PairHistoryStudentAssociation(db.Model):
     __tablename__ = "pair_history_student_association"
 

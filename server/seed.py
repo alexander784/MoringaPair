@@ -1,4 +1,4 @@
-from models import User, Student, Group, Grouping
+from models import User, Student, Pair
 from config import app, db, bcrypt
 from faker import Faker
 import random
@@ -59,6 +59,33 @@ def seed_database():
         db.session.add(user)
         db.session.commit()
 
+    user_ids = [u.id for u in User.query.all()]
+
+    print("Inserting students...")
+    for _ in range(5):
+        student = Student(
+            name=fake.unique.name(),
+            email=fake.unique.email(),
+            user_id=random.choice(user_ids)
+        )
+
+        db.session.add(student)
+        db.session.commit()
+
+    # get all students
+    students = Student.query.all()
+
+    # determine no. of groups to create
+    number_of_pairs = int(len(students)/2)
+
+    for _ in range(number_of_pairs):
+        pair = Pair(
+            week_number=1,
+            user_id=user_ids[0]
+        )
+
+        db.session.add(pair)
+        db.session.commit()
 
 
 if __name__ == "__main__":
