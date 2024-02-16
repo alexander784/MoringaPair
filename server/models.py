@@ -80,7 +80,10 @@ class User(db.Model, SerializerMixin):
     def __repr__(self):
         return f"User {self.full_name} {self.username} {self.email}"
     
+
     
+    
+
 
 
 

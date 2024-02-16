@@ -59,50 +59,7 @@ def seed_database():
         db.session.add(user)
         db.session.commit()
 
-    print("Inserting students...")
-    for _ in range(5):
-        student = Student(
-            name=fake.unique.name(),
-            email=fake.unique.email()
-        )
-
-        db.session.add(student)
-        db.session.commit()
-
-    groups = [
-        "group 1",
-        "group 2",
-        "group 3",
-        "group 4",
-        "group 5",
-
-    ]
-
-    print("Inserting groups...")
-    for i in range(5):
-        group = Group(
-            name=groups[i],
-            week_number=1
-        )
-
-        db.session.add(group)
-        db.session.commit()
-
-    student_ids = [student.id for student in Student.query.all()]
-    group_ids = [group.id for group in Group.query.all()]
-
-    # inserting groupings/pairings
-    for i in range(5):
-        grouping = Grouping(
-            student_id=random.choice(student_ids),
-            group_id=random.choice(group_ids)
-        )
-
-        db.session.add(grouping)
-        db.session.commit()
-
-    print("Complete 🤝🤝🤝...")
-
+    
 
 if __name__ == "__main__":
     with app.app_context():
