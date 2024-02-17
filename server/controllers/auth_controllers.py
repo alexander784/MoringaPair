@@ -42,7 +42,7 @@ class Register(Resource):
         db.session.add(new_user)
         db.session.commit()
 
-        return make_response(user_schema.dump(new_user), 201)
+        return make_response(jsonify(user_schema.dump(new_user)), 201)
 
 
 class Login(Resource):

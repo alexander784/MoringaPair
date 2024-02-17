@@ -24,7 +24,7 @@ class Students(Resource):
     @jwt_required()
     def get(self):
         students = Student.query.all()
-        return make_response(students_schema.dump(students), 200)
+        return make_response(jsonify(students_schema.dump(students)), 200)
 
     @jwt_required()
     def post(self):
@@ -39,7 +39,7 @@ class Students(Resource):
         db.session.add(new_student)
         db.session.commit()
 
-        return make_response(student_schema.dump(new_student), 201)
+        return make_response(jsonify(student_schema.dump(new_student)), 201)
 
 
 class StudentById(Resource):
@@ -50,7 +50,7 @@ class StudentById(Resource):
         if not student:
             return make_response(jsonify({"error": "Student not found"}), 400)
 
-        return make_response(student_schema.dump(student), 200)
+        return make_response(jsonify(student_schema.dump(student)), 200)
 
     @jwt_required()
     def patch(self, student_id):
@@ -65,7 +65,7 @@ class StudentById(Resource):
 
         db.session.commit()
 
-        return make_response(student_schema.dump(student), 200)
+        return make_response(jsonify(student_schema.dump(student)), 200)
 
     @jwt_required()
     def delete(self, student_id):

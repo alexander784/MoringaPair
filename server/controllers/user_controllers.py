@@ -16,7 +16,7 @@ class Users(Resource):
     @jwt_required()
     def get(self):
         users = User.query.all()
-        return make_response(users_schema.dump(users), 200)
+        return make_response(jsonify(users_schema.dump(users)), 200)
 
 
 class UserById(Resource):
@@ -27,7 +27,7 @@ class UserById(Resource):
         if not user:
             return make_response(jsonify({"error": "User not found"}), 400)
 
-        return make_response(user_schema.dump(user), 200)
+        return make_response(jsonify(user_schema.dump(user)), 200)
 
     @jwt_required()
     def patch(self, user_id):
@@ -42,7 +42,7 @@ class UserById(Resource):
 
         db.session.commit()
 
-        return make_response(user_schema.dump(user), 200)
+        return make_response(jsonify(user_schema.dump(user)), 200)
 
     @jwt_required()
     def delete(self, user_id):
