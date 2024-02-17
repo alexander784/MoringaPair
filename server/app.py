@@ -11,11 +11,10 @@ app.register_blueprint(auth_bp, url_prefix="/auth")
 app.register_blueprint(user_bp, url_prefix="/api")
 app.register_blueprint(student_bp, url_prefix="/api")
 
+
 # !JWT STUFF
 
-
 # jwt error handling == expired, invalid, missing tokens
-
 
 @jwt.expired_token_loader
 def expired_token_callback(jwt_header, jwt_data):

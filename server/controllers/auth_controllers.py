@@ -4,6 +4,7 @@ from models import User, TokenBlocklist
 from config import bcrypt, db
 from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt, jwt_required, current_user, get_jwt_identity
 from marshmallow_schemas import user_schema, users_schema
+
 # auth_bp
 auth_bp = Blueprint("auth_bp", __name__)
 api = Api(auth_bp)
@@ -18,9 +19,8 @@ parser.add_argument("email", type=str, required=True, help="Email required")
 parser.add_argument("password", type=str, required=True,
                     help="Password required")
 
+
 # resources
-
-
 class Index(Resource):
     def get(self):
         return "Hello World", 200
@@ -42,7 +42,6 @@ class Register(Resource):
         db.session.add(new_user)
         db.session.commit()
 
-        # return make_response(jsonify(new_user.to_dict()), 201)
         return make_response(user_schema.dump(new_user), 201)
 
 

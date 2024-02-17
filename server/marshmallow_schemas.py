@@ -2,8 +2,13 @@ from config import ma
 from models import Student
 from marshmallow import fields
 
+# will use Marshmallow Schemas to avoid the hustle of using the SerializerMixin approach
+
 
 class UserSchema(ma.Schema):
+    class Meta:
+        model = Student
+
     id = fields.Int(dump_only=True)
     full_name = fields.Str(required=True)
     username = fields.Str(required=True, unique=True)

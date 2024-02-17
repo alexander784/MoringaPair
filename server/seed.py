@@ -59,6 +59,7 @@ def seed_database():
         db.session.add(user)
         db.session.commit()
 
+    # extract user ids
     user_ids = [u.id for u in User.query.all()]
 
     print("Inserting students...")
@@ -72,6 +73,7 @@ def seed_database():
         db.session.add(student)
         db.session.commit()
 
+    # resemble creating a Pair
     # get all students
     students = Student.query.all()
 

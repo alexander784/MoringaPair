@@ -9,6 +9,7 @@ from marshmallow_schemas import student_schema, students_schema
 student_bp = Blueprint("student_bp", __name__)
 api = Api(student_bp)
 
+# student data
 parser = reqparse.RequestParser()
 parser.add_argument("name", type=str, required=True,
                     help="Name required")
@@ -22,10 +23,6 @@ parser.add_argument("user_id", type=int, required=True,
 class Students(Resource):
     @jwt_required()
     def get(self):
-        # list comprehension
-        # students_lc = [student.to_dict() for student in Student.query.all()]
-        # return make_response(jsonify({"students": students_lc}), 200)
-
         students = Student.query.all()
         return make_response(students_schema.dump(students), 200)
 
@@ -42,8 +39,6 @@ class Students(Resource):
         db.session.add(new_student)
         db.session.commit()
 
-        # return make_response(jsonify({"new_student": new_student.to_dict()}), 201)
-
         return make_response(student_schema.dump(new_student), 201)
 
 
@@ -54,8 +49,6 @@ class StudentById(Resource):
 
         if not student:
             return make_response(jsonify({"error": "Student not found"}), 400)
-
-        # return make_response(jsonify({"student": student.to_dict()}), 200)
 
         return make_response(student_schema.dump(student), 200)
 
@@ -71,8 +64,6 @@ class StudentById(Resource):
             setattr(student, attr, data.get(attr))
 
         db.session.commit()
-
-        # return make_response(jsonify({"updated_student": student.to_dict()}), 200)
 
         return make_response(student_schema.dump(student), 200)
 

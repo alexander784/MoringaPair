@@ -15,12 +15,8 @@ api = Api(user_bp)
 class Users(Resource):
     @jwt_required()
     def get(self):
-        # users list comprehension
-        # users_lc = [user.to_dict() for user in User.query.all()]
-        # return make_response(jsonify({"users": users_lc}), 200)
         users = User.query.all()
-        # return make_response(users_schema.dump(users), 200)
-        return  make_response(users_schema.dump(users), 201)
+        return make_response(users_schema.dump(users), 200)
 
 
 class UserById(Resource):
@@ -31,7 +27,6 @@ class UserById(Resource):
         if not user:
             return make_response(jsonify({"error": "User not found"}), 400)
 
-        # return make_response(jsonify({"user": user.to_dict()}), 200)
         return make_response(user_schema.dump(user), 200)
 
     @jwt_required()
@@ -47,7 +42,6 @@ class UserById(Resource):
 
         db.session.commit()
 
-        # return make_response(jsonify({"user": user.to_dict()}), 200)
         return make_response(user_schema.dump(user), 200)
 
     @jwt_required()
