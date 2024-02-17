@@ -6,6 +6,7 @@ from os import environ
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from flask_marshmallow import Marshmallow
+from flask_cors import CORS
 
 # load environment variables => in .env
 load_dotenv()
@@ -28,5 +29,8 @@ db.init_app(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 ma = Marshmallow(app)
+
+# prevent cross-oorigin issues
+CORS(app)
 
 # !db.create_all() => comes in handy if tables don't appear
