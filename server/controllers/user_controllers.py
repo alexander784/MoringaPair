@@ -10,7 +10,7 @@ user_bp = Blueprint("user_bp", __name__)
 api = Api(user_bp)
 
 
-# resources
+# resources => user RUD
 # protecting all routes using @jwt_required() => must provide token to access
 class Users(Resource):
     @jwt_required()

@@ -40,8 +40,8 @@ def generate_random_pairs(students):
                 # add to set (keeps track of already paired students)
                 paired_students.add(student1)
                 paired_students.add(student2)
-                
-    # If there's one student left unpaired, add them to the pairs (cases of odd number of students => will form own group)
+
+    # If there's one student left unpaired, add them to the pairs (case of odd number of students => will form own group)
     if len(paired_students) < len(students):
         # set difference
         unpaired_student = set(students) - paired_students
@@ -52,7 +52,7 @@ def generate_random_pairs(students):
             week_number=1
         )
         pairs.append(pair)
-                
+
     return pairs
 
 
@@ -63,6 +63,7 @@ class Pairs(Resource):
 
         pairs = generate_random_pairs(students)
 
+        # add to db + commit
         for pair in pairs:
             db.session.add(pair)
             db.session.commit()
