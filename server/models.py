@@ -88,8 +88,8 @@ class Pair(db.Model):
     __tablename__ = "pairs"
 
     id = db.Column(db.Integer, primary_key=True)
-    student1 = db.Column(db.String, nullable=False)
-    student2 = db.Column(db.String, nullable=False)
+    student1 = db.Column(db.String)
+    student2 = db.Column(db.String)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
     week_number = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
