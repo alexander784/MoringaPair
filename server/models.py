@@ -17,10 +17,8 @@ class User(db.Model):
     _password_hash = db.Column(db.String, nullable=False)
 
     # relationships
-    # 1:M
     students = db.relationship("Student", backref="user")
     pairs = db.relationship("Pair", backref="user")
-    pair_histories = db.relationship("PairHistory", backref="user")
 
     # password hashing
     @hybrid_property
@@ -39,7 +37,6 @@ class User(db.Model):
             self._password_hash, password.encode('utf-8'))
 
     # validations
-
     @validates("full_name")
     def validate_full_name(self, key, full_name):
         if not full_name:
@@ -91,22 +88,18 @@ class Pair(db.Model):
     __tablename__ = "pairs"
 
     id = db.Column(db.Integer, primary_key=True)
-    week_number = db.Column(db.Integer, nullable=False)
+    student1 = db.Column(db.String, nullable=False)
+    student2 = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    week_number = db.Column(db.Integer, nullable=False)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
     # relationship
-    # 1:M
-    pair_histories = db.relationship("PairHistory", backref="pair")
-
-    # M:M via PairStudentAssociation
-    students = db.relationship(
-        "PairStudentAssociation", back_populates="pairs")
+    students = db.relationship("Student", backref="pair")
 
     def __repr__(self):
         return f"<Pair: {self.week_number} {self.User_id} {self.created_at} {self.updated_at}>"
-
 
 
 class Student(db.Model):
@@ -116,20 +109,12 @@ class Student(db.Model):
     name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    pair_id = db.Column(db.Integer, db.ForeignKey('pairs.id'))
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
-    # relationships
-    # M:M via PairStudentAssociation
-    pairs = db.relationship("PairStudentAssociation",
-                            back_populates="students")
-
-    # M:M via PairHistoryStudentAssociation
-    pair_histories = db.relationship(
-        "PairHistoryStudentAssociation", back_populates="students")
-
     def __repr__(self):
-        return f"<Student: {self.name}, {self.email} >"
+        return f"Student: {self.name}, {self.email} {self.user_id}"
 
 
 # will contain revoked access/refresh tokens
