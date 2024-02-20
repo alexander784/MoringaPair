@@ -45,7 +45,6 @@ def seed_database():
     ]
 
     print("Inserting users 🤵🤵🤵...")
-    # 0, 1, 2, 3, 4
     for i in range(5):
         # generate 5 user instances
         user = User(
@@ -60,9 +59,9 @@ def seed_database():
         db.session.commit()
 
     # extract user ids
-    user_ids = [u.id for u in User.query.all()]
+    user_ids = [user.id for user in User.query.all()]
 
-    print("Inserting students...")
+    print("Inserting students 👨‍🎓👩‍🎓👨‍🎓...")
     for _ in range(5):
         student = Student(
             name=fake.unique.name(),
@@ -71,22 +70,6 @@ def seed_database():
         )
 
         db.session.add(student)
-        db.session.commit()
-
-    # resemble creating a Pair
-    # get all students
-    students = Student.query.all()
-
-    # determine no. of groups to create
-    number_of_pairs = int(len(students)/2)
-
-    for _ in range(number_of_pairs):
-        pair = Pair(
-            week_number=1,
-            user_id=user_ids[0]
-        )
-
-        db.session.add(pair)
         db.session.commit()
 
 
