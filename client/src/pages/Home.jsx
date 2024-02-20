@@ -6,6 +6,7 @@ import '../styles.css';
 
 const Home = () => {
   return (
+    // Add Classname for styling
     <Container className="welcome-container">
       <Row>
         <Col>
