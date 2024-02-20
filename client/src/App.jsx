@@ -1,15 +1,19 @@
-import React from 'react';
-import{Routes,Route} from React
+import { Routes,Route } from 'react-router-dom'
+import Home from './pages/Home';
+
+
+    
 
 const App = () => {
-    <Routes></Routes>
+    return (
 
+    <Routes>
+        <Route path='/'element={<Home/>}/>
 
+    </Routes>
 
-
-  return (
-    <div>App</div>
-  )
+    )
+  
 }
 
 export default App
