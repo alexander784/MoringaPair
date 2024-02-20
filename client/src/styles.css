@@ -3,4 +3,8 @@
     padding: 180px;
     border-radius: 5px;
   }
+
+  nav-link:hover {
+    color: orange !important;
+  }
   

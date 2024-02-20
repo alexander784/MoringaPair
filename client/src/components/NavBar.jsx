@@ -4,7 +4,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-// import Logo from './logo.png'; // Import your logo image
+import { Link } from 'react-router-dom'; // Import Link from React Router
+import '../styles.css';
 
 const NavBar = () => {
   return (
@@ -20,7 +21,7 @@ const NavBar = () => {
         </Navbar.Brand>
         <Nav className="me-auto">
           <Nav.Link href="#home">About US</Nav.Link>
-          <Nav.Link href="#contact">Contact</Nav.Link>
+          <Link to="/Contact Us" className="nav-link">Contact Us</Link>
           <Nav.Link href="#services">Services</Nav.Link>
         </Nav>
 
