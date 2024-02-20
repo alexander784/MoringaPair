@@ -1,8 +1,8 @@
 """Create tables users, students, pairs
 
-Revision ID: 7ef56f8d2926
+Revision ID: f7e60f0b841e
 Revises: 
-Create Date: 2024-02-20 07:15:05.677055
+Create Date: 2024-02-20 08:22:52.730138
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7ef56f8d2926'
+revision = 'f7e60f0b841e'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,8 +38,8 @@ def upgrade():
     )
     op.create_table('pairs',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('student1', sa.String(), nullable=False),
-    sa.Column('student2', sa.String(), nullable=False),
+    sa.Column('student1', sa.String(), nullable=True),
+    sa.Column('student2', sa.String(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('week_number', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
