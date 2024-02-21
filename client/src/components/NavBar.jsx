@@ -4,7 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Link } from 'react-router-dom'; // Import Link from React Router
+import { Link } from 'react-router-dom';
 import '../styles.css';
 
 const NavBar = () => {
@@ -20,7 +20,7 @@ const NavBar = () => {
           {' Moringa Pair'}
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link href="#home">About US</Nav.Link>
+          <Link to="/About Us" className="nav-link">About Us</Link>
           <Link to="/Contact Us" className="nav-link">Contact Us</Link>
           <Nav.Link href="#services">Services</Nav.Link>
         </Nav>
@@ -33,7 +33,7 @@ const NavBar = () => {
             <Nav.Link href="#pairgroup">Pair Group</Nav.Link>
           </Col>
           <Col>
-            <Nav.Link href="#login">Login</Nav.Link>
+          <Link to="/login" className="nav-link">Login</Link>
           </Col>
           <Col>
             <Nav.Link href="#signup">SignUp</Nav.Link>
