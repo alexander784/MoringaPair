@@ -1,31 +1,38 @@
 import React from 'react';
-import { Form, Button, FormGroup } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import '../styles.css';
-
 
 const Login = () => {
   return (
-    <div className='container'>
-        <div className='form'>
-            <h1>Login Page</h1>
-            <form>
-                <Form.Group>
-                    <Form.Label>username</Form.Label>
-                    <Form.Control type='text' placeholder='Your username' size='sm' className='small-input' />
-                </Form.Group>
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        <Col md={6}>
+          <div className="form">
+            <h1 className="text-center mb-4">Login Here</h1>
+            <Form>
+              <Form.Group controlId="formUsername">
+                <Form.Label>Username</Form.Label>
+                <Form.Control type="text" placeholder="Enter your username" size="lg" />
+              </Form.Group>
 
-                <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control type='password' placeholder='Your Password..'size />
+              <Form.Group controlId="formPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control type="password" placeholder="Enter your password" size="lg" />
+              </Form.Group>
 
-            </Form.Group>
-            
-
-
-            </form>
-        </div>
-    </div>
-  )
-}
+              <Button variant="primary" type="submit" block className="mt-3"> 
+                Login
+              </Button>
+            </Form>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
 export default Login;
+
+
+
+
