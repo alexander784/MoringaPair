@@ -16,6 +16,7 @@ const NavBar = () => {
             src="https://plus.unsplash.com/premium_photo-1661277695409-0cc85f3b8a00?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             height="30"
             className="d-inline-block align-top"
+            alt=""
           />
           {" Moringa Pair"}
         </Navbar.Brand>
@@ -34,16 +35,17 @@ const NavBar = () => {
             <Nav.Link href="#students">Students</Nav.Link>
           </Col>
           <Col>
-            <Nav.Link href="#pairgroup">Pair Groups</Nav.Link>
+            <Nav.Link href="#pairgroup">Pairs</Nav.Link>
           </Col>
           <Col>
-
-            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
           </Col>
           <Col>
-            <Link to="/signup" className="nav-link">SignUp</Link>
-
-
+            <Link to="/signup" className="nav-link">
+              SignUp
+            </Link>
           </Col>
         </Row>
       </Container>
@@ -52,4 +54,3 @@ const NavBar = () => {
 };
 
 export default NavBar;
-
