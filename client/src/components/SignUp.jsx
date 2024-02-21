@@ -38,10 +38,29 @@ const SignUp = () => {
     // onSubmit
     onSubmit: (values, { resetForm }) => {
       console.log(values);
-      resetForm();
 
       // fetch API
-      fetch()
+      fetch("/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(values),
+      })
+        .then((response) => {
+          if (response.ok) {
+            resetForm();
+            return response.json();
+          }
+        })
+        .then((data) => {
+          console.log(data);
+          navigate("/Login")
+        })
+        .catch((err) => {
+          console.log("Error in registering user", err);
+        });
     },
   });
 
