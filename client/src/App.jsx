@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import StudentsDataGrid from "./pages/StudentsDataGrid";
+import ContactUs from "./components/Contact";
 
 
 const App = () => {

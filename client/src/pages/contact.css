@@ -1,0 +1,13 @@
+
+.contact-container {
+  background-color: black;
+  color: white;
+}
+
+.contact-container h1 {
+  color: cyan; /* Change color as desired */
+}
+
+.contact-container p {
+  font-style: italic;
+}
