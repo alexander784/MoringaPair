@@ -1,6 +1,7 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
-import '..styles.css';
+import { Form, Button, FormGroup } from 'react-bootstrap';
+import '../styles.css';
+
 
 const Login = () => {
   return (
@@ -9,10 +10,18 @@ const Login = () => {
             <h1>Login Page</h1>
             <form>
                 <Form.Group>
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label>username</Form.Label>
                     <Form.Control type='text' placeholder='Your username' size='sm' className='small-input' />
                 </Form.Group>
-                {/* Add more form controls with size='sm' if needed */}
+
+                <Form.Group>
+            <Form.Label>Password</Form.Label>
+            <Form.Control type='password' placeholder='Your Password..'size />
+
+            </Form.Group>
+            
+
+
             </form>
         </div>
     </div>
