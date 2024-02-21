@@ -1,11 +1,13 @@
 import React from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom for navigation
+import { Link, useNavigate } from "react-router-dom"; // Import Link from react-router-dom for navigation
 import "../styles.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   // formik
   const formik = useFormik({
     // initialValue
@@ -26,7 +28,31 @@ const Login = () => {
     // onSubmit
     onSubmit: (values, { resetForm }) => {
       console.log(values);
-      resetForm();
+
+      // fetch API
+      fetch("/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(values),
+      })
+        .then((response) => {
+          if (response.ok) {
+            resetForm();
+            return response.json();
+          }
+        })
+        .then((data) => {
+          console.log(data);
+          localStorage.setItem("access_token", data.tokens.access);
+          localStorage.setItem("refresh_token", data.tokens.refresh);
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log("Error in logging in user", err);
+        });
     },
   });
 
@@ -37,7 +63,6 @@ const Login = () => {
           <Card className="p-4" style={{ backgroundColor: "#f2f2f2" }}>
             <h1 className="text-center mb-4">Login</h1>
             <Form onSubmit={formik.handleSubmit}>
-              
               <Form.Group>
                 <Form.Label>Username</Form.Label>
                 <Form.Control
