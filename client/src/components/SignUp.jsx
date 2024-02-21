@@ -3,8 +3,11 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import "../styles.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+
   // formik
   const formik = useFormik({
     // initialValue
@@ -36,6 +39,9 @@ const SignUp = () => {
     onSubmit: (values, { resetForm }) => {
       console.log(values);
       resetForm();
+
+      // fetch API
+      fetch()
     },
   });
 
