@@ -37,12 +37,13 @@ const NavBar = () => {
             <Nav.Link href="#pairgroup">Pair Groups</Nav.Link>
           </Col>
           <Col>
-            <Link to="/login" className="nav-link">
-              Sign in
-            </Link>
+
+            <Link to="/login" className="nav-link">Login</Link>
           </Col>
           <Col>
-            <Nav.Link href="#signup">Sign up</Nav.Link>
+            <Link to="/signup" className="nav-link">SignUp</Link>
+
+
           </Col>
         </Row>
       </Container>
@@ -51,3 +52,4 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
