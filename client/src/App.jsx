@@ -4,7 +4,9 @@ import NavBar from "./components/NavBar";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import Login from "./components/Login";
-import Students from "./pages/Students";
+import Test from "./pages/Test";
+import StudentsDataGrid from "./pages/StudentsDataGrid";
+
 const App = () => {
   return (
     <>
@@ -14,7 +16,8 @@ const App = () => {
         <Route path="/contact Us" element={<Contact />} />
         <Route path="/about Us" element={<About />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/students" element={<Students />} />
+        <Route path="/test" element={<Test />} />
+        <Route path="/students" element={<StudentsDataGrid />} />
       </Routes>
     </>
   );
