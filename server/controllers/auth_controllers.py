@@ -18,6 +18,8 @@ parser.add_argument("username", type=str, required=True,
 parser.add_argument("email", type=str, required=True, help="Email required")
 parser.add_argument("password", type=str, required=True,
                     help="Password required")
+parser.add_argument("confirm_password", type=str, required=True,
+                    help="Confirm password required")
 
 
 # resources
@@ -30,19 +32,22 @@ class Register(Resource):
     def post(self):
         args = parser.parse_args()
 
-        # new_user instance
-        new_user = User(
-            full_name=args["full_name"],
-            username=args["username"],
-            email=args["email"],
-            _password_hash=bcrypt.generate_password_hash(
-                args["password"].encode('utf-8'))
-        )
+        if args["password"] == args["confirm_password"]:
+            # new_user instance
+            new_user = User(
+                full_name=args["full_name"],
+                username=args["username"],
+                email=args["email"],
+                _password_hash=bcrypt.generate_password_hash(
+                    args["password"].encode('utf-8'))
+            )
 
-        db.session.add(new_user)
-        db.session.commit()
+            db.session.add(new_user)
+            db.session.commit()
 
-        return make_response(jsonify(user_schema.dump(new_user)), 201)
+            return make_response(jsonify(user_schema.dump(new_user)), 201)
+        
+        return make_response(jsonify({"error": "Passwords must match"}))
 
 
 class Login(Resource):
