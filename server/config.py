@@ -30,5 +30,5 @@ bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 ma = Marshmallow(app)
 
-# prevent cross-oorigin issues
+# prevent cross-origin issues
 CORS(app)

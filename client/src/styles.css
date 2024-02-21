@@ -1,15 +1,23 @@
 .welcome-container {
-    background-color: #D9D9D9;
-    padding: 180px;
-    border-radius: 5px;
-  }
+  background-color: #d9d9d9;
+  padding: 180px;
+  border-radius: 5px;
+}
 
-  nav-link:hover {
-    color: orange !important;
-  }
-  
-  .small-input {
-    padding: 0.2rem 0.5rem;
-    margin-bottom: 0.2rem;
-  }
-  
+nav-link:hover {
+  color: orange !important;
+}
+
+.small-input {
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.error {
+  color: red;
+  font-size: .75rem;
+}
+
+.error::before {
+  content: "*";
+}
