@@ -17,7 +17,7 @@ def generate_random_pairs(students):
     pairs = []
 
     # avoid infinite loop with odd number of students => minus 1?
-    while len(paired_students) < len(students):
+    while len(paired_students) < len(students) - 1:
         student1 = random.choice(students)
 
         # ensure student1 is not already paired
@@ -40,8 +40,8 @@ def generate_random_pairs(students):
                 # add to set (keeps track of already paired students)
                 paired_students.add(student1)
                 paired_students.add(student2)
-                
-    # If there's one student left unpaired, add them to the pairs (cases of odd number of students => will form own group)
+
+    # If there's one student left unpaired, add them to the pairs (case of odd number of students => will form own group)
     if len(paired_students) < len(students):
         # set difference
         unpaired_student = set(students) - paired_students
@@ -52,17 +52,19 @@ def generate_random_pairs(students):
             week_number=1
         )
         pairs.append(pair)
-                
+
     return pairs
 
 
 class Pairs(Resource):
     @jwt_required()
     def get(self):
+        # list of student names
         students = [stud.name for stud in Student.query.all()]
 
         pairs = generate_random_pairs(students)
 
+        # add to db + commit
         for pair in pairs:
             db.session.add(pair)
             db.session.commit()
