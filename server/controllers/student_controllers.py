@@ -19,7 +19,7 @@ parser.add_argument("user_id", type=int, required=True,
                     help="User_id required")
 
 
-# resources
+# resources => student CRUD
 class Students(Resource):
     @jwt_required()
     def get(self):
