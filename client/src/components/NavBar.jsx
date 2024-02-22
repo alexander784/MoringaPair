@@ -27,7 +27,6 @@ const NavBar = () => {
           <Link to="/Contact Us" className="nav-link">
             Contact
           </Link>
-          <Nav.Link href="#services">Services</Nav.Link>
         </Nav>
 
         <Row>
