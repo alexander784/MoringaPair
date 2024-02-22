@@ -32,10 +32,16 @@ const NavBar = () => {
 
         <Row>
           <Col>
-            <Nav.Link href="#students">Students</Nav.Link>
+            {/* <Nav.Link href="#students">Students</Nav.Link> */}
+            <Link to="/students" className="nav-link">
+              Students
+            </Link>
           </Col>
           <Col>
-            <Nav.Link href="#pairgroup">Pairs</Nav.Link>
+            {/* <Nav.Link href="#pairgroup">Pairs</Nav.Link> */}
+            <Link to="/pairs" className="nav-link">
+              Pairs
+            </Link>
           </Col>
           <Col>
             <Link to="/login" className="nav-link">

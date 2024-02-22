@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const navigate = useNavigate();
 
-  // formik
+  // formik => 3 args
   const formik = useFormik({
     // initialValue
     initialValues: {
@@ -81,6 +81,7 @@ const SignUp = () => {
                   id="full_name"
                   value={formik.values.full_name}
                   onChange={formik.handleChange}
+                  autoComplete="off"
                 />
               </Form.Group>
               {formik.touched && formik.errors.full_name ? (
@@ -97,6 +98,7 @@ const SignUp = () => {
                   id="username"
                   value={formik.values.username}
                   onChange={formik.handleChange}
+                  autoComplete="off"
                 />
               </Form.Group>
               {formik.touched && formik.errors.username ? (
@@ -113,6 +115,7 @@ const SignUp = () => {
                   id="email"
                   value={formik.values.email}
                   onChange={formik.handleChange}
+                  autoComplete="off"
                 />
               </Form.Group>
               {formik.touched && formik.errors.email ? (
@@ -129,6 +132,7 @@ const SignUp = () => {
                   id="password"
                   value={formik.values.password}
                   onChange={formik.handleChange}
+                  autoComplete="off"
                 />
               </Form.Group>
               {formik.touched && formik.errors.password ? (
@@ -145,6 +149,7 @@ const SignUp = () => {
                   id="confirm_password"
                   value={formik.values.confirm_password}
                   onChange={formik.handleChange}
+                  autoComplete="off"
                 />
               </Form.Group>
               {formik.touched && formik.errors.confirm_password ? (

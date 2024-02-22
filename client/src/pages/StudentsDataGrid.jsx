@@ -52,12 +52,14 @@ export default function StudentsDataGrid() {
       })
       .then((data) => {
         console.log(data);
-        setRows(data);
+        if (data) {
+          setRows(data);
+        }
       })
       .catch((err) => {
         console.log("Error in fetching students", err);
       });
-  }, []);
+  },[]);
 
   return (
     <div style={{ height: 400, width: "100%" }}>
