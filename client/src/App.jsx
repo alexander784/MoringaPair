@@ -8,6 +8,7 @@ import SignUp from "./components/SignUp";
 import StudentsDataGrid from "./pages/StudentsDataGrid";
 import ContactUs from "./components/Contact";
 import Pairs from "./pages/Pairs";
+import Footer from "./components/Footer";
 
 
 
@@ -24,6 +25,8 @@ const App = () => {
         <Route path="/SignUp" element={<SignUp />} /> 
         <Route path="/students" element={<StudentsDataGrid />} />
         <Route path="/pairs" element={<Pairs />} />
+        <Route path="/footer" element={<Footer />} />
+       
        
 
       </Routes>

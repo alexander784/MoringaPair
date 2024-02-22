@@ -27,6 +27,9 @@ const NavBar = () => {
           <Link to="/Contact Us" className="nav-link">
             Contact
           </Link>
+          <Link to="/Footer" className="nav-link">
+            Footer
+          </Link>
         </Nav>
 
         <Row>
