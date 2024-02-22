@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import Pair from "../components/Pair";
 
 const Pairs = () => {
+  // state for generated pairs
   const [pairs, setPairs] = useState([]);
 
   const generateRandomPairs = () => {
@@ -35,10 +37,10 @@ const Pairs = () => {
         Generate Pairs
       </button>
 
-      <div className="cards">
+      <div className="pair-cards">
         {pairs &&
           pairs.map((pair) => {
-            return <div key={pair.id}>pair</div>;
+            return <Pair key={pair.id} {...pair} />;
           })}
       </div>
     </div>
