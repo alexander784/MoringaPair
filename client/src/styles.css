@@ -1,7 +1,9 @@
-body{
-background-color: #f8f9fa;
+body {
+  background-color: #f8f9fa;
 }
-.navbar{
+
+/* styling homepage */
+.navbar {
   box-shadow: 0 10px 10px #ccc;
   margin-bottom: 3rem;
 }
@@ -21,6 +23,7 @@ nav-link:hover {
   margin-bottom: 0.2rem;
 }
 
+/* styling error messages */
 .error {
   color: red;
   font-size: 0.75rem;
@@ -30,6 +33,7 @@ nav-link:hover {
   content: "*";
 }
 
+/* styling the pairs page */
 .btn-gen-pair {
   border: none;
   outline: none;
@@ -52,8 +56,6 @@ nav-link:hover {
 
 .pairs-container {
   padding: 0 4rem;
-  
-  
 }
 
 .pair-cards {
@@ -64,7 +66,6 @@ nav-link:hover {
 }
 
 .pair-card {
-  /* border: 1px solid #ccc; */
   border-radius: 10px;
   box-shadow: 0px 15px 20px #555;
   padding: 10px;
@@ -106,4 +107,30 @@ nav-link:hover {
   height: 0.25rem;
   background-color: green;
   border-radius: 50%;
+}
+
+/* styling signup and signin forms */
+.signup-form,
+.signin-form {
+  box-shadow: 0px 15px 15px #ccc;
+  caret-color: #f77f00;
+}
+
+.signup-btn,
+.signin-btn {
+  border: none;
+  outline: none;
+  background-color: #f77f00;
+  text-transform: uppercase;
+  width: 100%;
+  border-radius: 20px;
+  letter-spacing: 0.25rem;
+  transition: all 300ms ease;
+}
+.signup-btn:hover,
+.signin-btn:hover {
+  background-color: #fff;
+  color: #f77f00;
+  border: 1px solid #ccc;
+  font-weight: 400;
 }

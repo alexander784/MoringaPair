@@ -68,7 +68,10 @@ const SignUp = () => {
     <Container className="mt-5">
       <Row className="justify-content-center">
         <Col md={6}>
-          <Card className="p-4" style={{ backgroundColor: "#f2f2f2" }}>
+          <Card
+            className="signup-form p-4"
+            style={{ backgroundColor: "#f2f2f2" }}
+          >
             <h1 className="text-center mb-4">Sign Up</h1>
             <Form onSubmit={formik.handleSubmit}>
               <Form.Group>
@@ -156,8 +159,8 @@ const SignUp = () => {
                 <div className="error">{formik.errors.confirm_password}</div>
               ) : null}
 
-              <Button variant="primary" type="submit" block className="mt-4">
-                Sign Up
+              <Button variant="primary" type="submit" block className="mt-4 signup-btn">
+                Sign Up Now
               </Button>
             </Form>
           </Card>
