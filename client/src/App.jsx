@@ -7,7 +7,8 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import StudentsDataGrid from "./pages/StudentsDataGrid";
 import ContactUs from "./components/Contact";
-import PairsPage from "./pages/PairsPage";
+import Pairs from "./pages/Pairs";
+
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} /> 
         <Route path="/students" element={<StudentsDataGrid />} />
+        <Route path="/pairs" element={<Pairs />} />
        
 
       </Routes>
