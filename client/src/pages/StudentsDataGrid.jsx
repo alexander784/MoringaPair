@@ -37,7 +37,7 @@ export default function StudentsDataGrid() {
 
   useEffect(() => {
     // fetch API
-    fetch("/api/students", {
+    fetch("http://127.0.0.1:5000/api/students", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
