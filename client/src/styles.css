@@ -12,8 +12,10 @@ background-color: #f8f9fa;
   border-radius: 5px;
 }
 
-nav-link:hover {
-  color: orange !important;
+.nav-link:hover {
+  color: #F77f00;
+  text-decoration: underline;
+  
 }
 
 .small-input {

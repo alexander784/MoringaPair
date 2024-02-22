@@ -40,7 +40,7 @@ const SignUp = () => {
       console.log(values);
 
       // fetch API
-      fetch("/auth/register", {
+      fetch("http://127.0.0.1:5000/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

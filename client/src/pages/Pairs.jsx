@@ -7,7 +7,7 @@ const Pairs = () => {
 
   const generateRandomPairs = () => {
     // fetch API
-    fetch("/api/create_pairs", {
+    fetch("http://127.0.0.1:5000/api/create_pairs", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
