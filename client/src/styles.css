@@ -20,9 +20,20 @@ body {
   align-items: center;
   line-height: 2rem;
 }
-
-nav-link:hover {
-  color: orange !important;
+.Footer{
+  text-decoration: underline;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: gray;
+  color: white;
+}
+.nav-link:hover {
+  color: #F77f00;
+  text-decoration: underline;
+  
 }
 
 .small-input {
