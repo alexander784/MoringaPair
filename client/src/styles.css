@@ -11,12 +11,19 @@ body {
 .welcome-container {
   background-color: #d9d9d9;
   /* padding: 180px; */
-  padding: 1rem;
+  padding: 4rem;
   border-radius: 5px;
   letter-spacing: 0.1rem;
 }
+.welcome-image {
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  line-height: 2rem;
+}
 .welcome-container p {
-  letter-spacing: 0.1rem;
+  /* letter-spacing: 0.1rem; */
+  /* text-align: center; */
 }
 
 nav-link:hover {
@@ -63,6 +70,8 @@ nav-link:hover {
   box-shadow: 0 10px 10px #ccc;
 }
 /* end of benefits-features section */
+
+/* start of advanced features */
 .advanced-features {
   padding: 4rem;
 }
@@ -103,9 +112,52 @@ nav-link:hover {
   font-size: 2rem;
 }
 
-/* start of advanced features */
-
 /* end of advanced features */
+/* start of footer */
+:root {
+  --navy-blue: #003049;
+  --white: #fff;
+}
+
+.footer-container {
+  margin-top: 4rem;
+  padding: 3rem;
+  background-color: var(--navy-blue);
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white);
+  font-weight: 200;
+}
+.footer ul {
+  list-style-type: none;
+}
+.footer a {
+  text-decoration: none;
+  color: var(--white);
+}
+.footer .footer-left {
+  line-height: 2.5rem;
+}
+.footer .footer-center {
+  line-height: 3rem;
+}
+.footer-center .location {
+  font-size: 1rem;
+}
+.footer-center .contacts span {
+  margin-left: 1rem;
+}
+.footer .footer-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* end of footer */
+/*  */
 
 /* styling error messages */
 .error {

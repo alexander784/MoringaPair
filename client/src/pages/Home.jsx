@@ -4,13 +4,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../styles.css";
 import studentsImage from "../assets/studentsImage.jpg";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
     // Add Classname for styling
     <>
       <Container className="welcome-container">
-        <Row>
+        <Row className="welcome-image">
           <Col>
             <h2 className="animate__animated animate__bounce animate__infinite">
               Welcome to Moringa Pair!
@@ -94,6 +95,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
