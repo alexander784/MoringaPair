@@ -16,14 +16,9 @@ body {
   letter-spacing: 0.1rem;
 }
 .welcome-image {
-  /* background-color: red; */
   display: flex;
   align-items: center;
   line-height: 2rem;
-}
-.welcome-container p {
-  /* letter-spacing: 0.1rem; */
-  /* text-align: center; */
 }
 
 nav-link:hover {
@@ -35,7 +30,7 @@ nav-link:hover {
   margin-bottom: 0.2rem;
 }
 
-/* start of benefits-feature section */
+/* styling benefits-feature section */
 .benefits-features {
   padding: 4rem;
   display: flex;
@@ -71,7 +66,7 @@ nav-link:hover {
 }
 /* end of benefits-features section */
 
-/* start of advanced features */
+/* styling advanced features section */
 .advanced-features {
   padding: 4rem;
 }
@@ -91,8 +86,6 @@ nav-link:hover {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  /* background-color: red; */
-  /* place-items: center; */
 }
 .advanced-feature-card {
   background-color: #ddd;
@@ -102,7 +95,6 @@ nav-link:hover {
   box-shadow: 0 10px 10px #ccc;
   padding: 1rem;
   transition: all 300ms ease;
-  /* height: 100%; */
 }
 
 .advanced-feature-card:hover {
@@ -113,7 +105,8 @@ nav-link:hover {
 }
 
 /* end of advanced features */
-/* start of footer */
+
+/* styling Footer */
 :root {
   --navy-blue: #003049;
   --white: #fff;
@@ -157,7 +150,6 @@ nav-link:hover {
 }
 
 /* end of footer */
-/*  */
 
 /* styling error messages */
 .error {
@@ -244,6 +236,7 @@ nav-link:hover {
   background-color: green;
   border-radius: 50%;
 }
+/* end of pairs page */
 
 /* styling signup and signin forms */
 .signup-form,
@@ -270,3 +263,4 @@ nav-link:hover {
   border: 1px solid #ccc;
   font-weight: 400;
 }
+/* end of signup and signin forms */
