@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../styles.css";
-import studentsImage from "../assets/studentsImage.jpg"
+import studentsImage from "../assets/studentsImage.jpg";
 
 const Home = () => {
   return (
@@ -59,6 +59,39 @@ const Home = () => {
 
         <div className="image">
           <img src={studentsImage} alt="" />
+        </div>
+      </div>
+
+      <div className="advanced-features">
+        <div className="info">
+          <h3>Streamline Pairing Process with Advanced Features</h3>
+          <p>
+            Our system eliminates the manual effort of pairing students and
+            ensures no duplications. With data visualizations and historical
+            tracking, you can esily manage and analyze student pairs.
+          </p>
+        </div>
+        <div className="advanced-feature-cards">
+          <div className="advanced-feature-card">
+            <i class="fa-solid fa-cube"></i>
+            <h6>No Duplication of Pairs</h6>
+            <p>Our system randomly pairs students without any duplications.</p>
+          </div>
+
+          <div className="advanced-feature-card">
+            <i class="fa-solid fa-cube"></i>
+            <h6>Data Visualization and Filters</h6>
+            <p>
+              Visualize and filter student pairs over different weeks for easy
+              analysis.
+            </p>
+          </div>
+
+          <div className="advanced-feature-card">
+            <i class="fa-solid fa-cube"></i>
+            <h6>Historical Tracking of Pairs</h6>
+            <p>Technical mentors can view history of student pairings.</p>
+          </div>
         </div>
       </div>
     </>
