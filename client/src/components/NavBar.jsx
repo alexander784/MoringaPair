@@ -9,7 +9,7 @@ import "../styles.css";
 
 const NavBar = () => {
   return (
-    <Navbar bg="light" data-bs-theme="light" className="Container-fluid">
+    <Navbar className="navbar" bg="light" data-bs-theme="light" className="Container-fluid">
       <Container>
         <Navbar.Brand href="#home">
           <img

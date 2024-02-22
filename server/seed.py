@@ -62,7 +62,7 @@ def seed_database():
     user_ids = [user.id for user in User.query.all()]
 
     print("Inserting students 👨‍🎓👩‍🎓👨‍🎓...")
-    for _ in range(5):
+    for _ in range(30):
         student = Student(
             name=fake.unique.name(),
             email=fake.unique.email(),
