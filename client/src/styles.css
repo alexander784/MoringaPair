@@ -11,7 +11,16 @@ background-color: #f8f9fa;
   padding: 180px;
   border-radius: 5px;
 }
-
+.Footer{
+  text-decoration: underline;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: gray;
+  color: white;
+}
 .nav-link:hover {
   color: #F77f00;
   text-decoration: underline;
