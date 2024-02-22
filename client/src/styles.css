@@ -10,8 +10,13 @@ body {
 
 .welcome-container {
   background-color: #d9d9d9;
-  padding: 180px;
+  /* padding: 180px; */
+  padding: 1rem;
   border-radius: 5px;
+  letter-spacing: 0.1rem;
+}
+.welcome-container p {
+  letter-spacing: 0.1rem;
 }
 
 nav-link:hover {
@@ -21,6 +26,40 @@ nav-link:hover {
 .small-input {
   padding: 0.2rem 0.5rem;
   margin-bottom: 0.2rem;
+}
+
+.benefits-features {
+  padding: 4rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.benefits-features .info {
+  width: 50%;
+}
+
+.benefits-features .image {
+  /* background-color: red; */
+  width: 50%;
+}
+
+.benefits-features .info h3 {
+  letter-spacing: 0.05rem;
+}
+.benefits-features .info p {
+  letter-spacing: 0.05rem;
+  font-size: 1rem;
+}
+.benefits-features .info .ben-feat {
+  /* background-color: yellow; */
+  display: flex;
+}
+
+.benefits-features .image img {
+  border-top-left-radius: 15%;
+  border-bottom-right-radius: 15%;
+  box-shadow: 0 10px 10px #ccc;
 }
 
 /* styling error messages */
