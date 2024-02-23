@@ -21,7 +21,12 @@ const NavBar = () => {
   return (
     <Navbar className="navbar Container-fluid" bg="light" data-bs-theme="light">
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand
+          onClick={() => {
+            navigate("/");
+          }}
+          style={{ cursor: "pointer" }}
+        >
           <img
             // src="https://plus.unsplash.com/premium_photo-1661277695409-0cc85f3b8a00?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             src="https://logowik.com/content/uploads/images/pair7968.jpg"
@@ -36,13 +41,10 @@ const NavBar = () => {
             alt=""
           />
           <span
-          style={{
-            fontWeight:"bold",
-            color:"#333",
-            fontSize:"1.2rem"
-          }}
-            onClick={() => {
-              navigate("/");
+            style={{
+              fontWeight: "bold",
+              color: "#333",
+              fontSize: "1.2rem",
             }}
           >
             Moringa Pair
@@ -88,7 +90,7 @@ const NavBar = () => {
           </Col>
           <Col>
             <NavLink style={navLinkStyles} to="/signup" className="nav-link">
-              SignUp
+              Signup
             </NavLink>
           </Col>
         </Row>

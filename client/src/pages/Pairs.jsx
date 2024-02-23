@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import Pair from "../components/Pair";
+import LinearColor from "../components/LinearProgress";
 
 const Pairs = () => {
   // state for generated pairs
   const [pairs, setPairs] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  if (loading) {
+    return <LinearColor />;
+  }
 
   const generateRandomPairs = () => {
     // fetch API
@@ -23,7 +29,11 @@ const Pairs = () => {
       .then((data) => {
         console.log(data);
         if (data.pairs) {
-          setPairs(data.pairs);
+          setLoading(true);
+          setTimeout(() => {
+            setLoading(false)
+            setPairs(data.pairs);
+          }, 1500);
         }
       })
       .catch((err) => {
