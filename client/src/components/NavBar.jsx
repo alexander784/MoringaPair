@@ -40,7 +40,15 @@ const NavBar = () => {
             className="d-inline-block align-top"
             alt=""
           />
-          {" Moringa Pair"}
+          <span
+            style={{
+              fontWeight: "bold",
+              color: "#333",
+              fontSize: "1.2rem",
+            }}
+          >
+            Moringa Pair
+          </span>
           {/* Navigation links */}
         </Navbar.Brand>
         <Row>
