@@ -4,8 +4,12 @@ import { Link, useNavigate } from "react-router-dom"; // Import Link from react-
 import "../styles.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  const notify = () => toast("Logged in successfully!");
+
   // for programmatic navigation
   const navigate = useNavigate();
 
@@ -105,9 +109,11 @@ const Login = () => {
                 type="submit"
                 block
                 className="mt-3 signin-btn"
+                onClick={notify}
               >
                 Login Now
               </Button>
+              <ToastContainer />
             </Form>
             <div className="text-center mt-3">
               <Link to="/forgot-password">Forgot Password?</Link>{" "}

@@ -6,6 +6,7 @@ const Pairs = () => {
   // state for generated pairs
   const [pairs, setPairs] = useState([]);
   const [loading, setLoading] = useState(false);
+  
 
   if (loading) {
     return <LinearColor />;

@@ -4,9 +4,12 @@ import "../styles.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const notify = () => toast("Signed up successfully!");
 
   // formik => 3 args
   const formik = useFormik({
@@ -164,9 +167,11 @@ const SignUp = () => {
                 type="submit"
                 block
                 className="mt-4 signup-btn"
+                onClick={notify}
               >
                 Sign Up Now
               </Button>
+              <ToastContainer />
             </Form>
           </Card>
         </Col>
