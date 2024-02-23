@@ -1,4 +1,5 @@
 import React from "react";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom"; // Import Link from react-router-dom for navigation
 import "../styles.css";
@@ -72,8 +73,7 @@ const Login = () => {
           >
             <h1 className="text-center mb-4">Login</h1>
             <Form onSubmit={formik.handleSubmit}>
-              <Form.Group>
-                <Form.Label>Username</Form.Label>
+              <FloatingLabel label="Username" className="mb-3">
                 <Form.Control
                   type="text"
                   placeholder="Enter your username"
@@ -83,13 +83,12 @@ const Login = () => {
                   value={formik.values.username}
                   onChange={formik.handleChange}
                 />
-              </Form.Group>
+              </FloatingLabel>
               {formik.touched.username && formik.errors.username ? (
                 <div className="error">{formik.errors.username}</div>
               ) : null}
 
-              <Form.Group>
-                <Form.Label>Password</Form.Label>
+              <FloatingLabel label="Password" className="mb-3">
                 <Form.Control
                   type="password"
                   placeholder="Enter your password"
@@ -99,7 +98,7 @@ const Login = () => {
                   value={formik.values.password}
                   onChange={formik.handleChange}
                 />
-              </Form.Group>
+              </FloatingLabel>
               {formik.touched.password && formik.errors.password ? (
                 <div className="error">{formik.errors.password}</div>
               ) : null}

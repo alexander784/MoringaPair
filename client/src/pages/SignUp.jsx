@@ -1,4 +1,5 @@
 import React from "react";
+import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import "../styles.css";
 import { useFormik } from "formik";
@@ -77,8 +78,7 @@ const SignUp = () => {
           >
             <h1 className="text-center mb-4">Sign Up</h1>
             <Form onSubmit={formik.handleSubmit}>
-              <Form.Group>
-                <Form.Label>Full Name</Form.Label>
+              <FloatingLabel label="Full Name" className="mb-3">
                 <Form.Control
                   type="text"
                   placeholder="Enter your full name"
@@ -89,14 +89,14 @@ const SignUp = () => {
                   onChange={formik.handleChange}
                   autoComplete="off"
                 />
-              </Form.Group>
+              </FloatingLabel>
               {formik.touched && formik.errors.full_name ? (
                 <div className="error">{formik.errors.full_name}</div>
               ) : null}
 
-              <Form.Group>
-                <Form.Label>Username</Form.Label>
+              <FloatingLabel label="Username" className="mb-3 floating-label">
                 <Form.Control
+                  className="floating-label"
                   type="text"
                   placeholder="Enter your username"
                   size="lg"
@@ -106,13 +106,12 @@ const SignUp = () => {
                   onChange={formik.handleChange}
                   autoComplete="off"
                 />
-              </Form.Group>
+              </FloatingLabel>
               {formik.touched && formik.errors.username ? (
                 <div className="error">{formik.errors.username}</div>
               ) : null}
 
-              <Form.Group>
-                <Form.Label>Email Address</Form.Label>
+              <FloatingLabel label="Email" className="mb-3">
                 <Form.Control
                   type="email"
                   placeholder="Enter your email address"
@@ -123,13 +122,12 @@ const SignUp = () => {
                   onChange={formik.handleChange}
                   autoComplete="off"
                 />
-              </Form.Group>
+              </FloatingLabel>
               {formik.touched && formik.errors.email ? (
                 <div className="error">{formik.errors.email}</div>
               ) : null}
 
-              <Form.Group>
-                <Form.Label>Password</Form.Label>
+              <FloatingLabel label="Password" className="mb-3">
                 <Form.Control
                   type="password"
                   placeholder="Enter your password"
@@ -140,13 +138,12 @@ const SignUp = () => {
                   onChange={formik.handleChange}
                   autoComplete="off"
                 />
-              </Form.Group>
+              </FloatingLabel>
               {formik.touched && formik.errors.password ? (
                 <div className="error">{formik.errors.password}</div>
               ) : null}
 
-              <Form.Group>
-                <Form.Label>Confirm Password</Form.Label>
+              <FloatingLabel label="Confirm Password" className="mb-3">
                 <Form.Control
                   type="password"
                   placeholder="Confirm your password"
@@ -157,7 +154,7 @@ const SignUp = () => {
                   onChange={formik.handleChange}
                   autoComplete="off"
                 />
-              </Form.Group>
+              </FloatingLabel>
               {formik.touched && formik.errors.confirm_password ? (
                 <div className="error">{formik.errors.confirm_password}</div>
               ) : null}
