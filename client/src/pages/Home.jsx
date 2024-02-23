@@ -12,7 +12,7 @@ const Home = () => {
       <Container className="welcome-container">
         <Row className="welcome-image">
           <Col>
-            <h2 className="animate__animated animate__bounce animate__infinite">
+            <h2 className="animate__animated animate__tada animate__infinite">
               Welcome to Moringa Pair!
             </h2>
             <p>

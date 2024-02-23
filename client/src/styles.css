@@ -263,6 +263,9 @@ body {
   color: #333;
   letter-spacing: 0.05rem;
 }
+.signup-form{
+  margin-bottom: 3rem;
+}
 
 .signup-btn,
 .signin-btn {
