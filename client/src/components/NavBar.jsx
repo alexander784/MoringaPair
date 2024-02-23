@@ -19,19 +19,8 @@ const NavBar = () => {
             alt=""
           />
           {" Moringa Pair"}
+          {/* Navigation links */}
         </Navbar.Brand>
-        <Nav className="me-auto">
-          <Link to="/About Us" className="nav-link">
-            About
-          </Link>
-          <Link to="/Contact Us" className="nav-link">
-            Contact
-          </Link>
-          <Link to="/Footer" className="nav-link">
-            Footer
-          </Link>
-        </Nav>
-
         <Row>
           <Col>
             <Link to="/students" className="nav-link">
