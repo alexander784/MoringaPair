@@ -2,11 +2,15 @@ body {
   background-color: #f8f9fa;
 }
 
-/* styling homepage */
 .navbar {
   box-shadow: 0 10px 10px #ccc;
   margin-bottom: 3rem;
   /* position: sticky; */
+}
+p{
+  text-decoration: underline;
+  align-items: center;
+  text-align: center;
 }
 
 .welcome-container {

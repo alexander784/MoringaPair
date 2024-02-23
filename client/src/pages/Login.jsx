@@ -115,12 +115,10 @@ const Login = () => {
               </Button>
               <ToastContainer />
             </Form>
+            <p>Don't have an account?</p>
+            
             <div className="text-center mt-3">
-              <Link to="/forgot-password">Forgot Password?</Link>{" "}
-              {/* Link to Forgot Password page */}
-            </div>
-            <div className="text-center mt-3">
-              <Link to="/signup">Sign Up</Link> {/* Link to Sign Up page */}
+              <Link to="/signup">Create One</Link>
             </div>
           </Card>
         </Col>

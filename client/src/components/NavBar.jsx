@@ -40,6 +40,7 @@ const NavBar = () => {
             className="d-inline-block align-top"
             alt=""
           />
+<<<<<<< HEAD
           <span
             style={{
               fontWeight: "bold",
@@ -62,6 +63,11 @@ const NavBar = () => {
           </Link>
         </Nav> */}
 
+=======
+          {" Moringa Pair"}
+          {/* Navigation links */}
+        </Navbar.Brand>
+>>>>>>> 6fdcd7034bb97be405318b7395d75b75feeedc33
         <Row>
           <Col>
             <NavLink style={navLinkStyles} to="/about" className="nav-link">
