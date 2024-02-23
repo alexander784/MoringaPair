@@ -40,34 +40,9 @@ const NavBar = () => {
             className="d-inline-block align-top"
             alt=""
           />
-<<<<<<< HEAD
-          <span
-            style={{
-              fontWeight: "bold",
-              color: "#333",
-              fontSize: "1.2rem",
-            }}
-          >
-            Moringa Pair
-          </span>
-        </Navbar.Brand>
-        {/* <Nav className="me-auto">
-          <Link to="/about" className="nav-link">
-            About
-          </Link>
-          <Link to="/contacts" className="nav-link">
-            Contact
-          </Link>
-          <Link to="/Footer" className="nav-link">
-            Footer
-          </Link>
-        </Nav> */}
-
-=======
           {" Moringa Pair"}
           {/* Navigation links */}
         </Navbar.Brand>
->>>>>>> 6fdcd7034bb97be405318b7395d75b75feeedc33
         <Row>
           <Col>
             <NavLink style={navLinkStyles} to="/about" className="nav-link">

@@ -7,8 +7,8 @@ body {
   margin-bottom: 3rem;
   /* position: sticky; */
 }
-p{
-  text-decoration: underline;
+.welcome-containe p{
+  /* text-decoration: underline; */
   align-items: center;
   text-align: center;
 }
