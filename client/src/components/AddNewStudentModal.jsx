@@ -5,7 +5,7 @@ import Modal from "react-bootstrap/Modal";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-function AddNewStudentModal({show, handleClose, handleShow}) {
+function AddNewStudentModal({ show, handleClose, handleShow }) {
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
@@ -24,7 +24,7 @@ function AddNewStudentModal({show, handleClose, handleShow}) {
       user_id: Yup.string().required("TM ID is required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      console.log("New student", values);
       resetForm();
     },
   });
@@ -84,12 +84,12 @@ function AddNewStudentModal({show, handleClose, handleShow}) {
             ) : null}
 
             <Button
-              variant="primary"
+              className="add-btn"
               // onClick={handleClose}
               disabled={!formik.isValid}
               type="submit"
             >
-              Save Changes
+              Add Student
             </Button>
           </Form>
         </Modal.Body>
