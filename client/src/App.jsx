@@ -9,6 +9,7 @@ import Pairs from "./pages/Pairs";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Toast from "./components/Toast";
+import Test from "./components/Test";
 
 
 const App = () => {
@@ -25,6 +26,8 @@ const App = () => {
         <Route path="/students" element={<StudentsDataGrid />} />
         <Route path="/pairs" element={<Pairs />} />
         <Route path="/test" element={<Toast />} />
+        <Route path="/test2" element={<Test />} />
+
 
       </Routes>
     </>
