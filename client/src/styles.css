@@ -7,7 +7,7 @@ body {
   margin-bottom: 3rem;
   /* position: sticky; */
 }
-.welcome-containe p{
+.welcome-container p {
   /* text-decoration: underline; */
   align-items: center;
   text-align: center;
@@ -281,3 +281,24 @@ body {
   font-weight: 400;
 }
 /* end of signup and signin forms */
+
+/* styling student-btns */
+.student-btns {
+  /* margin-right: 0; */
+  margin: 1rem;
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  /* background-color: red; */
+}
+
+.add-btn,
+.edit-btn {
+  border: none;
+}
+.add-btn {
+  background-color: #f77f00;
+}
+.edit-btn {
+  background-color: #003049;
+}
