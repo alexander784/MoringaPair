@@ -22,6 +22,7 @@ const NavBar = () => {
           {/* Navigation links */}
         </Navbar.Brand>
         <Row>
+            
           <Col>
             <Link to="/students" className="nav-link">
               Students
