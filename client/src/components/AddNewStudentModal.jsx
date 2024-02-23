@@ -4,11 +4,15 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function AddNewStudentModal({ show, handleClose, handleShow }) {
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
+
+  const notify = () => toast("New student added successfully!");
 
   const formik = useFormik({
     initialValues: {
@@ -85,12 +89,13 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
 
             <Button
               className="add-btn"
-              // onClick={handleClose}
+              onClick={notify}
               disabled={!formik.isValid}
               type="submit"
             >
               Add Student
             </Button>
+            <ToastContainer />
           </Form>
         </Modal.Body>
         <Modal.Footer>

@@ -104,8 +104,12 @@ export default function StudentsDataGrid() {
         checkboxSelection
       />
       <div className="student-btns">
-        <Button className="add-btn" onClick={handleShow}>Add Student</Button>
-        <Button className="edit-btn" onClick={handleShowUpdateModal}>Edit Student</Button>
+        <Button className="add-btn" onClick={handleShow}>
+          Add Student
+        </Button>
+        <Button className="edit-btn" onClick={handleShowUpdateModal}>
+          Edit Student
+        </Button>
       </div>
     </div>
   );

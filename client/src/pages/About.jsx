@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const About = () => {
   return (
@@ -6,6 +6,6 @@ const About = () => {
       <h1>About Us</h1>
     </div>
   );
-}
+};
 
 export default About;

@@ -4,6 +4,8 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function UpdateStudentModal({
   showUpdateModal,
@@ -13,6 +15,8 @@ function UpdateStudentModal({
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
+
+  const notify = () => toast("Student updated successfully!");
 
   const formik = useFormik({
     initialValues: {
@@ -89,12 +93,13 @@ function UpdateStudentModal({
 
             <Button
               className="edit-btn"
-              // onClick={handleClose}
+              onClick={notify}
               disabled={!formik.isValid}
               type="submit"
             >
               Save Changes
             </Button>
+            <ToastContainer />
           </Form>
         </Modal.Body>
         <Modal.Footer>

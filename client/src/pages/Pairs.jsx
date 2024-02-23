@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Pair from "../components/Pair";
 import LinearColor from "../components/LinearProgress";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Pairs = () => {
+  const notify = () => toast("Generating Pairs 👨‍🎓👩‍🎓");
+
   // state for generated pairs
   const [pairs, setPairs] = useState([]);
   const [loading, setLoading] = useState(false);
-  
 
   if (loading) {
     return <LinearColor />;
@@ -32,7 +35,7 @@ const Pairs = () => {
         if (data.pairs) {
           setLoading(true);
           setTimeout(() => {
-            setLoading(false)
+            setLoading(false);
             setPairs(data.pairs);
           }, 1500);
         }
@@ -44,9 +47,16 @@ const Pairs = () => {
 
   return (
     <div className="pairs-container">
-      <button className="btn-gen-pair" onClick={generateRandomPairs}>
+      <button
+        className="btn-gen-pair"
+        onClick={() => {
+          notify();
+          generateRandomPairs();
+        }}
+      >
         Generate Pairs
       </button>
+      <ToastContainer />
 
       <div className="pair-cards">
         {pairs &&
