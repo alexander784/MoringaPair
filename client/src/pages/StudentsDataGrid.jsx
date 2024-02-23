@@ -3,6 +3,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import LinearColor from "../components/LinearProgress";
 import Button from "react-bootstrap/Button";
 import AddNewStudentModal from "../components/AddNewStudentModal";
+import UpdateStudentModal from "../components/UpdateStudentModal";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -20,6 +21,11 @@ export default function StudentsDataGrid() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // state for handling UpdateStudentModal
+  const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const handleCloseUpdateModal = () => setShowUpdateModal(false);
+  const handleShowUpdateModal = () => setShowUpdateModal(true);
 
   // state for handling students
   const [rows, setRows] = useState([]);
@@ -73,6 +79,17 @@ export default function StudentsDataGrid() {
     );
   }
 
+  // UpdateStudentModal
+  if (showUpdateModal) {
+    return (
+      <UpdateStudentModal
+        showUpdateModal={showUpdateModal}
+        handleCloseUpdateModal={handleCloseUpdateModal}
+        handleShowUpdateModal={handleShowUpdateModal}
+      />
+    );
+  }
+
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
@@ -86,7 +103,10 @@ export default function StudentsDataGrid() {
         pageSizeOptions={[5, 10]}
         checkboxSelection
       />
-      <Button onClick={handleShow}>Add Student</Button>
+      <div className="student-btns">
+        <Button className="add-btn" onClick={handleShow}>Add Student</Button>
+        <Button className="edit-btn" onClick={handleShowUpdateModal}>Edit Student</Button>
+      </div>
     </div>
   );
 }
