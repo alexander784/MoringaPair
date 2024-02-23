@@ -4,11 +4,20 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../styles.css";
 
 const NavBar = () => {
   const navigate = useNavigate();
+
+  // setting styles based on isActive boolean flag
+  const navLinkStyles = ({ isActive }) => {
+    return {
+      fontWeight: isActive ? "bold" : "normal",
+      textDecoration: isActive ? "underline" : "none",
+      color: isActive ? "#f77f00" : "#333",
+    };
+  };
   return (
     <Navbar className="navbar Container-fluid" bg="light" data-bs-theme="light">
       <Container>
@@ -41,24 +50,24 @@ const NavBar = () => {
 
         <Row>
           <Col>
-            <Link to="/students" className="nav-link">
+            <NavLink style={navLinkStyles} to="/students" className="nav-link">
               Students
-            </Link>
+            </NavLink>
           </Col>
           <Col>
-            <Link to="/pairs" className="nav-link">
+            <NavLink style={navLinkStyles} to="/pairs" className="nav-link">
               Pairs
-            </Link>
+            </NavLink>
           </Col>
           <Col>
-            <Link to="/login" className="nav-link">
+            <NavLink style={navLinkStyles} to="/login" className="nav-link">
               Login
-            </Link>
+            </NavLink>
           </Col>
           <Col>
-            <Link to="/signup" className="nav-link">
+            <NavLink style={navLinkStyles} to="/signup" className="nav-link">
               SignUp
-            </Link>
+            </NavLink>
           </Col>
         </Row>
       </Container>
