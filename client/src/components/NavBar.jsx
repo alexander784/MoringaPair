@@ -23,12 +23,24 @@ const NavBar = () => {
       <Container>
         <Navbar.Brand href="#home">
           <img
-            src="https://plus.unsplash.com/premium_photo-1661277695409-0cc85f3b8a00?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            height="30"
+            // src="https://plus.unsplash.com/premium_photo-1661277695409-0cc85f3b8a00?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            src="https://logowik.com/content/uploads/images/pair7968.jpg"
+            height="35"
+            width="35px"
+            style={{
+              borderRadius: "50%",
+              marginRight: "0.5rem",
+              border: "1px solid #333",
+            }}
             className="d-inline-block align-top"
             alt=""
           />
           <span
+          style={{
+            fontWeight:"bold",
+            color:"#333",
+            fontSize:"1.2rem"
+          }}
             onClick={() => {
               navigate("/");
             }}
@@ -36,7 +48,7 @@ const NavBar = () => {
             Moringa Pair
           </span>
         </Navbar.Brand>
-        <Nav className="me-auto">
+        {/* <Nav className="me-auto">
           <Link to="/about" className="nav-link">
             About
           </Link>
@@ -46,9 +58,19 @@ const NavBar = () => {
           <Link to="/Footer" className="nav-link">
             Footer
           </Link>
-        </Nav>
+        </Nav> */}
 
         <Row>
+          <Col>
+            <NavLink style={navLinkStyles} to="/about" className="nav-link">
+              About
+            </NavLink>
+          </Col>
+          <Col>
+            <NavLink style={navLinkStyles} to="/contacts" className="nav-link">
+              Contact
+            </NavLink>
+          </Col>
           <Col>
             <NavLink style={navLinkStyles} to="/students" className="nav-link">
               Students
