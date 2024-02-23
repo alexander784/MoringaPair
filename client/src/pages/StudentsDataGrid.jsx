@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
+import LinearColor from "../components/LinearProgress";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -13,6 +14,7 @@ const columns = [
 
 export default function StudentsDataGrid() {
   const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     // fetch API
@@ -32,13 +34,21 @@ export default function StudentsDataGrid() {
       .then((data) => {
         console.log(data);
         if (data) {
-          setRows(data);
+          setLoading(true);
+          setTimeout(() => {
+            setLoading(false);
+            setRows(data);
+          }, 1500);
         }
       })
       .catch((err) => {
         console.log("Error in fetching students", err);
       });
   }, []);
+
+  if (loading) {
+    return <LinearColor />;
+  }
 
   return (
     <div style={{ height: 400, width: "100%" }}>
