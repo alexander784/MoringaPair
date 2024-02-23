@@ -84,7 +84,7 @@ const Login = () => {
                   onChange={formik.handleChange}
                 />
               </Form.Group>
-              {formik.touched && formik.errors.username ? (
+              {formik.touched.username && formik.errors.username ? (
                 <div className="error">{formik.errors.username}</div>
               ) : null}
 
@@ -100,7 +100,7 @@ const Login = () => {
                   onChange={formik.handleChange}
                 />
               </Form.Group>
-              {formik.touched && formik.errors.password ? (
+              {formik.touched.password && formik.errors.password ? (
                 <div className="error">{formik.errors.password}</div>
               ) : null}
 

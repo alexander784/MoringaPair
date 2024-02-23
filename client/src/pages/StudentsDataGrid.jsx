@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import LinearColor from "../components/LinearProgress";
+import Button from "react-bootstrap/Button";
+import AddNewStudentModal from "../components/AddNewStudentModal";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -11,11 +13,18 @@ const columns = [
   { field: "created_at", headerName: "Created At", width: 130 },
   { field: "updated_at", headerName: "Updated At", width: 130 },
   { field: "actions", headerName: "Actions", width: 130 },
-
 ];
 
 export default function StudentsDataGrid() {
+  // state for handling AddNewStudentModal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // state for handling students
   const [rows, setRows] = useState([]);
+
+  // state for handling loading
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -48,8 +57,20 @@ export default function StudentsDataGrid() {
       });
   }, []);
 
+  // Loading
   if (loading) {
     return <LinearColor />;
+  }
+
+  // AddNewStudentModal
+  if (show) {
+    return (
+      <AddNewStudentModal
+        show={show}
+        handleClose={handleClose}
+        handleShow={handleShow}
+      />
+    );
   }
 
   return (
@@ -65,6 +86,7 @@ export default function StudentsDataGrid() {
         pageSizeOptions={[5, 10]}
         checkboxSelection
       />
+      <Button onClick={handleShow}>Add Student</Button>
     </div>
   );
 }

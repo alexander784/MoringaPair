@@ -9,7 +9,7 @@ import Pairs from "./pages/Pairs";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Toast from "./components/Toast";
-import Test from "./components/Test";
+import Test from "./components/AddNewStudentModal";
 
 
 const App = () => {
