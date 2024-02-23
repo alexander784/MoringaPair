@@ -46,7 +46,7 @@ class Register(Resource):
             db.session.commit()
 
             return make_response(jsonify(user_schema.dump(new_user)), 201)
-        
+
         return make_response(jsonify({"error": "Passwords must match"}))
 
 

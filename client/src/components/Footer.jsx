@@ -1,6 +1,4 @@
 import React from "react";
-// import "./footer.css";
-import studentsImage from "../assets/studentsImage.jpg";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -15,7 +13,6 @@ const Footer = () => {
       <div className="footer">
         <div className="footer-left">
           <div className="logo">
-            {/* <img src={studentsImage} alt="" /> */}
             <h2>Moringa Pair</h2>
             <p>&copy; All Rights Reserved {date.getFullYear()}</p>
           </div>

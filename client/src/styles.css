@@ -10,17 +10,18 @@ body {
 
 .welcome-container {
   background-color: #d9d9d9;
-  /* padding: 180px; */
   padding: 4rem;
   border-radius: 5px;
   letter-spacing: 0.1rem;
 }
+
 .welcome-image {
   display: flex;
   align-items: center;
   line-height: 2rem;
 }
-.Footer{
+
+.Footer {
   text-decoration: underline;
   text-align: center;
   position: fixed;
@@ -30,10 +31,10 @@ body {
   background-color: gray;
   color: white;
 }
+
 .nav-link:hover {
-  color: #F77f00;
+  color: #f77f00;
   text-decoration: underline;
-  
 }
 
 .small-input {
@@ -49,10 +50,7 @@ body {
   align-items: center;
 }
 
-.benefits-features .info {
-  width: 50%;
-}
-
+.benefits-features .info,
 .benefits-features .image {
   width: 50%;
 }
@@ -81,23 +79,26 @@ body {
 .advanced-features {
   padding: 4rem;
 }
+
 .advanced-features .info h3 {
   text-align: center;
 }
+
 .advanced-features .info p {
   margin-left: 10%;
   margin-right: 10%;
   letter-spacing: 0.05rem;
   text-align: center;
 }
+
 .advanced-feature-cards {
   margin-top: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
   justify-content: space-between;
   gap: 2rem;
 }
+
 .advanced-feature-card {
   background-color: #ddd;
   text-align: center;
@@ -172,7 +173,7 @@ body {
   content: "*";
 }
 
-/* styling the pairs page */
+/* styling pairs page */
 .btn-gen-pair {
   border: none;
   outline: none;

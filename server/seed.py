@@ -8,7 +8,6 @@ fake = Faker()
 
 # function to seed the database
 def seed_database():
-    # empty records to prevent duplicate values
     print("Deleting records 🚮🚮🚮...")
     User.query.delete()
     Student.query.delete()
@@ -46,7 +45,6 @@ def seed_database():
 
     print("Inserting users 🤵🤵🤵...")
     for i in range(5):
-        # generate 5 user instances
         user = User(
             full_name=full_names[i],
             username=usernames[i],

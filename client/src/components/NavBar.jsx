@@ -4,10 +4,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles.css";
 
 const NavBar = () => {
+  const navigate = useNavigate();
   return (
     <Navbar className="navbar Container-fluid" bg="light" data-bs-theme="light">
       <Container>
@@ -18,13 +19,19 @@ const NavBar = () => {
             className="d-inline-block align-top"
             alt=""
           />
-          {" Moringa Pair"}
+          <span
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            Moringa Pair
+          </span>
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Link to="/About Us" className="nav-link">
+          <Link to="/about" className="nav-link">
             About
           </Link>
-          <Link to="/Contact Us" className="nav-link">
+          <Link to="/contacts" className="nav-link">
             Contact
           </Link>
           <Link to="/Footer" className="nav-link">

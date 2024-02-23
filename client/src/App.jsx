@@ -3,36 +3,28 @@ import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
 // import Contact from "./pages/Contact";
 import About from "./pages/About";
-import Login from "./components/Login";
-import SignUp from "./components/SignUp";
 import StudentsDataGrid from "./pages/StudentsDataGrid";
-import ContactUs from "./components/Contact";
+import ContactUs from "./pages/Contact";
 import Pairs from "./pages/Pairs";
-import Footer from "./components/Footer";
-
-
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 const App = () => {
   return (
     <>
       <NavBar />
-      
+
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Contact Us" element={<ContactUs />} />
-        <Route path="/About Us" element={<About />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/SignUp" element={<SignUp />} /> 
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contacts" element={<ContactUs />} />
+        <Route path="/about" element={<About />} />
         <Route path="/students" element={<StudentsDataGrid />} />
         <Route path="/pairs" element={<Pairs />} />
-        <Route path="/footer" element={<Footer />} />
-       
-       
-
       </Routes>
     </>
   );
 };
 
 export default App;
-

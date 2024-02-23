@@ -8,7 +8,6 @@ import Footer from "../components/Footer";
 
 const Home = () => {
   return (
-    // Add Classname for styling
     <>
       <Container className="welcome-container">
         <Row className="welcome-image">
@@ -32,6 +31,7 @@ const Home = () => {
         </Row>
       </Container>
 
+      {/* benefits-features section */}
       <div className="benefits-features">
         <div className="info">
           <h3>Revolutionalize Student Pairing with Randomization</h3>
@@ -63,6 +63,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* advanced-features section */}
       <div className="advanced-features">
         <div className="info">
           <h3>Streamline Pairing Process with Advanced Features</h3>
@@ -95,7 +96,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+
+      {/* footer section */}
+      <Footer />
     </>
   );
 };
