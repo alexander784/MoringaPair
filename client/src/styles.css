@@ -2,15 +2,14 @@ body {
   background-color: #eee;
 }
 
+/* styling navbar start */
 .navbar {
-  /* box-shadow: 0 10px 10px #888; */
   box-shadow: 0 5px 5px #ccc;
-  z-index: 100;
+  z-index: 2;
   position: sticky;
   top: 0;
-
-  /* margin-bottom: 3rem; */
 }
+/* styling navbar end */
 
 /* .welcome-container p {
   text-decoration: underline;
@@ -34,9 +33,9 @@ body {
   height: 100%;
 } */
 
-/* start of test banner */
+/* STYLING BANNER START */
 .welcome-container {
-  /* z-index: -1; */
+  z-index: 1;
   background: url("./assets/banner.jpg");
   background-position: center;
   background-size: cover;
@@ -61,8 +60,7 @@ body {
   text-align: center;
 }
 
-/* typing animation effect */
-
+/* typing animation effect start */
 .typed {
   overflow: hidden;
   white-space: nowrap;
@@ -91,15 +89,16 @@ body {
     border-color: #f77f00;
   }
 }
-/* end of typing animation effect */
+/* typing animation effect end */
 
-/* styling welcome buttons */
+/* styling welcome buttons start */
 .welcome-btns {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
+
 .welcome-btns .learn-more,
 .welcome-btns .signup {
   border: none;
@@ -109,8 +108,8 @@ body {
   font-weight: 200;
   width: 25%;
   transition: all 100ms ease;
-  background: transparent;
 }
+
 .welcome-btns .learn-more:hover,
 .welcome-btns .signup:hover {
   background: transparent;
@@ -124,33 +123,16 @@ body {
 .welcome-btns .signup {
   background-color: #f77f00;
 }
+/* styling welcome buttons end */
 
-/* end of styling wellcome buttons */
-
-/* end of test banner */
-
-.Footer {
-  text-decoration: underline;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: gray;
-  color: white;
-}
-
-.nav-link:hover {
-  color: #f77f00;
-  text-decoration: underline;
-}
+/* STYLING BANNER END */
 
 .small-input {
   padding: 0.2rem 0.5rem;
   margin-bottom: 0.2rem;
 }
 
-/* styling benefits-feature section */
+/* STYLING BENEFITS-FEATURES SECTION START*/
 .benefits-features {
   padding: 4rem;
   display: flex;
@@ -181,9 +163,9 @@ body {
   border-bottom-right-radius: 15%;
   box-shadow: 0 10px 10px #ccc;
 }
-/* end of benefits-features section */
+/* STYLING BENEFITS-FEATURES SECTION END */
 
-/* styling advanced features section */
+/* styling advanced features section start*/
 .advanced-features {
   padding: 4rem;
 }
@@ -214,7 +196,7 @@ body {
   border-radius: 7px;
   box-shadow: 0 10px 10px #ccc;
   padding: 1rem;
-  transition: all 300ms ease;
+  transition: all 100ms ease;
 }
 
 .advanced-feature-card:hover {
@@ -223,10 +205,9 @@ body {
 .advanced-feature-card i {
   font-size: 2rem;
 }
+/* styling advanced features end */
 
-/* end of advanced features */
-
-/* styling Footer */
+/* styling Footer start*/
 :root {
   --navy-blue: #003049;
   --white: #fff;
@@ -268,10 +249,9 @@ body {
   flex-direction: column;
   gap: 1.5rem;
 }
+/* styling Footer end */
 
-/* end of footer */
-
-/* styling error messages */
+/* styling error messages start*/
 .error {
   color: red;
   font-size: 0.75rem;
@@ -280,8 +260,9 @@ body {
 .error::before {
   content: "*";
 }
+/* styling error messages end*/
 
-/* styling pairs page */
+/* styling pairs page start*/
 .btn-gen-pair {
   border: none;
   outline: none;
@@ -303,7 +284,7 @@ body {
 }
 
 .pairs-container {
-  padding: 0 4rem;
+  padding: 4rem;
 }
 
 .pair-cards {
@@ -356,12 +337,11 @@ body {
   background-color: green;
   border-radius: 50%;
 }
-/* end of pairs page */
+/* styling pairs page end */
 
-/* styling signup and signin forms */
+/* styling signup and signin forms start*/
 .signup-form,
 .signin-form {
-  /* z-index: -1; */
   box-shadow: 0px 15px 15px #ccc;
   caret-color: #f77f00;
   color: #333;
@@ -389,16 +369,14 @@ body {
   border: 1px solid #ccc;
   font-weight: 400;
 }
-/* end of signup and signin forms */
+/* styling signup and signin forms end */
 
-/* styling student-btns */
+/* styling student-btns start*/
 .student-btns {
-  /* margin-right: 0; */
   margin: 1rem;
   display: flex;
   justify-content: end;
   gap: 1rem;
-  /* background-color: red; */
 }
 
 .add-btn,
@@ -411,4 +389,4 @@ body {
 .edit-btn {
   background-color: #003049;
 }
-/* end of sudent-btns */
+/* styling sudent-btns end*/
