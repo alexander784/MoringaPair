@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="footer-left">
           <div className="logo">
             <h2>Moringa Pair</h2>
-            <p>&copy; All Rights Reserved {date.getFullYear()}</p>
+            <p>&copy; {date.getFullYear()}. All Rights Reserved. </p>
           </div>
           <ul className="offers">
             <li>
