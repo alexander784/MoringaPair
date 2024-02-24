@@ -106,14 +106,6 @@ function UpdateStudentModal({
           <Button variant="secondary" onClick={handleCloseUpdateModal}>
             Close
           </Button>
-          {/* <Button
-            variant="primary"
-            // onClick={handleClose}
-            disabled={!formik.isValid}
-            type="submit"
-          >
-            Save Changes
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </>

@@ -12,7 +12,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const notify = () => toast("Signed up successfully!");
 
-  // formik => 3 args
+  // useFormik => 3 args
   const formik = useFormik({
     // initialValue
     initialValues: {
@@ -156,7 +156,8 @@ const SignUp = () => {
                   autoComplete="off"
                 />
               </FloatingLabel>
-              {formik.touched.confirm_password && formik.errors.confirm_password ? (
+              {formik.touched.confirm_password &&
+              formik.errors.confirm_password ? (
                 <div className="error">{formik.errors.confirm_password}</div>
               ) : null}
 

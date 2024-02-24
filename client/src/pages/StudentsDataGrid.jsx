@@ -91,7 +91,7 @@ export default function StudentsDataGrid() {
   }
 
   return (
-    <div style={{ height: 400, width: "100%", marginTop:"3rem"}}>
+    <div style={{ height: 400, width: "100%", marginTop: "3rem" }}>
       <DataGrid
         rows={rows}
         columns={columns}

@@ -102,14 +102,6 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          {/* <Button
-            variant="primary"
-            // onClick={handleClose}
-            disabled={!formik.isValid}
-            type="submit"
-          >
-            Save Changes
-          </Button> */}
         </Modal.Footer>
       </Modal>
     </>

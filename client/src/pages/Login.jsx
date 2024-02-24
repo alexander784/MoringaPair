@@ -116,7 +116,7 @@ const Login = () => {
               >
                 Login Now
               </Button>
-              <ToastContainer/>
+              <ToastContainer />
             </Form>
             <p>Don't have an account?</p>
 
@@ -126,7 +126,6 @@ const Login = () => {
           </Card>
         </Col>
       </Row>
-      
     </Container>
   );
 };
