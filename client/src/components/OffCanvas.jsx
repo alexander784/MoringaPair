@@ -13,7 +13,7 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
   const navLinkStyles = ({ isActive }) => {
     return {
       fontWeight: isActive ? "bold" : "normal",
-      textDecoration: isActive ? "underline" : "none",
+      textDecoration: "none",
       color: isActive ? "#f77f00" : "#333",
     };
   };
@@ -27,23 +27,23 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
-          <NavLink to="/about" style={navLinkStyles}>
+        <Offcanvas.Body className="offcanvas-body">
+          <NavLink className="offcanvas-link" to="/about" style={navLinkStyles}>
             About
           </NavLink>
-          <NavLink to="/contacts" style={navLinkStyles}>
+          <NavLink className="offcanvas-link" to="/contacts" style={navLinkStyles}>
             Contact
           </NavLink>
-          <NavLink to="/students" style={navLinkStyles}>
+          <NavLink className="offcanvas-link" to="/students" style={navLinkStyles}>
             Student
           </NavLink>
-          <NavLink to="/pairs" style={navLinkStyles}>
+          <NavLink className="offcanvas-link" to="/pairs" style={navLinkStyles}>
             Pairs
           </NavLink>
-          <NavLink to="/signup" style={navLinkStyles}>
+          <NavLink className="offcanvas-link" to="/signup" style={navLinkStyles}>
             Sign up
           </NavLink>
-          <NavLink to="/login" style={navLinkStyles}>
+          <NavLink className="offcanvas-link" to="/login" style={navLinkStyles}>
             Login
           </NavLink>
         </Offcanvas.Body>
