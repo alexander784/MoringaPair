@@ -391,12 +391,18 @@ body {
 }
 /* styling sudent-btns end*/
 
+.hamburger {
+  display: none;
+}
+
 /* RESPONSIVE WEB DESIGN */
 @media screen and (max-width: 992px) {
+  /* rwd for home */
   .welcome-message,
   .benefits-features .info,
   .benefits-features .image,
-   .benefits-features .image img, .advanced-feature-cards {
+  .benefits-features .image img,
+  .advanced-feature-cards {
     display: block;
     width: 100%;
   }
@@ -425,5 +431,13 @@ body {
   .footer .footer-right {
     flex-direction: row;
     justify-content: center;
+  }
+
+  /* rwd for the navbar */
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: block;
   }
 }
