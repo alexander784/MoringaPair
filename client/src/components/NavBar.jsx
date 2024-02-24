@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../styles.css";
 import Button from "react-bootstrap/Button";
-import OffCanvase from "./OffCanvas";
+import OffCanvas from "./OffCanvas";
 import MenuIcon from "@mui/icons-material/Menu";
 
 
@@ -30,7 +30,7 @@ const NavBar = () => {
   };
 
   if (show) {
-    return <OffCanvase show={show} handleClose={handleClose} />;
+    return <OffCanvas show={show} handleClose={handleClose} />;
   }
   return (
     <Navbar
