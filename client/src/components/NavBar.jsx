@@ -19,7 +19,7 @@ const NavBar = () => {
     };
   };
   return (
-    <Navbar className="navbar Container-fluid" bg="light" data-bs-theme="light">
+    <Navbar className="navbar Container-fluid sticky-top" bg="light" data-bs-theme="light">
       <Container>
         <Navbar.Brand
           onClick={() => {
