@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -6,8 +6,18 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../styles.css";
+import Button from "react-bootstrap/Button";
+import OffCanvase from "./OffCanvas";
+import MenuIcon from "@mui/icons-material/Menu";
+
 
 const NavBar = () => {
+  // state for handling OffCanvas
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  // for programmatic navigation
   const navigate = useNavigate();
 
   // setting styles based on isActive boolean flag
@@ -18,6 +28,10 @@ const NavBar = () => {
       color: isActive ? "#f77f00" : "#333",
     };
   };
+
+  if (show) {
+    return <OffCanvase show={show} handleClose={handleClose} />;
+  }
   return (
     <Navbar
       className="navbar Container-fluid sticky-top"
@@ -55,7 +69,7 @@ const NavBar = () => {
           </span>
           {/* Navigation links */}
         </Navbar.Brand>
-        <Row>
+        <Row className="nav-links">
           <Col>
             <NavLink style={navLinkStyles} to="/about" className="nav-link">
               About
@@ -87,6 +101,13 @@ const NavBar = () => {
             </NavLink>
           </Col>
         </Row>
+        <Button
+          style={{ backgroundColor: "#003049" }}
+          onClick={handleShow}
+          className="me-2 hamburger"
+        >
+          <MenuIcon />
+        </Button>
       </Container>
     </Navbar>
   );
