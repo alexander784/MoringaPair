@@ -70,18 +70,18 @@ class Pairs(Resource):
             db.session.commit()
 
         # return 9 per page by default
-        page = request.args.get("page", default=1, type=int)
-        per_page = request.args.get("per_page", default=9, type=int)
+        # page = request.args.get("page", default=1, type=int)
+        # per_page = request.args.get("per_page", default=9, type=int)
 
         # implement pagination => legacy query API
-        pairs_data = Pair.query.paginate(
-            page=page,
-            per_page=per_page
-        )
+        # pairs_data = Pair.query.paginate(
+        #     page=page,
+        #     per_page=per_page
+        # )
         # pairs_lc = [pair.to_dict() for pair in pair]
         # return make_response(jsonify({"pairs": pairs_lc}), 200)
 
-        return make_response(jsonify({"pairs": pairs_schema.dump(pairs_data)}), 200)
+        return make_response(jsonify({"pairs": pairs_schema.dump(pairs)}), 200)
 
 
 api.add_resource(Pairs, "/create_pairs")
