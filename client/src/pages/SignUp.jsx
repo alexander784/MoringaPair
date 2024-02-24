@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import "../styles.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -91,7 +91,7 @@ const SignUp = () => {
                   autoFocus
                 />
               </FloatingLabel>
-              {formik.touched && formik.errors.full_name ? (
+              {formik.touched.full_name && formik.errors.full_name ? (
                 <div className="error">{formik.errors.full_name}</div>
               ) : null}
 
@@ -108,7 +108,7 @@ const SignUp = () => {
                   autoComplete="off"
                 />
               </FloatingLabel>
-              {formik.touched && formik.errors.username ? (
+              {formik.touched.username && formik.errors.username ? (
                 <div className="error">{formik.errors.username}</div>
               ) : null}
 
@@ -124,7 +124,7 @@ const SignUp = () => {
                   autoComplete="off"
                 />
               </FloatingLabel>
-              {formik.touched && formik.errors.email ? (
+              {formik.touched.email && formik.errors.email ? (
                 <div className="error">{formik.errors.email}</div>
               ) : null}
 
@@ -140,7 +140,7 @@ const SignUp = () => {
                   autoComplete="off"
                 />
               </FloatingLabel>
-              {formik.touched && formik.errors.password ? (
+              {formik.touched.password && formik.errors.password ? (
                 <div className="error">{formik.errors.password}</div>
               ) : null}
 
@@ -156,7 +156,7 @@ const SignUp = () => {
                   autoComplete="off"
                 />
               </FloatingLabel>
-              {formik.touched && formik.errors.confirm_password ? (
+              {formik.touched.confirm_password && formik.errors.confirm_password ? (
                 <div className="error">{formik.errors.confirm_password}</div>
               ) : null}
 
@@ -172,6 +172,12 @@ const SignUp = () => {
               </Button>
               <ToastContainer />
             </Form>
+
+            <p>Already have an account?</p>
+
+            <div className="text-center mt-3">
+              <Link to="/login">Sign in</Link>
+            </div>
           </Card>
         </Col>
       </Row>

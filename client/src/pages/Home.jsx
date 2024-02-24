@@ -9,10 +9,11 @@ import Footer from "../components/Footer";
 const Home = () => {
   return (
     <>
-      <Container className="welcome-container">
+      {/* seek group feedback */}
+      {/* <Container className="welcome-container">
         <Row className="welcome-image">
           <Col>
-            <h2 className="animate__animated animate__tada animate__infinite">
+            <h2 className="animate__animated animate__bounce animate__infinite">
               Welcome to Moringa Pair!
             </h2>
             <p>
@@ -29,7 +30,22 @@ const Home = () => {
             />
           </Col>
         </Row>
-      </Container>
+      </Container> */}
+
+      {/* test banner */}
+      <div className="welcome-container">
+        <div className="welcome-message">
+          <h2 className="typed animate__animated animate__tada animate__infinite">
+            Welcome to Moringa Pair!
+          </h2>
+          <p>
+            Fed up with manually pairing students and tracking pairs?<br></br>
+            Say farewell to the hassle with MoringaPair the game-changer for
+            effortless student pairing!
+          </p>
+        </div>
+      </div>
+      {/* end of test banner */}
 
       {/* benefits-features section */}
       <div className="benefits-features">

@@ -1,14 +1,19 @@
 body {
-  background-color: #f8f9fa;
+  background-color: #eee;
 }
 
 .navbar {
-  box-shadow: 0 10px 10px #ccc;
-  margin-bottom: 3rem;
-  /* position: sticky; */
+  /* box-shadow: 0 10px 10px #888; */
+  box-shadow: 0 5px 5px #ccc;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+
+  /* margin-bottom: 3rem; */
 }
-.welcome-container p {
-  /* text-decoration: underline; */
+
+/* .welcome-container p {
+  text-decoration: underline;
   align-items: center;
   text-align: center;
 }
@@ -17,6 +22,8 @@ body {
   background-color: #d9d9d9;
   padding: 4rem;
   border-radius: 5px;
+  border-top-right-radius: 15%;
+  border-bottom-left-radius: 20%;
   letter-spacing: 0.1rem;
 }
 
@@ -24,7 +31,69 @@ body {
   display: flex;
   align-items: center;
   line-height: 2rem;
+  height: 100%;
+} */
+
+/* start of test banner */
+.welcome-container {
+  z-index: -1;
+  background: url("./assets/banner.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+  position: relative;
 }
+
+.welcome-message {
+  color: rgba(255, 255, 255, 1);
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: 0.1rem;
+  font-size: 1.5rem;
+}
+
+.welcome-message h2,
+.welcome-message p {
+  text-align: center;
+}
+
+/* typing animation effect */
+
+.typed {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blinking 1s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinking {
+  0% {
+    border-color: #f77f00;
+  }
+  50% {
+    border-color: #fff;
+  }
+  100% {
+    border-color: #f77f00;
+  }
+}
+/* end of typing animation effect */
+
+/* end of test banner */
 
 .Footer {
   text-decoration: underline;
@@ -258,12 +327,13 @@ body {
 /* styling signup and signin forms */
 .signup-form,
 .signin-form {
+  z-index: -1;
   box-shadow: 0px 15px 15px #ccc;
   caret-color: #f77f00;
   color: #333;
   letter-spacing: 0.05rem;
 }
-.signup-form{
+.signup-form {
   margin-bottom: 3rem;
 }
 

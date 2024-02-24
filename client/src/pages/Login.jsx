@@ -53,9 +53,11 @@ const Login = () => {
         .then((data) => {
           console.log(data);
           // look for another option => bound to CSX attacks
-          localStorage.setItem("access_token", data.tokens.access);
-          localStorage.setItem("refresh_token", data.tokens.refresh);
-          navigate("/");
+          if (data.tokens) {
+            localStorage.setItem("access_token", data.tokens.access);
+            localStorage.setItem("refresh_token", data.tokens.refresh);
+            navigate("/");
+          }
         })
         .catch((err) => {
           console.log("Error in logging in user", err);
@@ -114,16 +116,17 @@ const Login = () => {
               >
                 Login Now
               </Button>
-              <ToastContainer />
+              <ToastContainer/>
             </Form>
             <p>Don't have an account?</p>
 
             <div className="text-center mt-3">
-              <Link to="/signup">Create One</Link>
+              <Link to="/signup">Sign up</Link>
             </div>
           </Card>
         </Col>
       </Row>
+      
     </Container>
   );
 };
