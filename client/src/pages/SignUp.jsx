@@ -88,6 +88,7 @@ const SignUp = () => {
                   value={formik.values.full_name}
                   onChange={formik.handleChange}
                   autoComplete="off"
+                  autoFocus
                 />
               </FloatingLabel>
               {formik.touched && formik.errors.full_name ? (
@@ -165,6 +166,7 @@ const SignUp = () => {
                 block
                 className="mt-4 signup-btn"
                 onClick={notify}
+                disabled={!formik.isValid}
               >
                 Sign Up Now
               </Button>

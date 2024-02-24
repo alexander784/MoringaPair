@@ -82,6 +82,7 @@ const Login = () => {
                   id="username"
                   value={formik.values.username}
                   onChange={formik.handleChange}
+                  autoFocus
                 />
               </FloatingLabel>
               {formik.touched.username && formik.errors.username ? (
@@ -109,6 +110,7 @@ const Login = () => {
                 block
                 className="mt-3 signin-btn"
                 onClick={notify}
+                disabled={!formik.isValid}
               >
                 Login Now
               </Button>
