@@ -5,8 +5,10 @@ import Col from "react-bootstrap/Col";
 import "../styles.css";
 import studentsImage from "../assets/studentsImage.jpg";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <>
       {/* seek group feedback */}
@@ -43,6 +45,17 @@ const Home = () => {
             Say farewell to the hassle with MoringaPair the game-changer for
             effortless student pairing!
           </p>
+          <div className="welcome-btns">
+            <button className="learn-more">Learn More</button>
+            <button
+              className="signup"
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
+              Sign up
+            </button>
+          </div>
         </div>
       </div>
       {/* end of test banner */}

@@ -5,7 +5,7 @@ body {
 .navbar {
   /* box-shadow: 0 10px 10px #888; */
   box-shadow: 0 5px 5px #ccc;
-  z-index: 1;
+  z-index: 100;
   position: sticky;
   top: 0;
 
@@ -36,7 +36,7 @@ body {
 
 /* start of test banner */
 .welcome-container {
-  z-index: -1;
+  /* z-index: -1; */
   background: url("./assets/banner.jpg");
   background-position: center;
   background-size: cover;
@@ -92,6 +92,40 @@ body {
   }
 }
 /* end of typing animation effect */
+
+/* styling welcome buttons */
+.welcome-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.welcome-btns .learn-more,
+.welcome-btns .signup {
+  border: none;
+  outline: none;
+  border: 2px solid #ccc;
+  color: #fff;
+  font-weight: 200;
+  width: 25%;
+  transition: all 100ms ease;
+  background: transparent;
+}
+.welcome-btns .learn-more:hover,
+.welcome-btns .signup:hover {
+  background: transparent;
+  font-weight: bold;
+}
+
+.welcome-btns .learn-more {
+  background-color: #003049;
+}
+
+.welcome-btns .signup {
+  background-color: #f77f00;
+}
+
+/* end of styling wellcome buttons */
 
 /* end of test banner */
 
@@ -327,7 +361,7 @@ body {
 /* styling signup and signin forms */
 .signup-form,
 .signin-form {
-  z-index: -1;
+  /* z-index: -1; */
   box-shadow: 0px 15px 15px #ccc;
   caret-color: #f77f00;
   color: #333;
