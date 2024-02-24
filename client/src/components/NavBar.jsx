@@ -10,7 +10,6 @@ import Button from "react-bootstrap/Button";
 import OffCanvas from "./OffCanvas";
 import MenuIcon from "@mui/icons-material/Menu";
 
-
 const NavBar = () => {
   // state for handling OffCanvas
   const [show, setShow] = useState(false);
@@ -77,7 +76,7 @@ const NavBar = () => {
           </Col>
           <Col>
             <NavLink style={navLinkStyles} to="/contacts" className="nav-link">
-              Contact
+              Contacts
             </NavLink>
           </Col>
           <Col>
@@ -91,13 +90,13 @@ const NavBar = () => {
             </NavLink>
           </Col>
           <Col>
-            <NavLink style={navLinkStyles} to="/login" className="nav-link">
-              Login
+            <NavLink style={navLinkStyles} to="/signup" className="nav-link">
+              Signup
             </NavLink>
           </Col>
           <Col>
-            <NavLink style={navLinkStyles} to="/signup" className="nav-link">
-              Signup
+            <NavLink style={navLinkStyles} to="/login" className="nav-link">
+              Login
             </NavLink>
           </Col>
         </Row>

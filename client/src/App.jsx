@@ -8,6 +8,7 @@ import ContactUs from "./pages/Contact";
 import Pairs from "./pages/Pairs";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Error from "./pages/Error";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/students" element={<StudentsDataGrid />} />
         <Route path="/pairs" element={<Pairs />} />
+        <Route path="/*" element={<Error />} />
       </Routes>
     </>
   );

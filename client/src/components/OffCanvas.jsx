@@ -4,7 +4,6 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { NavLink, useNavigate } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 
-
 // inline props destructuring
 export default function OffCanvas({ name, show, handleClose, ...props }) {
   //   const [show, setShow] = useState(false);
@@ -72,14 +71,14 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
             to="/contacts"
             style={navLinkStyles}
           >
-            Contact
+            Contacts
           </NavLink>
           <NavLink
             className="offcanvas-link"
             to="/students"
             style={navLinkStyles}
           >
-            Student
+            Students
           </NavLink>
           <NavLink className="offcanvas-link" to="/pairs" style={navLinkStyles}>
             Pairs

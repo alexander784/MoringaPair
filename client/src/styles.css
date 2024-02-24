@@ -407,6 +407,20 @@ border-bottom: 1px solid #ccc;
 padding: 10px;
 }
 /* styling the OffCanvas end */
+/* styling the error page end */
+.error-page{
+  text-align: center;
+}
+.error-page button{
+  padding: 10px;
+  border: none;
+  outline: none;
+  background-color: #f77f00;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+/* styling the error page end*/
 
 
 /* RESPONSIVE WEB DESIGN */
