@@ -3,19 +3,23 @@ import Pair from "../components/Pair";
 import LinearColor from "../components/LinearProgress";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useGlobalPairsContext } from "../context/pairsContext";
 
 const Pairs = () => {
+  const { pairsState, dispatchForPairs } = useGlobalPairsContext();
+
   const notify = () => toast("Generating Pairs 👨‍🎓👩‍🎓");
 
   // state for generated pairs
-  const [pairs, setPairs] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [pairs, setPairs] = useState([]);
+  // const [loading, setLoading] = useState(false);
 
-  if (loading) {
-    return <LinearColor />;
-  }
+  // provide PairsContext
 
   const generateRandomPairs = () => {
+    // loading
+    dispatchForPairs({ type: "FETCH_REQUEST" });
+
     // fetch API
     fetch("/api/create_pairs", {
       method: "GET",
@@ -33,17 +37,22 @@ const Pairs = () => {
       .then((data) => {
         console.log(data);
         if (data.pairs) {
-          setLoading(true);
           setTimeout(() => {
-            setLoading(false);
-            setPairs(data.pairs);
+            // data
+            dispatchForPairs({ type: "FETCH_SUCCESS", payload: data.pairs });
           }, 1500);
         }
       })
       .catch((err) => {
         console.log("Error in generating random pairs", err);
+        // error
+        dispatchForPairs({ type: "FETCH_FAILURE", payload: err });
       });
   };
+
+  if (pairsState.loading) {
+    return <LinearColor />;
+  }
 
   return (
     <div className="pairs-container">
@@ -59,8 +68,8 @@ const Pairs = () => {
       <ToastContainer />
 
       <div className="pair-cards">
-        {pairs &&
-          pairs.map((pair) => {
+        {pairsState.pairs &&
+          pairsState.pairs.map((pair) => {
             return <Pair key={pair.id} {...pair} />;
           })}
       </div>
