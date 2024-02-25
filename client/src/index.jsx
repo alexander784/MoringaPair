@@ -6,14 +6,17 @@ import "./styles.css";
 
 import App from "./App";
 import { StudentsProvider } from "./context/studentsContext";
+import { PairsProvider } from "./context/pairsContext";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(
   <>
-    <StudentsProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </StudentsProvider>
+    <PairsProvider>
+      <StudentsProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </StudentsProvider>
+    </PairsProvider>
   </>
 );
