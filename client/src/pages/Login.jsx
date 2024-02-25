@@ -118,7 +118,7 @@ const Login = () => {
               </Button>
               <ToastContainer />
             </Form>
-            <p>Don't have an account?</p>
+            <p style={{textDecoration: "Underline", textAlign: "center"}}>Don't have an account?</p>
 
             <div className="text-center mt-3">
               <Link to="/signup">Sign up</Link>
