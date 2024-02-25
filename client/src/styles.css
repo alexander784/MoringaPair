@@ -473,4 +473,12 @@ body {
   .hamburger {
     display: block;
   }
+
+  /* rwd for pair-cards */
+  .pair-cards{
+    display: block;
+  }
+  .pair-card{
+    margin-top: 1rem;
+  }
 }
