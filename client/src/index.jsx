@@ -5,12 +5,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 
 import App from "./App";
+import { StudentsProvider } from "./context/studentsContext";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(
   <>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <StudentsProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StudentsProvider>
   </>
 );
