@@ -7,7 +7,7 @@ const StudentsContext = React.createContext();
 const StudentsProvider = ({ children }) => {
   // initialStudentsState
   const initialStudentsState = {
-    loading: true,
+    loading: false,
     students: [],
     error: "",
   };

@@ -4,6 +4,7 @@ import LinearColor from "../components/LinearProgress";
 import Button from "react-bootstrap/Button";
 import AddNewStudentModal from "../components/AddNewStudentModal";
 import UpdateStudentModal from "../components/UpdateStudentModal";
+import { useGlobalStudentsContext } from "../context/studentsContext";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -28,12 +29,18 @@ export default function StudentsDataGrid() {
   const handleShowUpdateModal = () => setShowUpdateModal(true);
 
   // state for handling students
-  const [rows, setRows] = useState([]);
+  // const [rows, setRows] = useState([]);
 
   // state for handling loading
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+
+  // provide StudentsContext
+  const { studentsState, dispatchForStudents } = useGlobalStudentsContext();
 
   useEffect(() => {
+    // loading
+    dispatchForStudents({ type: "FETCH_REQUEST" });
+
     // fetch API
     fetch("/api/students", {
       method: "GET",
@@ -51,20 +58,21 @@ export default function StudentsDataGrid() {
       .then((data) => {
         console.log(data);
         if (data) {
-          setLoading(true);
           setTimeout(() => {
-            setLoading(false);
-            setRows(data);
+            // data
+            dispatchForStudents({ type: "FETCH_SUCCESS", payload: data });
           }, 1500);
         }
       })
       .catch((err) => {
         console.log("Error in fetching students", err);
+        // error
+        dispatchForStudents({ type: "FETCH_FAILURE", payload: err });
       });
-  }, []);
+  }, [studentsState.students]);
 
   // Loading
-  if (loading) {
+  if (studentsState.loading) {
     return <LinearColor />;
   }
 
@@ -93,7 +101,7 @@ export default function StudentsDataGrid() {
   return (
     <div style={{ height: 400, width: "100%", marginTop: "3rem" }}>
       <DataGrid
-        rows={rows}
+        rows={studentsState.students}
         columns={columns}
         initialState={{
           pagination: {
