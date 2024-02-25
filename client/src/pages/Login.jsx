@@ -9,7 +9,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  const notify = () => toast("Logged in successfully!");
+  const notify = () => toast("Logged in successfully! ✔");
 
   // for programmatic navigation
   const navigate = useNavigate();

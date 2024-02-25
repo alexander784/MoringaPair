@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const notify = () => toast("Signed up successfully!");
+  const notify = () => toast("Signed up successfully! ✔");
 
   // useFormik => 3 args
   const formik = useFormik({
