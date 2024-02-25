@@ -18,6 +18,8 @@ const columns = [
 ];
 
 export default function StudentsDataGrid() {
+  const { studentsState, dispatchForStudents } = useGlobalStudentsContext();
+
   // state for handling AddNewStudentModal
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -35,7 +37,6 @@ export default function StudentsDataGrid() {
   // const [loading, setLoading] = useState(false);
 
   // provide StudentsContext
-  const { studentsState, dispatchForStudents } = useGlobalStudentsContext();
 
   useEffect(() => {
     // loading
@@ -69,7 +70,7 @@ export default function StudentsDataGrid() {
         // error
         dispatchForStudents({ type: "FETCH_FAILURE", payload: err });
       });
-  }, [studentsState.students]);
+  }, []);
 
   // Loading
   if (studentsState.loading) {
