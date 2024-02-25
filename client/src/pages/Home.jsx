@@ -1,7 +1,4 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import "../styles.css";
 import studentsImage from "../assets/studentsImage.jpg";
 import Footer from "../components/Footer";
@@ -11,30 +8,7 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <>
-      {/* seek group feedback */}
-      {/* <Container className="welcome-container">
-        <Row className="welcome-image">
-          <Col>
-            <h2 className="animate__animated animate__bounce animate__infinite">
-              Welcome to Moringa Pair!
-            </h2>
-            <p>
-              Fed up with manually pairing students and tracking pairs?<br></br>
-              Say farewell to the hassle with MoringaPair the game-changer for
-              effortless student pairing!
-            </p>
-          </Col>
-          <Col>
-            <img
-              src="https://plus.unsplash.com/premium_photo-1661277695409-0cc85f3b8a00?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              alt="Welcome"
-              className="img-fluid"
-            />
-          </Col>
-        </Row>
-      </Container> */}
-
-      {/* test banner */}
+      {/* banner section */}
       <div className="welcome-container">
         <div className="welcome-message">
           <h2 className="typed animate__animated animate__tada animate__infinite">
@@ -46,9 +20,14 @@ const Home = () => {
             effortless student pairing!
           </p>
           <div className="welcome-btns">
-            <button onClick={()=>{
-              navigate("#benefits-features")
-            }} className="learn-more">Learn More</button>
+            <button
+              onClick={() => {
+                navigate("#benefits-features");
+              }}
+              className="learn-more"
+            >
+              Learn More
+            </button>
             <button
               className="signup"
               onClick={() => {
@@ -60,7 +39,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      {/* end of test banner */}
+      {/* end of banner section */}
 
       {/* benefits-features section */}
       <div id="benefits-features" className="benefits-features">
@@ -93,6 +72,7 @@ const Home = () => {
           <img src={studentsImage} alt="" />
         </div>
       </div>
+      {/* end of benefits-features section */}
 
       {/* advanced-features section */}
       <div className="advanced-features">
@@ -127,9 +107,11 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {/* end of advanced-features section */}
 
       {/* footer section */}
       <Footer />
+      {/* end of footer section */}
     </>
   );
 };

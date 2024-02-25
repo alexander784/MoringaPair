@@ -1,14 +1,6 @@
 import React from "react";
 
-const Pair = ({
-  id,
-  student1,
-  student2,
-  user_id,
-  week_number,
-  created_at,
-  updated_at,
-}) => {
+const Pair = ({ id, student1, student2, user_id, week_number, created_at }) => {
   return (
     <div className="pair-card">
       <h5 className="pair-id">Pair: {id}</h5>

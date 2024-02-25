@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Pair from "../components/Pair";
 import LinearColor from "../components/LinearProgress";
 import { ToastContainer, toast } from "react-toastify";
@@ -6,15 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { useGlobalPairsContext } from "../context/pairsContext";
 
 const Pairs = () => {
+  // provide PairsContext
   const { pairsState, dispatchForPairs } = useGlobalPairsContext();
 
   const notify = () => toast("Generating Pairs 👨‍🎓👩‍🎓");
-
-  // state for generated pairs
-  // const [pairs, setPairs] = useState([]);
-  // const [loading, setLoading] = useState(false);
-
-  // provide PairsContext
 
   const generateRandomPairs = () => {
     // loading

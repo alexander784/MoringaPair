@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
-// import Contact from "./pages/Contact";
 import About from "./pages/About";
 import StudentsDataGrid from "./pages/StudentsDataGrid";
 import ContactUs from "./pages/Contact";
@@ -13,6 +12,7 @@ import Error from "./pages/Error";
 const App = () => {
   return (
     <>
+      {/* appears on all pages */}
       <NavBar />
 
       <Routes>

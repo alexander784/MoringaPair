@@ -62,7 +62,7 @@ const PairsProvider = ({ children }) => {
   );
 };
 
-// useGloablPairsContext => can be accessed globally
+// useGlobalPairsContext => can be accessed globally
 const useGlobalPairsContext = () => {
   return useContext(PairsContext);
 };

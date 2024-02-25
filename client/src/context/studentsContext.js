@@ -62,7 +62,7 @@ const StudentsProvider = ({ children }) => {
   );
 };
 
-// useGloablStudentsContext => can be accessed globally
+// useGlobalStudentsContext => can be accessed globally
 const useGlobalStudentsContext = () => {
   return useContext(StudentsContext);
 };

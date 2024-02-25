@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const navigate = useNavigate();
+
   const notify = () => toast("Signed up successfully! ✔");
 
   // useFormik => 3 args
@@ -60,7 +61,7 @@ const SignUp = () => {
         })
         .then((data) => {
           console.log(data);
-          navigate("/Login");
+          navigate("/login");
         })
         .catch((err) => {
           console.log("Error in registering user", err);

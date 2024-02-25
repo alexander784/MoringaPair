@@ -1,7 +1,7 @@
 import React from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom"; // Import Link from react-router-dom for navigation
+import { Link, useNavigate } from "react-router-dom";
 import "../styles.css";
 import { useFormik } from "formik";
 import * as Yup from "yup";

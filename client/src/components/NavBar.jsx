@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
-import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../styles.css";
 import Button from "react-bootstrap/Button";
 import OffCanvas from "./OffCanvas";
@@ -31,6 +30,7 @@ const NavBar = () => {
   if (show) {
     return <OffCanvas show={show} handleClose={handleClose} />;
   }
+
   return (
     <Navbar
       className="navbar Container-fluid sticky-top"
@@ -38,6 +38,7 @@ const NavBar = () => {
       data-bs-theme="light"
     >
       <Container>
+        {/* logo */}
         <Navbar.Brand
           onClick={() => {
             navigate("/");
@@ -45,7 +46,6 @@ const NavBar = () => {
           style={{ cursor: "pointer" }}
         >
           <img
-            // src="https://plus.unsplash.com/premium_photo-1661277695409-0cc85f3b8a00?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             src="https://logowik.com/content/uploads/images/pair7968.jpg"
             height="35"
             width="35px"
@@ -66,8 +66,9 @@ const NavBar = () => {
           >
             Moringa Pair
           </span>
-          {/* Navigation links */}
         </Navbar.Brand>
+
+        {/* navigation links */}
         <Row className="nav-links">
           <Col>
             <NavLink style={navLinkStyles} to="/about" className="nav-link">
