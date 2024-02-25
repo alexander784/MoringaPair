@@ -46,7 +46,9 @@ const Home = () => {
             effortless student pairing!
           </p>
           <div className="welcome-btns">
-            <button className="learn-more">Learn More</button>
+            <button onClick={()=>{
+              navigate("#benefits-features")
+            }} className="learn-more">Learn More</button>
             <button
               className="signup"
               onClick={() => {
@@ -61,7 +63,7 @@ const Home = () => {
       {/* end of test banner */}
 
       {/* benefits-features section */}
-      <div className="benefits-features">
+      <div id="benefits-features" className="benefits-features">
         <div className="info">
           <h3>Revolutionalize Student Pairing with Randomization</h3>
           <p>
