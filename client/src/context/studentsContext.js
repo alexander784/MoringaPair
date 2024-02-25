@@ -52,7 +52,7 @@ const StudentsProvider = ({ children }) => {
 
   return (
     <StudentsContext.Provider
-      values={{
+      value={{
         studentsState,
         dispatchForStudents,
       }}

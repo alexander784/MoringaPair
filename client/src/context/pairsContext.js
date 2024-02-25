@@ -7,7 +7,7 @@ const PairsContext = React.createContext();
 const PairsProvider = ({ children }) => {
   // initialPairsState
   const initialPairsState = {
-    loading: true,
+    loading: false,
     pairs: [],
     error: "",
   };
@@ -45,16 +45,16 @@ const PairsProvider = ({ children }) => {
   };
 
   //   useReducer
-  const [pairsState, dispatchForpairs] = useReducer(
+  const [pairsState, dispatchForPairs] = useReducer(
     pairsReducer,
     initialPairsState
   );
 
   return (
     <PairsContext.Provider
-      values={{
+      value={{
         pairsState,
-        dispatchForpairs,
+        dispatchForPairs,
       }}
     >
       {children}
