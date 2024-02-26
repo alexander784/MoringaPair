@@ -98,7 +98,10 @@ body {
   align-items: center;
   gap: 1rem;
 }
-
+.welcome-btns a{
+  text-decoration: none;
+  color: #fff;
+}
 .welcome-btns .learn-more,
 .welcome-btns .signup {
   border: none;
@@ -196,7 +199,7 @@ body {
   border-radius: 7px;
   box-shadow: 0 10px 10px #ccc;
   padding: 1rem;
-  transition: all 100ms ease;
+  transition: all 300ms ease;
 }
 
 .advanced-feature-card:hover {

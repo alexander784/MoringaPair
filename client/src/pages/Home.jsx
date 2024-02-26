@@ -2,7 +2,7 @@ import React from "react";
 import "../styles.css";
 import studentsImage from "../assets/studentsImage.jpg";
 import Footer from "../components/Footer";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -21,12 +21,12 @@ const Home = () => {
           </p>
           <div className="welcome-btns">
             <button
-              onClick={() => {
-                navigate("#benefits-features");
-              }}
+              // onClick={() => {
+              //   navigate("#benefits-features");
+              // }}
               className="learn-more"
             >
-              Learn More
+              <a href="#benefits-features">Learn More</a>
             </button>
             <button
               className="signup"

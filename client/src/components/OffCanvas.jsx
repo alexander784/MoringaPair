@@ -60,16 +60,7 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
         </Offcanvas.Header>
         <Offcanvas.Body className="offcanvas-body">
           {/* navigation links */}
-          <NavLink className="offcanvas-link" to="/about" style={navLinkStyles}>
-            About
-          </NavLink>
-          <NavLink
-            className="offcanvas-link"
-            to="/contacts"
-            style={navLinkStyles}
-          >
-            Contacts
-          </NavLink>
+
           <NavLink
             className="offcanvas-link"
             to="/students"
