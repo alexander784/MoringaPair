@@ -39,6 +39,14 @@ const StudentsProvider = ({ children }) => {
           error: action.payload,
         };
 
+      case "ADD_STUDENT":
+        return {
+          ...state,
+          loading: false,
+          students: [...state.students, action.payload],
+          error: "",
+        };
+
       default:
         return state;
     }
