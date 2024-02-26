@@ -5,8 +5,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useGlobalStudentsContext } from "../context/studentsContext";
 
 function AddNewStudentModal({ show, handleClose, handleShow }) {
+  const { studentsState, dispatchForStudents } = useGlobalStudentsContext();
+
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
@@ -47,6 +50,9 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
         })
         .then((data) => {
           console.log(data);
+          if (data) {
+            dispatchForStudents({ type: "ADD_STUDENT", payload: data });
+          }
         })
         .catch((err) => {
           console.log("Error in adding student", err);
