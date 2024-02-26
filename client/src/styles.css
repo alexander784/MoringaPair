@@ -389,7 +389,7 @@ body {
 }
 
 .add-btn,
-.edit-btn {
+.edit-btn, .delete-btn {
   border: none;
 }
 .add-btn {
@@ -397,6 +397,9 @@ body {
 }
 .edit-btn {
   background-color: #003049;
+}
+.delete-btn {
+  background-color: #f00;
 }
 /* styling sudent-btns end*/
 
