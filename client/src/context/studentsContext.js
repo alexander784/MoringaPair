@@ -47,6 +47,14 @@ const StudentsProvider = ({ children }) => {
           error: "",
         };
 
+      case "UPDATE_STUDENT":
+        return {
+          ...state,
+          loading: false,
+          students: [...state.students, action.payload],
+          error: "",
+        };
+
       default:
         return state;
     }
