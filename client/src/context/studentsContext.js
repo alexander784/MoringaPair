@@ -3,7 +3,7 @@ import React, { useContext, useReducer } from "react";
 // StudentsContext
 const StudentsContext = React.createContext();
 
-// StudentsProvider
+// StudentsProvider => distributor
 const StudentsProvider = ({ children }) => {
   // initialStudentsState
   const initialStudentsState = {

@@ -70,16 +70,16 @@ const NavBar = () => {
 
         {/* navigation links */}
         <Row className="nav-links">
-          <Col>
+          {/* <Col>
             <NavLink style={navLinkStyles} to="/about" className="nav-link">
               About
             </NavLink>
-          </Col>
-          <Col>
+          </Col> */}
+          {/* <Col>
             <NavLink style={navLinkStyles} to="/contacts" className="nav-link">
               Contacts
             </NavLink>
-          </Col>
+          </Col> */}
           <Col>
             <NavLink style={navLinkStyles} to="/students" className="nav-link">
               Students
