@@ -15,7 +15,7 @@ function UpdateStudentModal({ showUpdateModal, handleCloseUpdateModal }) {
 
   const formik = useFormik({
     initialValues: {
-      studentId:"",
+      studentId: "",
       name: "",
       email: "",
       user_id: "",
