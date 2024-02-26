@@ -28,7 +28,29 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
     }),
     onSubmit: (values, { resetForm }) => {
       console.log("New student", values);
-      resetForm();
+
+      // fetch API
+      fetch("/api/students", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+        },
+        body: JSON.stringify(values),
+      })
+        .then((response) => {
+          if (response.ok) {
+            resetForm();
+            return response.json();
+          }
+        })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((err) => {
+          console.log("Error in adding student", err);
+        });
     },
   });
 
