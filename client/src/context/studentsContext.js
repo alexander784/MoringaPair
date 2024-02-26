@@ -12,6 +12,17 @@ const StudentsProvider = ({ children }) => {
     });
   };
 
+  const handleUpdateStudent = (students, data) => {
+    const updatedStudents = students.map((student) => {
+      if (student.id === data.id) {
+        return data;
+      }
+      return student;
+    });
+
+    return updatedStudents;
+  };
+
   // initialStudentsState
   const initialStudentsState = {
     loading: false,
@@ -58,7 +69,7 @@ const StudentsProvider = ({ children }) => {
         return {
           ...state,
           loading: false,
-          students: [...state.students, action.payload],
+          students: handleUpdateStudent(state.students, action.payload),
           error: "",
         };
 
