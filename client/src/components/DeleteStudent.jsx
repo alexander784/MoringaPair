@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGlobalStudentsContext } from "../context/studentsContext";
 
-function DeleteStudentModal({ showUpdateModal, handleCloseUpdateModal }) {
+function DeleteStudentModal({ showDeleteModal, handleCloseDeleteModal }) {
   const { studentsState, dispatchForStudents } = useGlobalStudentsContext();
 
   // const [show, setShow] = useState(false);
@@ -44,7 +44,7 @@ function DeleteStudentModal({ showUpdateModal, handleCloseUpdateModal }) {
         .then((data) => {
           console.log(data);
           if (data) {
-            dispatchForStudents({ type: "DELETE_STUDENT"});
+            dispatchForStudents({ type: "DELETE_STUDENT", payload: values.studentId });
           }
         })
         .catch((err) => {
@@ -55,7 +55,7 @@ function DeleteStudentModal({ showUpdateModal, handleCloseUpdateModal }) {
 
   return (
     <>
-      <Modal show={showUpdateModal} onHide={handleCloseUpdateModal}>
+      <Modal show={showDeleteModal} onHide={handleCloseDeleteModal}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Existing Student</Modal.Title>
         </Modal.Header>
@@ -88,7 +88,7 @@ function DeleteStudentModal({ showUpdateModal, handleCloseUpdateModal }) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseUpdateModal}>
+          <Button variant="secondary" onClick={handleCloseDeleteModal}>
             Close
           </Button>
         </Modal.Footer>

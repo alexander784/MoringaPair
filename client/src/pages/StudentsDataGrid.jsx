@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import AddNewStudentModal from "../components/AddNewStudentModal";
 import UpdateStudentModal from "../components/UpdateStudentModal";
 import { useGlobalStudentsContext } from "../context/studentsContext";
+import DeleteStudentModal from "../components/DeleteStudent";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -30,6 +31,11 @@ export default function StudentsDataGrid() {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const handleCloseUpdateModal = () => setShowUpdateModal(false);
   const handleShowUpdateModal = () => setShowUpdateModal(true);
+  
+  // state for handling DeleteStudentModal
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const handleCloseDeleteModal = () => setShowDeleteModal(false);
+  const handleShowDeleteModal = () => setShowDeleteModal(true);
 
   useEffect(() => {
     // loading
@@ -92,6 +98,17 @@ export default function StudentsDataGrid() {
     );
   }
 
+  // DeleteStudentModal
+  if (showDeleteModal) {
+    return (
+      <DeleteStudentModal
+        showDeleteModal={showDeleteModal}
+        handleCloseDeleteModal={handleCloseDeleteModal}
+        handleShowDeleteModal={handleShowDeleteModal}
+      />
+    );
+  }
+
   return (
     <div style={{ height: 400, width: "100%", marginTop: "3rem" }}>
       <DataGrid
@@ -111,6 +128,9 @@ export default function StudentsDataGrid() {
         </Button>
         <Button className="edit-btn" onClick={handleShowUpdateModal}>
           Edit Student
+        </Button>
+        <Button className="delete-btn" onClick={handleShowDeleteModal}>
+          Delete Student
         </Button>
       </div>
     </div>

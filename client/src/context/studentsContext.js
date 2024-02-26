@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import React, { useContext, useReducer } from "react";
 
 // StudentsContext
@@ -5,6 +6,12 @@ const StudentsContext = React.createContext();
 
 // StudentsProvider => distributor
 const StudentsProvider = ({ children }) => {
+  const handleDeleteStudent = (data, id) => {
+    return data.filter((student) => {
+      return student.id !== Number(id);
+    });
+  };
+
   // initialStudentsState
   const initialStudentsState = {
     loading: false,
@@ -52,6 +59,14 @@ const StudentsProvider = ({ children }) => {
           ...state,
           loading: false,
           students: [...state.students, action.payload],
+          error: "",
+        };
+
+      case "DELETE_STUDENT":
+        return {
+          ...state,
+          loading: false,
+          students: handleDeleteStudent(state.students, action.payload),
           error: "",
         };
 
