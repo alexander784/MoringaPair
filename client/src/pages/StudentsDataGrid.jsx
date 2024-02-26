@@ -15,7 +15,6 @@ const columns = [
   { field: "pair_id", headerName: "Pair", width: 130 },
   { field: "created_at", headerName: "Created At", width: 130 },
   { field: "updated_at", headerName: "Updated At", width: 130 },
-  { field: "actions", headerName: "Actions", width: 130 },
 ];
 
 export default function StudentsDataGrid() {
