@@ -24,6 +24,7 @@ flask-jwt-extended = "*"
 marshmallow = "3.18.0"
 marshmallow-sqlalchemy = "0.28.1"
 flask-marshmallow = "0.14.0"
+gunicorn = "*"
 
 [dev-packages]
 
