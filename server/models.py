@@ -96,10 +96,10 @@ class Pair(db.Model):
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
     # relationship
-    students = db.relationship("Student", backref="pair")
+    students = db.relationship("Student", back_populates="pair")
 
     def __repr__(self):
-        return f"<Pair: {self.week_number} {self.User_id} {self.created_at} {self.updated_at}>"
+        return f"{self.id}"
 
 
 class Student(db.Model):
@@ -115,6 +115,7 @@ class Student(db.Model):
 
     # will serve adv. on frontend side
     user = db.relationship("User", back_populates="students")
+    pair = db.relationship("Pair", back_populates="students")
 
     @validates("name")
     def validate_name(self, key, name):

@@ -9,12 +9,12 @@ import DeleteStudentModal from "../components/DeleteStudent";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
-  { field: "name", headerName: "Name", width: 130 },
-  { field: "email", headerName: "Email", width: 130 },
-  { field: "user", headerName: "Technical Mentor", width: 130 },
-  { field: "pair_id", headerName: "Pair", width: 130 },
-  { field: "created_at", headerName: "Created At", width: 130 },
-  { field: "updated_at", headerName: "Updated At", width: 130 },
+  { field: "name", headerName: "Name", width: 200 },
+  { field: "email", headerName: "Email", width: 200 },
+  { field: "user", headerName: "Technical Mentor", width: 200 },
+  { field: "pair_id", headerName: "Pair", width: 100 },
+  { field: "created_at", headerName: "Created At", width: 200 },
+  { field: "updated_at", headerName: "Updated At", width: 200 },
 ];
 
 export default function StudentsDataGrid() {

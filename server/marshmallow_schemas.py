@@ -24,24 +24,6 @@ user_schema = UserSchema()
 users_schema = UserSchema(many=True)
 
 
-class StudentSchema(ma.Schema):
-    class Meta:
-        model = Student
-
-    id = fields.Int(dump_only=True)
-    name = fields.Str(required=True)
-    email = fields.Email(required=True)
-    user_id = fields.Int()
-    user = fields.Str()
-    pair_id = fields.Int()
-    created_at = fields.DateTime(dump_only=True)
-    updated_at = fields.DateTime(dump_only=True)
-
-
-student_schema = StudentSchema()
-students_schema = StudentSchema(many=True)
-
-
 class PairSchema(ma.Schema):
     class Meta:
         model = Pair
@@ -57,3 +39,22 @@ class PairSchema(ma.Schema):
 
 pair_schema = PairSchema()
 pairs_schema = PairSchema(many=True)
+
+
+class StudentSchema(ma.Schema):
+    class Meta:
+        model = Student
+
+    id = fields.Int(dump_only=True)
+    name = fields.Str(required=True)
+    email = fields.Email(required=True)
+    user_id = fields.Int()
+    user = fields.Str()
+    pair = fields.Int()
+    pair_id = fields.Int()
+    created_at = fields.DateTime(dump_only=True)
+    updated_at = fields.DateTime(dump_only=True)
+
+
+student_schema = StudentSchema()
+students_schema = StudentSchema(many=True)
