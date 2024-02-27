@@ -10,7 +10,11 @@ import OffCanvas from "./OffCanvas";
 import MenuIcon from "@mui/icons-material/Menu";
 import Profile from "./Profile";
 
+
 const NavBar = () => {
+
+  
+
   // state for handling OffCanvas
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
