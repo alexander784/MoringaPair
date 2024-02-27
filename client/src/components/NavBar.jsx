@@ -101,9 +101,12 @@ const NavBar = () => {
               Login
             </NavLink>
           </Col>
-          <Col>
-            <Profile />
-          </Col>
+          {/* show profile if logged in */}
+          {localStorage.getItem("access_token") && (
+            <Col>
+              <Profile />
+            </Col>
+          )}
         </Row>
         <Button
           style={{ backgroundColor: "#003049" }}
