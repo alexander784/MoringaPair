@@ -28,18 +28,22 @@ class Students(Resource):
 
     @jwt_required()
     def post(self):
-        args = parser.parse_args()
+        try:
+            args = parser.parse_args()
 
-        new_student = Student(
-            name=args["name"],
-            email=args["email"],
-            user_id=args["user_id"],
-        )
+            new_student = Student(
+                name=args["name"],
+                email=args["email"],
+                user_id=args["user_id"],
+            )
 
-        db.session.add(new_student)
-        db.session.commit()
+            db.session.add(new_student)
+            db.session.commit()
 
-        return make_response(jsonify(student_schema.dump(new_student)), 201)
+            return make_response(jsonify(student_schema.dump(new_student)), 201)
+
+        except ValueError as e:
+            return make_response(jsonify({"error": [str(e)]}), 400)
 
 
 class StudentById(Resource):
@@ -54,18 +58,23 @@ class StudentById(Resource):
 
     @jwt_required()
     def patch(self, student_id):
-        data = request.get_json()
         student = Student.query.filter_by(id=student_id).first()
 
         if not student:
             return make_response(jsonify({"error": "Student not found"}), 400)
 
-        for attr in data:
-            setattr(student, attr, data.get(attr))
+        try:
+            data = request.get_json()
 
-        db.session.commit()
+            for attr in data:
+                setattr(student, attr, data.get(attr))
 
-        return make_response(jsonify(student_schema.dump(student)), 200)
+            db.session.commit()
+
+            return make_response(jsonify(student_schema.dump(student)), 200)
+
+        except ValueError as e:
+            return make_response(jsonify({"error": [str(e)]}), 400)
 
     @jwt_required()
     def delete(self, student_id):

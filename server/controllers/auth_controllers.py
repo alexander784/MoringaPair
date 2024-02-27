@@ -30,45 +30,55 @@ class Index(Resource):
 
 class Register(Resource):
     def post(self):
-        args = parser.parse_args()
+        try:
+            args = parser.parse_args()
 
-        if args["password"] == args["confirm_password"]:
-            # new_user instance
-            new_user = User(
-                full_name=args["full_name"],
-                username=args["username"],
-                email=args["email"],
-                _password_hash=bcrypt.generate_password_hash(
-                    args["password"].encode('utf-8'))
-            )
+            if args["password"] == args["confirm_password"]:
+                # new_user instance
+                new_user = User(
+                    full_name=args["full_name"],
+                    username=args["username"],
+                    email=args["email"],
+                    _password_hash=bcrypt.generate_password_hash(
+                        args["password"].encode('utf-8'))
+                )
 
-            db.session.add(new_user)
-            db.session.commit()
+                db.session.add(new_user)
+                db.session.commit()
 
-            return make_response(jsonify(user_schema.dump(new_user)), 201)
+                return make_response(jsonify(user_schema.dump(new_user)), 201)
 
-        return make_response(jsonify({"error": "Passwords must match"}))
+            return make_response(jsonify({"error": "Passwords must match"}))
+
+        except ValueError as e:
+            return make_response(jsonify({"error": [str(e)]}))
 
 
 class Login(Resource):
     def post(self):
-        # user login data
-        data = request.get_json()
+        try:
+            # user login data
+            data = request.get_json()
 
-        user = User.query.filter_by(username=data.get("username")).first()
+            user = User.query.filter_by(username=data.get("username")).first()
 
-        # generate access and refresh tokens if user exists and passwords match
-        if user and user.authenticate(data.get("password")):
-            access_token = create_access_token(identity=data.get("username"))
-            refresh_token = create_refresh_token(identity=data.get("username"))
+            # generate access and refresh tokens if user exists and passwords match
+            if user and user.authenticate(data.get("password")):
+                access_token = create_access_token(
+                    identity=data.get("username"))
+                refresh_token = create_refresh_token(
+                    identity=data.get("username"))
 
-            return make_response(jsonify({"message": "Login successful", "tokens": {
-                "access": access_token,
-                "refresh": refresh_token
+                return make_response(jsonify({"message": "Login successful", "tokens": {
+                    "access": access_token,
+                    "refresh": refresh_token
 
-            }}), 200)
+                }}), 200)
 
-        return make_response(jsonify({"error": "Invalid username or password"}), 401)
+            return make_response(jsonify({"error": "Invalid username or password"}), 401)
+
+        except ValueError as e:
+            return make_response(jsonify({"error": [str(e)]}))
 
 
 class Whoami(Resource):

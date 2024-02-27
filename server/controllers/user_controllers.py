@@ -31,18 +31,23 @@ class UserById(Resource):
 
     @jwt_required()
     def patch(self, user_id):
-        data = request.get_json()
         user = User.query.filter_by(id=user_id).first()
 
         if not user:
             return make_response(jsonify({"error": "User not found"}), 400)
 
-        for attr in data:
-            setattr(user, attr, data.get(attr))
+        try:
+            data = request.get_json()
 
-        db.session.commit()
+            for attr in data:
+                setattr(user, attr, data.get(attr))
 
-        return make_response(jsonify(user_schema.dump(user)), 200)
+            db.session.commit()
+
+            return make_response(jsonify(user_schema.dump(user)), 200)
+
+        except ValueError as e:
+            return make_response(jsonify({"error": [str(e)]}))
 
     @jwt_required()
     def delete(self, user_id):
