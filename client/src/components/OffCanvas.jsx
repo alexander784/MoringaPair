@@ -114,7 +114,7 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
             Login
           </NavLink>
           {/* conditionally render logout */}
-          {localStorage.getItem("access_token") && (
+          {localStorage.getItem("access_token") ? (
             <NavLink
               className="offcanvas-link"
               onClick={() => {
@@ -125,7 +125,7 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
             >
               Logout
             </NavLink>
-          )}
+          ) : null}
           <ToastContainer />
         </Offcanvas.Body>
       </Offcanvas>
