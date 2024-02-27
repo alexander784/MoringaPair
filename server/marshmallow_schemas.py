@@ -32,6 +32,7 @@ class StudentSchema(ma.Schema):
     name = fields.Str(required=True)
     email = fields.Email(required=True)
     user_id = fields.Int()
+    user = fields.Str()
     pair_id = fields.Int()
     created_at = fields.DateTime(dump_only=True)
     updated_at = fields.DateTime(dump_only=True)

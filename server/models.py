@@ -17,7 +17,7 @@ class User(db.Model):
     _password_hash = db.Column(db.String, nullable=False)
 
     # relationships
-    students = db.relationship("Student", backref="user")
+    students = db.relationship("Student", back_populates="user")
     pairs = db.relationship("Pair", backref="user")
 
     # password hashing
@@ -81,7 +81,7 @@ class User(db.Model):
         return _password_hash
 
     def __repr__(self):
-        return f"User {self.full_name} {self.username} {self.email}"
+        return f"{self.full_name}"
 
 
 class Pair(db.Model):
@@ -113,6 +113,9 @@ class Student(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
+    # will serve adv. on frontend side
+    user = db.relationship("User", back_populates="students")
+
     @validates("name")
     def validate_name(self, key, name):
         if not name:
@@ -127,7 +130,7 @@ class Student(db.Model):
         else:
             if Student.query.filter_by(email=email).first():
                 raise ValueError("Email already exists")
-            
+
             else:
                 import re
                 pattern = r"[a-z]*.[a-z]*@student.moringaschool.com"
@@ -135,7 +138,7 @@ class Student(db.Model):
 
                 if not regex.fullmatch(email):
                     raise ValueError("Invalid Moringa School email")
-                
+
                 return email
 
     def __repr__(self):
