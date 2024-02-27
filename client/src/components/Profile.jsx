@@ -56,7 +56,7 @@ const Profile = () => {
         }
       })
       .catch((err) => {
-        console.log("Error in logging out user");
+        console.log("Error in logging out user", err);
       });
   };
   

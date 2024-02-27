@@ -92,7 +92,7 @@ const Home = () => {
           </div>
 
           <div className="advanced-feature-card">
-            <i class="fa-solid fa-cube"></i>
+            <i className="fa-solid fa-cube"></i>
             <h6>Data Visualization and Filters</h6>
             <p>
               Visualize and filter student pairs over different weeks for easy
@@ -101,7 +101,7 @@ const Home = () => {
           </div>
 
           <div className="advanced-feature-card">
-            <i class="fa-solid fa-cube"></i>
+            <i className="fa-solid fa-cube"></i>
             <h6>Historical Tracking of Pairs</h6>
             <p>Technical mentors can view history of student pairings.</p>
           </div>

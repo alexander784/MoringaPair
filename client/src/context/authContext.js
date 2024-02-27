@@ -8,7 +8,7 @@ const AuthProvider = ({ children }) => {
   // initialAuthState
   const initialAuthState = {
     loading: false,
-    currentUser: [],
+    currentUser: null,
     error: "",
   };
 
@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
         return {
           ...state,
           loading: true,
-          currentUser: [],
+          currentUser: null,
           error: "",
         };
 
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
         return {
           ...state,
           loading: false,
-          currentUser: [],
+          currentUser:null,
           error: action.payload,
         };
 

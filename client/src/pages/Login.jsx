@@ -7,8 +7,11 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useGlobalAuthContext } from "../context/authContext";
 
 const Login = () => {
+  const { authState, dispatchForAuthState } = useGlobalAuthContext();
+
   const notify = () => toast("Logged in successfully! ✔");
 
   // for programmatic navigation
@@ -34,6 +37,7 @@ const Login = () => {
     // onSubmit
     onSubmit: (values, { resetForm }) => {
       console.log(values);
+      dispatchForAuthState({ type: "FETCH_REQUEST" });
 
       // fetch API
       fetch("/auth/login", {
@@ -52,15 +56,20 @@ const Login = () => {
         })
         .then((data) => {
           console.log(data);
+          // console.log(data.user)
           // look for another option => bound to CSX attacks
-          if (data.tokens) {
+          if (data) {
             localStorage.setItem("access_token", data.tokens.access);
             localStorage.setItem("refresh_token", data.tokens.refresh);
+            console.log(data.user)
+            dispatchForAuthState({ type: "FETCH_SUCCESS", payload: data.user });
+            
             navigate("/");
           }
         })
         .catch((err) => {
           console.log("Error in logging in user", err);
+          dispatchForAuthState({ type: "FETCH_FAILURE", payload: err });
         });
     },
   });
@@ -118,7 +127,9 @@ const Login = () => {
               </Button>
               <ToastContainer />
             </Form>
-            <p style={{textDecoration: "Underline", textAlign: "center"}}>Don't have an account?</p>
+            <p style={{ textDecoration: "Underline", textAlign: "center" }}>
+              Don't have an account?
+            </p>
 
             <div className="text-center mt-3">
               <Link to="/signup">Sign up</Link>
