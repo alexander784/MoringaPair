@@ -113,6 +113,31 @@ class Student(db.Model):
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
+    @validates("name")
+    def validate_name(self, key, name):
+        if not name:
+            raise ValueError("Name is required")
+        return name
+
+    @validates("email")
+    def validate_email(self, key, email):
+        if not email:
+            raise ValueError("Email is required")
+
+        else:
+            if Student.query.filter_by(email=email).first():
+                raise ValueError("Email already exists")
+            
+            else:
+                import re
+                pattern = r"[a-z]*.[a-z]*@student.moringaschool.com"
+                regex = re.compile(pattern)
+
+                if not regex.fullmatch(email):
+                    raise ValueError("Invalid Moringa School email")
+                
+                return email
+
     def __repr__(self):
         return f"Student: {self.name}, {self.email} {self.user_id}"
 
