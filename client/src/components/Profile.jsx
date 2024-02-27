@@ -27,6 +27,34 @@ const Profile = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  // function to log out user
+  const handleLogout = () => {
+    console.log("Logout");
+    // fetch API
+    fetch("/auth/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        if (data.message) {
+          localStorage.clear();
+        }
+      })
+      .catch((err) => {
+        console.log("Error in logging out user");
+      });
+  };
   return (
     <Toolbar>
       {auth && (
@@ -58,6 +86,7 @@ const Profile = () => {
           >
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
           </Menu>
         </div>
       )}
