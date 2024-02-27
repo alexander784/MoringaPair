@@ -70,7 +70,7 @@ class User(db.Model):
 
                 # check for fullmatch
                 if not regex.fullmatch(email):
-                    raise ValueError("Invalid email format")
+                    raise ValueError("Invalid Moringa School email")
 
                 return email
 

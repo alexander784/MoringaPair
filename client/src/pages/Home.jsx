@@ -86,7 +86,7 @@ const Home = () => {
         </div>
         <div className="advanced-feature-cards">
           <div className="advanced-feature-card">
-            <i class="fa-solid fa-cube"></i>
+            <i className="fa-solid fa-cube"></i>
             <h6>No Duplication of Pairs</h6>
             <p>Our system randomly pairs students without any duplications.</p>
           </div>

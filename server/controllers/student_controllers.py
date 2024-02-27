@@ -24,7 +24,7 @@ class Students(Resource):
     @jwt_required()
     def get(self):
         students = Student.query.all()
-        return make_response(jsonify(students_schema.dump(students)), 200)
+        return make_response(jsonify({"students": students_schema.dump(students)}), 200)
 
     @jwt_required()
     def post(self):
@@ -40,7 +40,7 @@ class Students(Resource):
             db.session.add(new_student)
             db.session.commit()
 
-            return make_response(jsonify(student_schema.dump(new_student)), 201)
+            return make_response(jsonify({"student": student_schema.dump(new_student)}), 201)
 
         except ValueError as e:
             return make_response(jsonify({"error": [str(e)]}), 400)

@@ -56,10 +56,10 @@ export default function StudentsDataGrid() {
       })
       .then((data) => {
         console.log(data);
-        if (data) {
+        if (data.students) {
           setTimeout(() => {
             // data
-            dispatchForStudents({ type: "FETCH_SUCCESS", payload: data });
+            dispatchForStudents({ type: "FETCH_SUCCESS", payload: data.students });
           }, 1500);
         }
       })

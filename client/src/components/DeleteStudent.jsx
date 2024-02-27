@@ -14,7 +14,7 @@ function DeleteStudentModal({ showDeleteModal, handleCloseDeleteModal }) {
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
 
-  const notify = () => toast("Student updated successfully!");
+  const notify = () => toast("Student deleted successfully!");
 
   const formik = useFormik({
     initialValues: {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import "../styles.css";
@@ -9,6 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   const notify = () => toast("Signed up successfully! ✔");
@@ -61,7 +63,12 @@ const SignUp = () => {
         })
         .then((data) => {
           console.log(data);
-          navigate("/login");
+          if (data.error) {
+            setError(data.error);
+          } else {
+            setError(null)
+            navigate("/login");
+          }
         })
         .catch((err) => {
           console.log("Error in registering user", err);
@@ -79,6 +86,7 @@ const SignUp = () => {
           >
             <h1 className="text-center mb-4">Sign Up</h1>
             <Form onSubmit={formik.handleSubmit}>
+              {error && <div className="error">{error}</div>}
               <FloatingLabel label="Full Name" className="mb-3">
                 <Form.Control
                   type="text"
@@ -175,7 +183,9 @@ const SignUp = () => {
               <ToastContainer />
             </Form>
 
-            <p style={{textDecoration: "Underline", textAlign: "center"}}>Already have an account?</p>
+            <p style={{ textDecoration: "Underline", textAlign: "center" }}>
+              Already have an account?
+            </p>
 
             <div className="text-center mt-3">
               <Link to="/login">Sign in</Link>

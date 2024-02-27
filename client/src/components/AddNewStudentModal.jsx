@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGlobalStudentsContext } from "../context/studentsContext";
+import { useState } from "react";
 
 function AddNewStudentModal({ show, handleClose, handleShow }) {
   const { studentsState, dispatchForStudents } = useGlobalStudentsContext();
@@ -13,6 +14,8 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);
   // const handleShow = () => setShow(true);
+
+  const [error, setError] = useState(null);
 
   const notify = () => toast("New student added successfully!");
 
@@ -50,8 +53,14 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
         })
         .then((data) => {
           console.log(data);
-          if (data) {
-            dispatchForStudents({ type: "ADD_STUDENT", payload: data });
+          if (data.student) {
+            dispatchForStudents({
+              type: "ADD_STUDENT",
+              payload: data.student,
+            });
+            setError(null);
+          } else if (data.error) {
+            setError(data.error);
           }
         })
         .catch((err) => {
@@ -67,6 +76,7 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
           <Modal.Title>Add New Student</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {error && <div className="error">{error}</div>}
           <Form onSubmit={formik.handleSubmit}>
             <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
