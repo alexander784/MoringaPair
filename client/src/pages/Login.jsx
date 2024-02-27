@@ -40,7 +40,7 @@ const Login = () => {
       dispatchForAuthState({ type: "FETCH_REQUEST" });
 
       // fetch API
-      fetch("https://moringapair-2lwm.onrender.com//auth/login", {
+      fetch("https://moringapair-2lwm.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

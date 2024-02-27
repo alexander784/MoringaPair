@@ -1,5 +1,5 @@
 {
-  "proxy": "https://moringapair-2lwm.onrender.com/",
+  "proxy": "https://moringapair-2lwm.onrender.com",
   "name": "client",
   "version": "0.1.0",
   "private": true,
