@@ -8,6 +8,7 @@ import "../styles.css";
 import Button from "react-bootstrap/Button";
 import OffCanvas from "./OffCanvas";
 import MenuIcon from "@mui/icons-material/Menu";
+import Profile from "./Profile";
 
 const NavBar = () => {
   // state for handling OffCanvas
@@ -99,6 +100,9 @@ const NavBar = () => {
             <NavLink style={navLinkStyles} to="/login" className="nav-link">
               Login
             </NavLink>
+          </Col>
+          <Col>
+            <Profile />
           </Col>
         </Row>
         <Button
