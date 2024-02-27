@@ -59,6 +59,7 @@ const Profile = () => {
         console.log("Error in logging out user");
       });
   };
+  
   return (
     <Toolbar>
       {auth && (

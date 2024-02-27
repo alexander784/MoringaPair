@@ -3,6 +3,8 @@ import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { NavLink, useNavigate } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // inline props destructuring
 export default function OffCanvas({ name, show, handleClose, ...props }) {
@@ -21,6 +23,36 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
 
   // for programmatic navigation
   const navigate = useNavigate();
+
+  // function to log out user
+  const handleLogout = () => {
+    console.log("Logout");
+    // fetch API
+    fetch("/auth/logout", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        if (data.message) {
+          localStorage.clear();
+        }
+      })
+      .catch((err) => {
+        console.log("Error in logging out user");
+      });
+  };
+
+  const notify = () => toast("Logged out successfully!");
 
   return (
     <>
@@ -81,6 +113,20 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
           <NavLink className="offcanvas-link" to="/login" style={navLinkStyles}>
             Login
           </NavLink>
+          {/* conditionally render logout */}
+          {localStorage.getItem("access_token") && (
+            <NavLink
+              className="offcanvas-link"
+              onClick={() => {
+                handleLogout();
+                notify();
+              }}
+              style={navLinkStyles}
+            >
+              Logout
+            </NavLink>
+          )}
+          <ToastContainer />
         </Offcanvas.Body>
       </Offcanvas>
     </>
