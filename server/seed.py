@@ -12,7 +12,7 @@ def seed_database():
     User.query.delete()
     Student.query.delete()
 
-    # static data
+    # static TM sample data
     full_names = [
         "John Doe",
         "Jane  Smith",
@@ -59,11 +59,30 @@ def seed_database():
     # extract user ids
     user_ids = [user.id for user in User.query.all()]
 
+    # static student sample data
+    student_email_addresses = [
+        "john.doe@student.moringaschool.com",
+        "jane.smith@student.moringaschool.com",
+        "alexander.james@student.moringaschool.com",
+        "emily.wilson@student.moringaschool.com",
+        "samuel.king@student.moringaschool.com",
+        "lisa.jones@student.moringaschool.com",
+        "michael.chang@student.moringaschool.com",
+        "sophia.nguyen@student.moringaschool.com",
+        "david.smith@student.moringaschool.com",
+        "olivia.martin@student.moringaschool.com",
+        "daniel.kim@student.moringaschool.com",
+        "mia.jackson@student.moringaschool.com",
+        "ethan.brown@student.moringaschool.com",
+        "isabella.hernandez@student.moringaschool.com",
+        "aiden.white@student.moringaschool.com"
+    ]
+
     print("Inserting students 👨‍🎓👩‍🎓👨‍🎓...")
-    for _ in range(30):
+    for i in range(15):
         student = Student(
             name=fake.unique.name(),
-            email=fake.unique.email(),
+            email=student_email_addresses[i],
             user_id=random.choice(user_ids)
         )
 
