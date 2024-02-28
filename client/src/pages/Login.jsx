@@ -40,7 +40,7 @@ const Login = () => {
       dispatchForAuthState({ type: "FETCH_REQUEST" });
 
       // fetch API
-      fetch("http://127.0.0.1:5555/auth/login", {
+      fetch("https://moringapair-tx15.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,9 +56,8 @@ const Login = () => {
         })
         .then((data) => {
           console.log(data);
-          // console.log(data.user)
           // look for another option => bound to CSX attacks
-          if (data.tokens) {
+          if (data.tokens && data.user) {
             // store tokens i localStorage
             localStorage.setItem("access_token", data.tokens.access);
             localStorage.setItem("refresh_token", data.tokens.refresh);

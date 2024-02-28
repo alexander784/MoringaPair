@@ -28,12 +28,13 @@ const Pairs = () => {
 
     // onSubmit
     onSubmit: (values, { resetForm }) => {
+      notify();
       console.log(values);
       // loading
       dispatchForPairs({ type: "FETCH_REQUEST" });
 
       // fetch API
-      fetch("http://127.0.0.1:5555/api/create_pairs", {
+      fetch("https://moringapair-tx15.onrender.com/api/create_pairs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
