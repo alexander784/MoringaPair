@@ -42,6 +42,7 @@ const Pairs = () => {
         console.log("Error in generating random pairs", err);
         // error
         dispatchForPairs({ type: "FETCH_FAILURE", payload: err });
+        toast.error(err);
       });
   };
 

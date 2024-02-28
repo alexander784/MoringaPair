@@ -12,6 +12,8 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
   //   const handleClose = () => setShow(false);
   //   const handleShow = () => setShow(true);
 
+  const notify = () => toast("Logged out successfully!");
+
   // setting styles based on isActive boolean flag
   const navLinkStyles = ({ isActive }) => {
     return {
@@ -46,6 +48,7 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
 
         // clear localStorage upon logout
         if (data.message) {
+          notify();
           localStorage.clear();
         }
       })
@@ -53,8 +56,6 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
         console.log("Error in logging out user", err);
       });
   };
-
-  const notify = () => toast("Logged out successfully!");
 
   return (
     <>
@@ -120,7 +121,6 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
               className="offcanvas-link"
               onClick={() => {
                 handleLogout();
-                notify();
               }}
               style={navLinkStyles}
             >

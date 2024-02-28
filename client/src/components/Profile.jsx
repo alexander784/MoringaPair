@@ -47,6 +47,7 @@ const Profile = () => {
 
         // clear localStorage upon logout
         if (data.message) {
+          notify();
           localStorage.clear();
         }
       })
@@ -88,7 +89,6 @@ const Profile = () => {
             <MenuItem
               onClick={() => {
                 handleLogout();
-                notify();
               }}
             >
               Logout

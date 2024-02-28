@@ -57,6 +57,7 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
           console.log(data);
 
           if (data.student) {
+            notify();
             // update students state
             dispatchForStudents({
               type: "ADD_STUDENT",
@@ -126,7 +127,6 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
 
             <Button
               className="add-btn"
-              onClick={notify}
               disabled={!formik.isValid}
               type="submit"
             >

@@ -40,7 +40,7 @@ const Login = () => {
       dispatchForAuthState({ type: "FETCH_REQUEST" });
 
       // fetch API
-      fetch("https://moringapair-tx15.onrender.com/auth/login", {
+      fetch("http://127.0.0.1:5555/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ const Login = () => {
           console.log(data);
           // console.log(data.user)
           // look for another option => bound to CSX attacks
-          if (data) {
+          if (data.tokens) {
             // store tokens i localStorage
             localStorage.setItem("access_token", data.tokens.access);
             localStorage.setItem("refresh_token", data.tokens.refresh);
@@ -122,8 +122,10 @@ const Login = () => {
                 variant="primary"
                 type="submit"
                 block
+                onClick={() => {
+                  notify();
+                }}
                 className="mt-3 signin-btn"
-                onClick={notify}
                 disabled={!formik.isValid}
               >
                 Login Now

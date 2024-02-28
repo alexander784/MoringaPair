@@ -56,6 +56,7 @@ function UpdateStudentModal({ showUpdateModal, handleCloseUpdateModal }) {
         .then((data) => {
           console.log(data);
           if (data) {
+            notify();
             dispatchForStudents({ type: "UPDATE_STUDENT", payload: data });
           }
         })
@@ -130,7 +131,6 @@ function UpdateStudentModal({ showUpdateModal, handleCloseUpdateModal }) {
 
             <Button
               className="edit-btn"
-              onClick={notify}
               disabled={!formik.isValid}
               type="submit"
             >

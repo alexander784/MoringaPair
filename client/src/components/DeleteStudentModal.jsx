@@ -51,6 +51,7 @@ function DeleteStudentModal({ showDeleteModal, handleCloseDeleteModal }) {
 
           // update students state
           if (data) {
+            notify();
             dispatchForStudents({
               type: "DELETE_STUDENT",
               payload: values.studentId,
@@ -88,7 +89,6 @@ function DeleteStudentModal({ showDeleteModal, handleCloseDeleteModal }) {
 
             <Button
               className="delete-btn"
-              onClick={notify}
               disabled={!formik.isValid}
               type="submit"
             >

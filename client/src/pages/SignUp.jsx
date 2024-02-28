@@ -63,9 +63,12 @@ const SignUp = () => {
         })
         .then((data) => {
           console.log(data);
+
           if (data.error) {
             setError(data.error);
+            toast.error(data.error);
           } else {
+            notify();
             setError(null);
             navigate("/login");
           }
@@ -175,7 +178,6 @@ const SignUp = () => {
                 type="submit"
                 block
                 className="mt-4 signup-btn"
-                onClick={notify}
                 disabled={!formik.isValid}
               >
                 Sign Up Now
