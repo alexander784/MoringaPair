@@ -56,7 +56,7 @@ const NavBar = () => {
               border: "1px solid #333",
             }}
             className="d-inline-block align-top"
-            alt=""
+            alt="Moringa Pair"
           />
           <span
             style={{
