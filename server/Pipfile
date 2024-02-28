@@ -26,6 +26,7 @@ marshmallow-sqlalchemy = "0.28.1"
 flask-marshmallow = "0.14.0"
 gunicorn = "*"
 psycopg2-binary = "*"
+flask-mail = "*"
 
 [dev-packages]
 

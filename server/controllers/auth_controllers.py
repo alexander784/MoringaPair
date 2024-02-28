@@ -4,6 +4,9 @@ from models import User, TokenBlocklist
 from config import bcrypt, db
 from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt, jwt_required, current_user, get_jwt_identity
 from marshmallow_schemas import user_schema, users_schema
+from flask_mail import Message
+from config import mail
+
 
 # auth_bp
 auth_bp = Blueprint("auth_bp", __name__)
@@ -25,6 +28,14 @@ parser.add_argument("confirm_password", type=str, required=True,
 # resources
 class Index(Resource):
     def get(self):
+        msg = Message(
+            'Hello',
+            sender='mainasamson359@gmail.com',
+            recipients=['githinjisamson148@gmail.com']
+        )
+        msg.body = 'Welcome to Moringa Pair API'
+        mail.send(msg)
+
         return "Hello World", 200
 
 

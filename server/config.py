@@ -7,6 +7,8 @@ from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager
 from flask_marshmallow import Marshmallow
 from flask_cors import CORS
+from flask_mail import Mail
+
 
 # load environment variables => in .env
 load_dotenv()
@@ -23,12 +25,27 @@ app.config["SQLALCHEMY_ECHO"] = environ.get("SQLALCHEMY_ECHO")
 app.config["JWT_SECRET_KEY"] = environ.get("JWT_SECRET_KEY")
 app.json.compact = False
 
+# mail details
+mail = Mail()
+
+# configuration of mail
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = environ.get("MAIL_PASSWORD")
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)  # instantiate the mail class
+
+
 # instantiations
 migrate = Migrate(app, db)
 db.init_app(app)
 bcrypt = Bcrypt(app)
 jwt = JWTManager(app)
 ma = Marshmallow(app)
+
 
 # prevent cross-origin issues
 CORS(app)
