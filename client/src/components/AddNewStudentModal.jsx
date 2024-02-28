@@ -25,6 +25,7 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
       email: "",
       user_id: "",
     },
+
     validationSchema: Yup.object({
       name: Yup.string().required("Name is required"),
       email: Yup.string()
@@ -32,6 +33,7 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
         .email("Invalid email format"),
       user_id: Yup.string().required("TM ID is required"),
     }),
+
     onSubmit: (values, { resetForm }) => {
       console.log("New student", values);
 
@@ -53,7 +55,9 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
         })
         .then((data) => {
           console.log(data);
+
           if (data.student) {
+            // update students state
             dispatchForStudents({
               type: "ADD_STUDENT",
               payload: data.student,

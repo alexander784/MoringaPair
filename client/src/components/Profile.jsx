@@ -44,6 +44,8 @@ const Profile = () => {
       })
       .then((data) => {
         console.log(data);
+
+        // clear localStorage upon logout
         if (data.message) {
           localStorage.clear();
         }
@@ -52,7 +54,7 @@ const Profile = () => {
         console.log("Error in logging out user", err);
       });
   };
-  
+
   return (
     <Toolbar>
       {auth && (
@@ -82,7 +84,6 @@ const Profile = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem
               onClick={() => {

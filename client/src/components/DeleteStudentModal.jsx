@@ -20,9 +20,11 @@ function DeleteStudentModal({ showDeleteModal, handleCloseDeleteModal }) {
     initialValues: {
       studentId: "",
     },
+
     validationSchema: Yup.object({
       studentId: Yup.string().required("Student ID required"),
     }),
+
     onSubmit: (values, { resetForm }) => {
       console.log("Deleted Student", values);
 
@@ -46,6 +48,8 @@ function DeleteStudentModal({ showDeleteModal, handleCloseDeleteModal }) {
         })
         .then((data) => {
           console.log(data);
+
+          // update students state
           if (data) {
             dispatchForStudents({
               type: "DELETE_STUDENT",
