@@ -20,12 +20,7 @@ const Home = () => {
             effortless student pairing!
           </p>
           <div className="welcome-btns">
-            <button
-              // onClick={() => {
-              //   navigate("#benefits-features");
-              // }}
-              className="learn-more"
-            >
+            <button className="learn-more">
               <a href="#benefits-features">Learn More</a>
             </button>
             <button
