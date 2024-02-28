@@ -40,7 +40,7 @@ class Register(Resource):
                     username=args["username"],
                     email=args["email"],
                     _password_hash=bcrypt.generate_password_hash(
-                        args["password"].encode('utf-8'))
+                        args["password"])
                 )
 
                 db.session.add(new_user)
@@ -61,6 +61,7 @@ class Login(Resource):
             data = request.get_json()
 
             user = User.query.filter_by(username=data.get("username")).first()
+            print(user)
 
             # generate access and refresh tokens if user exists and passwords match
             if user and user.authenticate(data.get("password")):

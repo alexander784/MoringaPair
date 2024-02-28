@@ -48,7 +48,7 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
         }
       })
       .catch((err) => {
-        console.log("Error in logging out user");
+        console.log("Error in logging out user", err);
       });
   };
 
@@ -113,7 +113,7 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
           <NavLink className="offcanvas-link" to="/login" style={navLinkStyles}>
             Login
           </NavLink>
-          {/* conditionally render logout */}
+          {/* conditionally render logout == show if logged in */}
           {localStorage.getItem("access_token") ? (
             <NavLink
               className="offcanvas-link"

@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useGlobalStudentsContext } from "../context/studentsContext";
 
 function UpdateStudentModal({ showUpdateModal, handleCloseUpdateModal }) {
-  const { studentsState, dispatchForStudents } = useGlobalStudentsContext();
+  const { dispatchForStudents } = useGlobalStudentsContext();
 
   // const [show, setShow] = useState(false);
   // const handleClose = () => setShow(false);

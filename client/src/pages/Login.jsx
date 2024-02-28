@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useGlobalAuthContext } from "../context/authContext";
 
 const Login = () => {
-  const { authState, dispatchForAuthState } = useGlobalAuthContext();
+  const { dispatchForAuthState } = useGlobalAuthContext();
 
   const notify = () => toast("Logged in successfully! ✔");
 
@@ -40,7 +40,7 @@ const Login = () => {
       dispatchForAuthState({ type: "FETCH_REQUEST" });
 
       // fetch API
-      fetch("https://moringapair-2lwm.onrender.com/auth/login", {
+      fetch("http:127.0.0.1:5555/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,8 +59,11 @@ const Login = () => {
           // console.log(data.user)
           // look for another option => bound to CSX attacks
           if (data) {
+            // store tokens i localStorage
             localStorage.setItem("access_token", data.tokens.access);
             localStorage.setItem("refresh_token", data.tokens.refresh);
+
+            // update user state
             console.log(data.user);
             dispatchForAuthState({ type: "FETCH_SUCCESS", payload: data.user });
 

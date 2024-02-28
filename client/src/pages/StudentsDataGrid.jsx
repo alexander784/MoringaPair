@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import AddNewStudentModal from "../components/AddNewStudentModal";
 import UpdateStudentModal from "../components/UpdateStudentModal";
 import { useGlobalStudentsContext } from "../context/studentsContext";
-import DeleteStudentModal from "../components/DeleteStudent";
+import DeleteStudentModal from "../components/DeleteStudentModal";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },

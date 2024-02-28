@@ -2,7 +2,7 @@ import React from "react";
 import "../styles.css";
 import studentsImage from "../assets/studentsImage.jpg";
 import Footer from "../components/Footer";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();

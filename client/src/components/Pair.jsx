@@ -1,5 +1,6 @@
 import React from "react";
 
+// single Pair card
 const Pair = ({ id, student1, student2, user_id, week_number, created_at }) => {
   return (
     <div className="pair-card">

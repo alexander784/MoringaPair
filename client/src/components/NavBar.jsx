@@ -71,16 +71,6 @@ const NavBar = () => {
 
         {/* navigation links */}
         <Row className="nav-links">
-          {/* <Col>
-            <NavLink style={navLinkStyles} to="/about" className="nav-link">
-              About
-            </NavLink>
-          </Col> */}
-          {/* <Col>
-            <NavLink style={navLinkStyles} to="/contacts" className="nav-link">
-              Contacts
-            </NavLink>
-          </Col> */}
           <Col>
             <NavLink style={navLinkStyles} to="/students" className="nav-link">
               Students
@@ -101,7 +91,7 @@ const NavBar = () => {
               Login
             </NavLink>
           </Col>
-          {/* show profile if logged in */}
+          {/* conditionally render profile == show if logged in */}
           {localStorage.getItem("access_token") && (
             <Col>
               <Profile />

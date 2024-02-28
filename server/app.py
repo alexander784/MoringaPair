@@ -23,8 +23,9 @@ class Index(Resource):
 
 
 api.add_resource(Index, "/")
-# !JWT STUFF
 
+
+# !JWT STUFF
 # jwt error handling == expired, invalid, missing tokens
 
 
