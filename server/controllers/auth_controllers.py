@@ -51,7 +51,7 @@ class Register(Resource):
                     username=args["username"],
                     email=args["email"],
                     _password_hash=bcrypt.generate_password_hash(
-                        args["password"])
+                        args["password"].encode('utf-8'))
                 )
 
                 db.session.add(new_user)

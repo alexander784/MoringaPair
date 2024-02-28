@@ -14,7 +14,7 @@ class User(db.Model):
     email = db.Column(db.String, nullable=False, unique=True)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
     updated_at = db.Column(db.DateTime, onupdate=db.func.now())
-    _password_hash = db.Column(db.LargeBinary, nullable=False)
+    _password_hash = db.Column(db.String(128), nullable=False)
 
     # relationships
     students = db.relationship("Student", back_populates="user")
@@ -29,12 +29,12 @@ class User(db.Model):
     def password_hash(self, password):
         # utf-8 encoding and decoding is required in python 3
         password_hash = bcrypt.generate_password_hash(
-            password)
-        self._password_hash = password_hash
+            password.encode('utf-8'))
+        self._password_hash = password_hash.decode('utf-8')
 
     def authenticate(self, password):
         return bcrypt.check_password_hash(
-            self._password_hash, password)
+            self._password_hash, password.encode('utf-8'))
 
     # validations
     @validates("full_name")
