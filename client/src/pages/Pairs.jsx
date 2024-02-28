@@ -16,7 +16,7 @@ const Pairs = () => {
     dispatchForPairs({ type: "FETCH_REQUEST" });
 
     // fetch API
-    fetch("/api/create_pairs", {
+    fetch("https://moringapair-tx15.onrender.com/api/create_pairs", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

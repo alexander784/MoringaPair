@@ -41,7 +41,7 @@ export default function StudentsDataGrid() {
     dispatchForStudents({ type: "FETCH_REQUEST" });
 
     // fetch API
-    fetch("/api/students", {
+    fetch("https://moringapair-tx15.onrender.com/api/students", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

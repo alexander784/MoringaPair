@@ -47,7 +47,7 @@ const SignUp = () => {
       console.log(values);
 
       // fetch API
-      fetch("http://127.0.0.1:5555/auth/register", {
+      fetch("https://moringapair-tx15.onrender.com/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
