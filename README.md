@@ -137,3 +137,9 @@ To run frontend tests, run the following command
 ## API Reference
 
 https://documenter.getpostman.com/view/23804775/2sA2rFTLQ5
+
+
+## Live
+The site is live at:
+
+https://moringa-pair-beta.vercel.app/
