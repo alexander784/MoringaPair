@@ -75,7 +75,7 @@ class Login(Resource):
             print(user)
 
             # generate access and refresh tokens if user exists and passwords match
-            if user and user.authenticate(data.get("password")):
+            if user and user.authenticate(password=data.get("password")):
                 access_token = create_access_token(
                     identity=data.get("username"))
                 refresh_token = create_refresh_token(

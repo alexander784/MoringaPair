@@ -29,12 +29,16 @@ class User(db.Model):
     def password_hash(self, password):
         # utf-8 encoding and decoding is required in python 3
         password_hash = bcrypt.generate_password_hash(
-            password.encode('utf-8'))
-        self._password_hash = password_hash.decode('utf-8')
+            password)
+        self._password_hash = password_hash
 
     def authenticate(self, password):
+        hex = self._password_hash[2:]
+        print(hex)
+        stored_hash_binary = bytes.fromhex(hex)
+        print(stored_hash_binary)
         return bcrypt.check_password_hash(
-            self._password_hash, password.encode('utf-8'))
+            stored_hash_binary, password)
 
     # validations
     @validates("full_name")
