@@ -1,5 +1,5 @@
 from flask import Blueprint, make_response, jsonify, request
-from flask_restful import Api, Resource
+from flask_restful import Api, Resource, reqparse
 from flask_jwt_extended import jwt_required, current_user
 from models import Student, Pair
 import random
@@ -10,9 +10,14 @@ from marshmallow_schemas import pair_schema, pairs_schema
 pair_bp = Blueprint("pair_db", __name__)
 api = Api(pair_bp)
 
+# week details
+parser = reqparse.RequestParser()
+parser.add_argument("week_number", type=str, required=True,
+                    help="Week number required")
+
 
 # function to generate random pairs
-def generate_random_pairs(students):
+def generate_random_pairs(students, week_number):
     paired_students = set()
     pairs = []
 
@@ -33,7 +38,7 @@ def generate_random_pairs(students):
                     student1=student1,
                     student2=student2,
                     user_id=current_user.id,
-                    week_number=1
+                    week_number=week_number
                 )
                 pairs.append(pair)
 
@@ -49,7 +54,7 @@ def generate_random_pairs(students):
             student1=unpaired_student.pop(),
             student2=None,
             user_id=current_user.id,
-            week_number=1
+            week_number=week_number
         )
         pairs.append(pair)
 
@@ -58,11 +63,13 @@ def generate_random_pairs(students):
 
 class Pairs(Resource):
     @jwt_required()
-    def get(self):
+    def post(self):
         # list of student names
         students = [stud.name for stud in Student.query.all()]
 
-        pairs = generate_random_pairs(students)
+        args = parser.parse_args()
+
+        pairs = generate_random_pairs(students, args["week_number"])
 
         # add to db + commit
         for pair in pairs:
