@@ -72,8 +72,8 @@ const Pairs = () => {
   return (
     <div className="pairs-container">
       <Row className="justify-content-center">
-        <Col md={3}>
-          <Form onSubmit={formik.handleSubmit}>
+        <Col md={12}>
+          <Form onSubmit={formik.handleSubmit} className="week-input-form">
             <Button
               variant="primary"
               type="submit"
@@ -83,7 +83,7 @@ const Pairs = () => {
             >
               Generate Pairs
             </Button>
-            <FloatingLabel label="Week Number" className="mb-3">
+            <FloatingLabel label="Week Number" className="week-form-control">
               <Form.Control
                 type="number"
                 placeholder="Enter week number"

@@ -470,3 +470,15 @@ body {
     margin-top: 1rem;
   }
 }
+
+.week-input-form {
+  /* background-color: red; */
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 2rem;
+  align-items: center;
+}
+
+.week-input-form .week-form-control {
+  caret-color: #f77f00;
+}
