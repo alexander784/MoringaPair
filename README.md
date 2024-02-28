@@ -35,8 +35,6 @@ To run this project, you will need to add the following environment variables to
 `SQLALCHEMY_TRACK_MODIFICATIONS`
 `SQLALCHEMY_ECHO`
 `JWT_SECRET_KEY`
-
-
 ## Features
 
 - Login
@@ -52,7 +50,7 @@ To run this project, you will need to add the following environment variables to
 If you have any feedback, please reach out to us at githinjisamson148@gmail.com
 
 
-## Installation
+## Run Locally
 
 Install MoringaPair:
 
@@ -85,6 +83,8 @@ npm start
 - Client-Server Communication
 - Serialization
 - Full-Stack Development with Flask and React
+- Responsive Web Design
+- Deployment
 
 
 ## License
@@ -118,7 +118,28 @@ For support, email githinjisamson148@gmail.com.
 
 **Package Management:** ```npm```
 
+**Deployment:** ```Vercel, Render```
+
 
 ## Used By
 
 Moringa School Final Phase Project :)
+
+## Running Tests
+
+To run frontend tests, run the following command
+
+```bash
+  npm test
+```
+
+
+## API Reference
+
+https://documenter.getpostman.com/view/23804775/2sA2rFTLQ5
+
+
+## Live
+The site is live at:
+
+https://moringa-pair-beta.vercel.app/
