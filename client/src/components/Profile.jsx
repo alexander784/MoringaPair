@@ -29,7 +29,7 @@ const Profile = () => {
   const handleLogout = () => {
     console.log("Logout");
     // fetch API
-    fetch("/auth/logout", {
+    fetch("https://moringapair-tx15.onrender.com/auth/logout", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
