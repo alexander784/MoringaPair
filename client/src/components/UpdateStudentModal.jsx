@@ -35,15 +35,18 @@ function UpdateStudentModal({ showUpdateModal, handleCloseUpdateModal }) {
       console.log("Updated Student", values);
 
       // fetch API
-      fetch(`/api/students/${values.studentId}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-        body: JSON.stringify(values),
-      })
+      fetch(
+        `https://moringapair-tx15.onrender.com/api/students/${values.studentId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+          body: JSON.stringify(values),
+        }
+      )
         .then((response) => {
           if (response.ok) {
             resetForm();

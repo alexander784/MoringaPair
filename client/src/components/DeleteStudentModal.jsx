@@ -27,14 +27,17 @@ function DeleteStudentModal({ showDeleteModal, handleCloseDeleteModal }) {
       console.log("Deleted Student", values);
 
       // fetch API
-      fetch(`/api/students/${values.studentId}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      })
+      fetch(
+        `https://moringapair-tx15.onrender.com/api/students/${values.studentId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        }
+      )
         .then((response) => {
           if (response.ok) {
             resetForm();

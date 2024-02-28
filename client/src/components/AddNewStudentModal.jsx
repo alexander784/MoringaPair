@@ -36,7 +36,7 @@ function AddNewStudentModal({ show, handleClose, handleShow }) {
       console.log("New student", values);
 
       // fetch API
-      fetch("/api/students", {
+      fetch("https://moringapair-tx15.onrender.com/api/students", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
