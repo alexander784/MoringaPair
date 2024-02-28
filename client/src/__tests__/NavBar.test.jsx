@@ -14,4 +14,17 @@ describe('NavBar Component', () => {
       const logo = getByAltText('Moringa Pair');
       expect(logo).toBeInTheDocument();
     });
+
+    it('renders navigation links correctly', () => {
+      const { getByText } = render(
+      <MemoryRouter>
+        <NavBar />
+      </MemoryRouter>);
+  
+  expect(getByText('Students')).toBeInTheDocument();
+  expect(getByText('Pairs')).toBeInTheDocument();
+  expect(getByText('Signup')).toBeInTheDocument();
+  expect(getByText('Login')).toBeInTheDocument();
+      
+    });
 });
