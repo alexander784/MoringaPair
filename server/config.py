@@ -22,7 +22,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = environ.get("DATABASE_URI")
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = environ.get(
     "SQLALCHEMY_TRACK_MODIFICATIONS")
 app.config["SQLALCHEMY_ECHO"] = environ.get("SQLALCHEMY_ECHO")
-app.config["JWT_SECRET_KEY"] = environ.get("JWT_SECRET_KEY")
+# app.config["JWT_SECRET_KEY"] = environ.get("JWT_SECRET_KEY")
 app.json.compact = False
 
 # mail details
