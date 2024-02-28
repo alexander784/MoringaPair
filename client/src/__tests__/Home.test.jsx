@@ -10,4 +10,14 @@ test('renders home component without crashing', () => {
         </MemoryRouter>
     );
  });
- 
+
+
+test('clicking sign up button navigates to signup route', () => { 
+    const { getByText } = render(
+        <MemoryRouter>
+            <Home />
+        </MemoryRouter>
+    );
+    const signUpButton = getByText('Sign up');
+    fireEvent.click(signUpButton)
+});
