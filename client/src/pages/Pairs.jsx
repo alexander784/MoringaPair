@@ -84,6 +84,7 @@ const Pairs = () => {
               block
               className="mt-3 btn-gen-pair"
               disabled={!formik.isValid}
+              onClick={notify}
             >
               Generate Pairs
             </Button>

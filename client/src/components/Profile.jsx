@@ -50,8 +50,8 @@ const Profile = () => {
 
         // clear localStorage upon logout
         if (data.message) {
-          notify();
           localStorage.clear();
+          notify();
         }
       })
       .catch((err) => {

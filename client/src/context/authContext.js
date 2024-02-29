@@ -39,6 +39,14 @@ const AuthProvider = ({ children }) => {
           error: action.payload,
         };
 
+      case "LOGOUT_USER":
+        return {
+          ...state,
+          loading: false,
+          currentUser: {},
+          error: "",
+        };
+
       default:
         return state;
     }

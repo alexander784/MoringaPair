@@ -71,11 +71,10 @@ const SignUp = () => {
 
           if (data.error) {
             setError(data.error);
-            toast.error(data.error);
           } else {
+            notify();
             setTimeout(() => {
               setLoading(!loading);
-              notify();
               setError(null);
               navigate("/login");
             }, 1000);

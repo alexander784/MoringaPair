@@ -71,26 +71,38 @@ const NavBar = () => {
 
         {/* navigation links */}
         <Row className="nav-links">
-          <Col>
-            <NavLink style={navLinkStyles} to="/students" className="nav-link">
-              Students
-            </NavLink>
-          </Col>
-          <Col>
-            <NavLink style={navLinkStyles} to="/pairs" className="nav-link">
-              Pairs
-            </NavLink>
-          </Col>
-          <Col>
-            <NavLink style={navLinkStyles} to="/signup" className="nav-link">
-              Signup
-            </NavLink>
-          </Col>
-          <Col>
-            <NavLink style={navLinkStyles} to="/login" className="nav-link">
-              Login
-            </NavLink>
-          </Col>
+          {localStorage.getItem("access_token") && (
+            <Col>
+              <NavLink
+                style={navLinkStyles}
+                to="/students"
+                className="nav-link"
+              >
+                Students
+              </NavLink>
+            </Col>
+          )}
+          {localStorage.getItem("access_token") && (
+            <Col>
+              <NavLink style={navLinkStyles} to="/pairs" className="nav-link">
+                Pairs
+              </NavLink>
+            </Col>
+          )}
+          {!localStorage.getItem("access_token") && (
+            <Col>
+              <NavLink style={navLinkStyles} to="/signup" className="nav-link">
+                Signup
+              </NavLink>
+            </Col>
+          )}
+          {!localStorage.getItem("access_token") && (
+            <Col>
+              <NavLink style={navLinkStyles} to="/login" className="nav-link">
+                Login
+              </NavLink>
+            </Col>
+          )}
           {/* conditionally render profile == show if logged in */}
           {localStorage.getItem("access_token") && (
             <Col>

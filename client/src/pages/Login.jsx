@@ -59,6 +59,7 @@ const Login = () => {
           console.log(data);
           // look for another option => bound to CSX attacks
           if (data.tokens && data.user) {
+            notify();
             setTimeout(() => {
               // store tokens in localStorage
               localStorage.setItem("access_token", data.tokens.access);
@@ -71,7 +72,6 @@ const Login = () => {
                 payload: data.user,
               });
 
-              notify();
               navigate("/");
             }, 1000);
           }

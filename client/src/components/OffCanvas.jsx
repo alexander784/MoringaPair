@@ -3,9 +3,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useGlobalAuthContext } from "../context/authContext";
 
 // inline props destructuring
 export default function OffCanvas({ name, show, handleClose, ...props }) {
+  const { authState, dispatchForAuthState } = useGlobalAuthContext();
+
   //   const [show, setShow] = useState(false);
   //   const handleClose = () => setShow(false);
   //   const handleShow = () => setShow(true);
@@ -48,6 +51,7 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
         if (data.message) {
           notify();
           localStorage.clear();
+          dispatchForAuthState({ type: "LOGOUT_USER" });
         }
       })
       .catch((err) => {
@@ -93,28 +97,44 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
         </Offcanvas.Header>
         <Offcanvas.Body className="offcanvas-body">
           {/* navigation links */}
-          <NavLink
-            className="offcanvas-link"
-            to="/students"
-            style={navLinkStyles}
-          >
-            Students
-          </NavLink>
-          <NavLink className="offcanvas-link" to="/pairs" style={navLinkStyles}>
-            Pairs
-          </NavLink>
-          <NavLink
-            className="offcanvas-link"
-            to="/signup"
-            style={navLinkStyles}
-          >
-            Sign up
-          </NavLink>
-          <NavLink className="offcanvas-link" to="/login" style={navLinkStyles}>
-            Login
-          </NavLink>
+          {localStorage.getItem("access_token") && (
+            <NavLink
+              className="offcanvas-link"
+              to="/students"
+              style={navLinkStyles}
+            >
+              Students
+            </NavLink>
+          )}
+          {localStorage.getItem("access_token") && (
+            <NavLink
+              className="offcanvas-link"
+              to="/pairs"
+              style={navLinkStyles}
+            >
+              Pairs
+            </NavLink>
+          )}
+          {!localStorage.getItem("access_token") && (
+            <NavLink
+              className="offcanvas-link"
+              to="/signup"
+              style={navLinkStyles}
+            >
+              Sign up
+            </NavLink>
+          )}
+          {!localStorage.getItem("access_token") && (
+            <NavLink
+              className="offcanvas-link"
+              to="/login"
+              style={navLinkStyles}
+            >
+              Login
+            </NavLink>
+          )}
           {/* conditionally render logout == show if logged in */}
-          {localStorage.getItem("access_token") ? (
+          {localStorage.getItem("access_token") && (
             <NavLink
               className="offcanvas-link"
               onClick={() => {
@@ -124,7 +144,7 @@ export default function OffCanvas({ name, show, handleClose, ...props }) {
             >
               Logout
             </NavLink>
-          ) : null}
+          )}
           <ToastContainer />
         </Offcanvas.Body>
       </Offcanvas>
