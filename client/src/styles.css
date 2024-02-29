@@ -458,6 +458,12 @@ body {
   font-size: 1.2rem;
   letter-spacing: 0.25rem;
 }
+.account-btns{
+ /* background-color: red; */
+ display: flex; 
+ justify-content: center;
+ margin-top: 1rem;
+}
 /* styling profile card end */
 
 /* RESPONSIVE WEB DESIGN */
@@ -515,7 +521,7 @@ body {
   }
 
   /* rwd for profile card */
-  .profile{
+  .profile {
     margin: 2rem;
     width: 90%;
   }
