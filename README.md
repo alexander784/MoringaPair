@@ -143,3 +143,72 @@ https://documenter.getpostman.com/view/23804775/2sA2rFTLQ5
 The site is live at:
 
 https://moringa-pair-beta.vercel.app/
+
+
+## Server Tree
+
+```
+server
+├── ERD.jpg
+├── Pipfile
+├── Pipfile.lock
+├── app.py
+├── config.py
+├── controllers
+│   ├── __init__.py
+│   ├── auth_controllers.py
+│   ├── pair_controllers.py
+│   ├── student_controllers.py
+│   └── user_controllers.py
+├── marshmallow_schemas.py
+├── migrations
+│   ├── README
+│   ├── alembic.ini
+│   ├── env.py
+│   ├── script.py.mako
+│   └── versions
+│       └── dab2bff76e1f_create_tables_users_students_pairs.py
+├── models.py
+├── requirements.txt
+└── seed.py
+```
+
+
+## Client src folder
+
+```
+client/src
+├── App.jsx
+├── __tests__
+│   ├── Home.test.jsx
+│   └── NavBar.test.jsx
+├── assets
+│   ├── banner.jpg
+│   └── studentsImage.jpg
+├── components
+│   ├── AddNewStudentModal.jsx
+│   ├── DeleteStudentModal.jsx
+│   ├── Footer.jsx
+│   ├── LinearProgress.jsx
+│   ├── NavBar.jsx
+│   ├── OffCanvas.jsx
+│   ├── Pair.jsx
+│   ├── Profile.jsx
+│   ├── Toast.jsx
+│   ├── UpdateStudentModal.jsx
+│   └── UpdateUserModal.jsx
+├── context
+│   ├── authContext.js
+│   ├── pairsContext.js
+│   └── studentsContext.js
+├── index.jsx
+├── pages
+│   ├── Error.jsx
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   ├── MyAccount.jsx
+│   ├── Pairs.jsx
+│   ├── SignUp.jsx
+│   └── StudentsDataGrid.jsx
+└── styles.css
+```
