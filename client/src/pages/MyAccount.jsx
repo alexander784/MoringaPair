@@ -9,12 +9,14 @@ const MyAccount = () => {
   const handleCloseUpdateUserModal = () => setShowUpdateUserModal(false);
   const handleShowUpdateUserModal = () => setShowUpdateUserModal(true);
 
+  // provide AuthContext
   const { authState } = useGlobalAuthContext();
 
   if (authState.currentUser) {
     console.log("currentUser", authState.currentUser);
   }
-  // UpdateStudentModal
+
+  // UpdateUserModal
   if (showUpdateUserModal) {
     return (
       <UpdateUserModal

@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState } from "react";
+import React, { useContext, useReducer } from "react";
 
 // AuthContext
 const AuthContext = React.createContext();

@@ -401,6 +401,7 @@ body {
   padding: 10px;
 }
 /* styling the OffCanvas end */
+
 /* styling the error page end */
 .error-page {
   text-align: center;
@@ -459,14 +460,13 @@ body {
   letter-spacing: 0.25rem;
 }
 .account-btns{
- /* background-color: red; */
  display: flex; 
  justify-content: center;
  margin-top: 1rem;
 }
 /* styling profile card end */
 
-/* RESPONSIVE WEB DESIGN */
+/* !RESPONSIVE WEB DESIGN */
 @media screen and (max-width: 992px) {
   /* rwd for home */
   .welcome-message,
