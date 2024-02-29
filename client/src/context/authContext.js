@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useReducer, useState } from "react";
 
 // AuthContext
 const AuthContext = React.createContext();
@@ -8,7 +8,7 @@ const AuthProvider = ({ children }) => {
   // initialAuthState
   const initialAuthState = {
     loading: false,
-    currentUser: null,
+    currentUser: {},
     error: "",
   };
 
@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
         return {
           ...state,
           loading: true,
-          currentUser: null,
+          currentUser: {},
           error: "",
         };
 
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
         return {
           ...state,
           loading: false,
-          currentUser:null,
+          currentUser: {},
           error: action.payload,
         };
 

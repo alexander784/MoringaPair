@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const notify = () => toast("Logged out successfully!");
@@ -24,6 +25,8 @@ const Profile = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const navigate = useNavigate();
 
   // function to log out user
   const handleLogout = () => {
@@ -85,7 +88,14 @@ const Profile = () => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>My account</MenuItem>
+            <MenuItem
+              onClick={() => {
+                handleClose();
+                navigate("/my_account");
+              }}
+            >
+              My account
+            </MenuItem>
             <MenuItem
               onClick={() => {
                 handleLogout();

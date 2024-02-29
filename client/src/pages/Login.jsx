@@ -37,7 +37,6 @@ const Login = () => {
     // onSubmit
     onSubmit: (values, { resetForm }) => {
       console.log(values);
-      dispatchForAuthState({ type: "FETCH_REQUEST" });
 
       // fetch API
       fetch("https://moringapair-tx15.onrender.com/auth/login", {
@@ -58,12 +57,12 @@ const Login = () => {
           console.log(data);
           // look for another option => bound to CSX attacks
           if (data.tokens && data.user) {
-            // store tokens i localStorage
+            // store tokens in localStorage
             localStorage.setItem("access_token", data.tokens.access);
             localStorage.setItem("refresh_token", data.tokens.refresh);
 
             // update user state
-            console.log(data.user);
+            console.log("user", data.user);
             dispatchForAuthState({ type: "FETCH_SUCCESS", payload: data.user });
 
             navigate("/");
@@ -71,7 +70,6 @@ const Login = () => {
         })
         .catch((err) => {
           console.log("Error in logging in user", err);
-          dispatchForAuthState({ type: "FETCH_FAILURE", payload: err });
         });
     },
   });
