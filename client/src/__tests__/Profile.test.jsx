@@ -15,11 +15,17 @@ describe('Profile component', () => {
     });
 
     it('logs out user when Logout button is clicked', async ()=> {
+        // Mock the fetch API
         global.fetch = jest.fn(() => 
         Promise.resolve({
             ok:true,
             json: () => Promise.resolve({ message: 'Logged out'}),
-        }),
+        })
     );
+    const { getByText } = render(
+        <MemoryRouter>
+            <Profile />
+        </MemoryRouter>
+    )
     })
  })
