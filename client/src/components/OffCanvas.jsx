@@ -7,7 +7,7 @@ import { useGlobalAuthContext } from "../context/authContext";
 
 // inline props destructuring
 export default function OffCanvas({ name, show, handleClose, ...props }) {
-  const { authState, dispatchForAuthState } = useGlobalAuthContext();
+  const { dispatchForAuthState } = useGlobalAuthContext();
 
   //   const [show, setShow] = useState(false);
   //   const handleClose = () => setShow(false);

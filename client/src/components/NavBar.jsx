@@ -28,6 +28,7 @@ const NavBar = () => {
     };
   };
 
+  // OffCanvas
   if (show) {
     return <OffCanvas show={show} handleClose={handleClose} />;
   }
