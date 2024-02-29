@@ -428,6 +428,38 @@ body {
 }
 /* styling the week-input section end */
 
+/* styling profile card start */
+.profile {
+  width: 50%;
+  margin: 5% auto 0 auto;
+  height: auto;
+  line-height: 3rem;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  background-color: #f77f00;
+}
+.profile .info span:nth-child(1) {
+  background-color: #003049;
+  padding: 5px;
+  border-radius: 7px;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 0.25rem;
+  font-size: 0.75rem;
+  color: #fff;
+  margin-right: 0.5rem;
+}
+.profile .info span:nth-child(2) {
+  color: #fff;
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: 0.25rem;
+}
+/* styling profile card end */
+
 /* RESPONSIVE WEB DESIGN */
 @media screen and (max-width: 992px) {
   /* rwd for home */
@@ -481,38 +513,10 @@ body {
   .pair-card {
     margin-top: 1rem;
   }
-}
 
-.profile {
-  /* background-color: red; */
-  /* border: 1px solid #333; */
-  width: 50%;
-  margin-right: auto;
-  margin-left: auto;
-  height: auto;
-  margin-top: 5%;
-  line-height: 3rem;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.5);
-  background-color: #f77f00;
-}
-.profile .info span:nth-child(1) {
-  background-color: #003049;
-  padding: 5px;
-  border-radius: 7px;
-  text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: 0.25rem;
-  font-size: 0.75rem;
-  color: #fff;
-  margin-right: 0.5rem;
-}
-.profile .info span:nth-child(2) {
-  color: #fff;
-  font-weight: 400;
-  font-size: 1.2rem;
-  letter-spacing: 0.25rem;
+  /* rwd for profile card */
+  .profile{
+    margin: 2rem;
+    width: 90%;
+  }
 }
