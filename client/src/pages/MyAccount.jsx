@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { useGlobalAuthContext } from "../context/authContext";
 import Button from "react-bootstrap/Button";
+import UpdateUserModal from "../components/UpdateUserModal";
 
 const MyAccount = () => {
+  // state for handling UpdateStudentModal
+  const [showUpdateUserModal, setShowUpdateUserModal] = useState(false);
+  const handleCloseUpdateUserModal = () => setShowUpdateUserModal(false);
+  const handleShowUpdateUserModal = () => setShowUpdateUserModal(true);
+
   const { authState } = useGlobalAuthContext();
 
   if (authState.currentUser) {
     console.log("currentUser", authState.currentUser);
+  }
+  // UpdateStudentModal
+  if (showUpdateUserModal) {
+    return (
+      <UpdateUserModal
+        showUpdateUserModal={showUpdateUserModal}
+        handleCloseUpdateUserModal={handleCloseUpdateUserModal}
+        handleShowUpdateUserModal={handleShowUpdateUserModal}
+      />
+    );
   }
   return (
     <>
@@ -43,7 +59,9 @@ const MyAccount = () => {
             </div>
           </div>
           <div className="account-btns">
-            <Button className="edit-btn">Edit Account</Button>
+            <Button className="edit-btn" onClick={handleShowUpdateUserModal}>
+              Edit Account
+            </Button>
           </div>
         </>
       )}

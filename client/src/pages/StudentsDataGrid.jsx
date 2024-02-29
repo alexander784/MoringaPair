@@ -36,6 +36,8 @@ export default function StudentsDataGrid() {
   const handleCloseDeleteModal = () => setShowDeleteModal(false);
   const handleShowDeleteModal = () => setShowDeleteModal(true);
 
+  
+
   useEffect(() => {
     // loading
     dispatchForStudents({ type: "FETCH_REQUEST" });
