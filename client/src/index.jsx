@@ -11,14 +11,14 @@ import { AuthProvider } from "./context/authContext";
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(
   <>
-    <BrowserRouter>
-      <AuthProvider>
+    <AuthProvider>
+      <BrowserRouter>
         <PairsProvider>
           <StudentsProvider>
             <App />
           </StudentsProvider>
         </PairsProvider>
-      </AuthProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   </>
 );
