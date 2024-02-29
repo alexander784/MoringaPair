@@ -459,12 +459,46 @@ body {
   font-size: 1.2rem;
   letter-spacing: 0.25rem;
 }
-.account-btns{
- display: flex; 
- justify-content: center;
- margin-top: 1rem;
+.account-btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 /* styling profile card end */
+
+/* styling loader start */
+.loader {
+  width: 100px;
+  aspect-ratio: 1;
+  --c: no-repeat linear-gradient(#000 0 0);
+  background: var(--c) 0% 100%, var(--c) 50% 100%, var(--c) 100% 100%;
+  animation: l2 1s infinite linear;
+  color: #f77f00;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10%;
+}
+@keyframes l2 {
+  0% {
+    background-size: 20% 100%, 20% 100%, 20% 100%;
+  }
+  20% {
+    background-size: 20% 60%, 20% 100%, 20% 100%;
+  }
+  40% {
+    background-size: 20% 80%, 20% 60%, 20% 100%;
+  }
+  60% {
+    background-size: 20% 100%, 20% 80%, 20% 60%;
+  }
+  80% {
+    background-size: 20% 100%, 20% 100%, 20% 80%;
+  }
+  100% {
+    background-size: 20% 100%, 20% 100%, 20% 100%;
+  }
+}
+/* styling loader end */
 
 /* !RESPONSIVE WEB DESIGN */
 @media screen and (max-width: 992px) {

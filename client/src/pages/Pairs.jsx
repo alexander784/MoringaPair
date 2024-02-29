@@ -7,6 +7,7 @@ import { useGlobalPairsContext } from "../context/pairsContext";
 import { Row, Col, Form, Button, FloatingLabel } from "react-bootstrap";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import Loader from "../components/Loader";
 
 const Pairs = () => {
   // provide PairsContext
@@ -66,8 +67,10 @@ const Pairs = () => {
     },
   });
 
+  // loading
   if (pairsState.loading) {
-    return <LinearColor />;
+    // return <LinearColor />;
+    return <Loader />;
   }
 
   return (

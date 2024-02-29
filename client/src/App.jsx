@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/students" element={<StudentsDataGrid />} />
         <Route path="/pairs" element={<Pairs />} />
         <Route path="/*" element={<Error />} />
+
       </Routes>
     </>
   );

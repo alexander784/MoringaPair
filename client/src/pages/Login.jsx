@@ -8,9 +8,10 @@ import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useGlobalAuthContext } from "../context/authContext";
+import Loader from "../components/Loader";
 
 const Login = () => {
-  const { dispatchForAuthState } = useGlobalAuthContext();
+  const { authState, dispatchForAuthState } = useGlobalAuthContext();
 
   const notify = () => toast("Logged in successfully! ✔");
 
@@ -37,6 +38,7 @@ const Login = () => {
     // onSubmit
     onSubmit: (values, { resetForm }) => {
       console.log(values);
+      dispatchForAuthState({ type: "FETCH_REQUEST" });
 
       // fetch API
       fetch("https://moringapair-tx15.onrender.com/auth/login", {
@@ -57,15 +59,21 @@ const Login = () => {
           console.log(data);
           // look for another option => bound to CSX attacks
           if (data.tokens && data.user) {
-            // store tokens in localStorage
-            localStorage.setItem("access_token", data.tokens.access);
-            localStorage.setItem("refresh_token", data.tokens.refresh);
+            setTimeout(() => {
+              // store tokens in localStorage
+              localStorage.setItem("access_token", data.tokens.access);
+              localStorage.setItem("refresh_token", data.tokens.refresh);
 
-            // update user state
-            console.log("user", data.user);
-            dispatchForAuthState({ type: "FETCH_SUCCESS", payload: data.user });
+              // update user state
+              console.log("user", data.user);
+              dispatchForAuthState({
+                type: "FETCH_SUCCESS",
+                payload: data.user,
+              });
 
-            navigate("/");
+              notify();
+              navigate("/");
+            }, 1000);
           }
         })
         .catch((err) => {
@@ -73,6 +81,11 @@ const Login = () => {
         });
     },
   });
+
+  // loading
+  if (authState.loading) {
+    return <Loader />;
+  }
 
   return (
     <Container className="mt-5">
@@ -119,9 +132,9 @@ const Login = () => {
                 variant="primary"
                 type="submit"
                 block
-                onClick={() => {
-                  notify();
-                }}
+                // onClick={() => {
+                //   notify();
+                // }}
                 className="mt-3 signin-btn"
                 disabled={!formik.isValid}
               >

@@ -6,6 +6,7 @@ import AddNewStudentModal from "../components/AddNewStudentModal";
 import UpdateStudentModal from "../components/UpdateStudentModal";
 import { useGlobalStudentsContext } from "../context/studentsContext";
 import DeleteStudentModal from "../components/DeleteStudentModal";
+import Loader from "../components/Loader";
 
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -78,7 +79,8 @@ export default function StudentsDataGrid() {
 
   // Loading
   if (studentsState.loading) {
-    return <LinearColor />;
+    // return <LinearColor />;
+    return <Loader/>
   }
 
   // AddNewStudentModal

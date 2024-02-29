@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Loader from "../components/Loader";
 
 const SignUp = () => {
   const [error, setError] = useState(null);
@@ -14,6 +15,8 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const notify = () => toast("Signed up successfully! ✔");
+
+  const [loading, setLoading] = useState(false);
 
   // useFormik => 3 args
   const formik = useFormik({
@@ -46,6 +49,8 @@ const SignUp = () => {
     onSubmit: (values, { resetForm }) => {
       console.log(values);
 
+      setLoading(!loading);
+
       // fetch API
       fetch("https://moringapair-tx15.onrender.com/auth/register", {
         method: "POST",
@@ -68,9 +73,12 @@ const SignUp = () => {
             setError(data.error);
             toast.error(data.error);
           } else {
-            notify();
-            setError(null);
-            navigate("/login");
+            setTimeout(() => {
+              setLoading(!loading);
+              notify();
+              setError(null);
+              navigate("/login");
+            }, 1000);
           }
         })
         .catch((err) => {
@@ -78,6 +86,11 @@ const SignUp = () => {
         });
     },
   });
+
+  // loading
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <Container className="mt-5">
