@@ -1,6 +1,9 @@
 
 # MoringaPair
 
+<p>A system that randomly pairs up students, keeps track of each pair and changes weekly.
+</p>
+
 Problem statement: 
 
 Pairing students and keeping track of each pair is cumbersome and laborious. At the moment, the Technical mentor has to manually pair students based on his intuition and other factors like student performance. The Technical mentor keeps track of these pairs ensuring that there are no duplications unless necessary.
