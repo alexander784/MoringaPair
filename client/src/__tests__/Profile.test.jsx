@@ -26,6 +26,9 @@ describe('Profile component', () => {
         <MemoryRouter>
             <Profile />
         </MemoryRouter>
-    )
+    );
+    fireEvent.click(getByText('Logout'));
+    
+
     })
  })
