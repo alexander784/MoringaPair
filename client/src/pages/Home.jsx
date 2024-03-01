@@ -24,14 +24,17 @@ const Home = () => {
             <button className="learn-more">
               <a href="#benefits-features">Learn More</a>
             </button>
-            <button
-              className="signup"
-              onClick={() => {
-                navigate("/signup");
-              }}
-            >
-              Sign up
-            </button>
+            {/* bound to CSX */}
+            {!localStorage.getItem("access_token") && (
+              <button
+                className="signup"
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
+                Sign up
+              </button>
+            )}
           </div>
         </div>
       </div>
